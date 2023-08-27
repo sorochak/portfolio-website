@@ -7,6 +7,9 @@ TO DO:
 - [ ] create functioning components for header and footer
 - [ ] deploy (maybe on GH pages?)
 - [ ] add analytics
+- [ ] document process on https://dev.to/
+- [ ] add MUI for responsiveness 
+
 
 
 
