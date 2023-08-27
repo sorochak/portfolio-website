@@ -12,22 +12,22 @@ TO DO:
 - [x] Create React App: Use the Create React App (CRA) tool to set up a new React project.
 
 3. Create Structure
-- [x] Directory Structure: Organize your app's structure to have directories like components, pages, assets, etc.
-- [ ] Setup Components: Break down your UI into smaller reusable components (e.g., Navbar, Footer, Button).
-- [ ] Setup Pages: Organize your major sections/views as separate pages (e.g., HomePage, ProjectPage).
+- [x] Directory Structure: Organize the app's structure to have directories like components, pages, assets, etc.
+- [ ] Setup Components: Break down the UI into smaller reusable components (e.g., Navbar, Footer, Button).
+- [ ] Setup Pages: Organize the major sections/views as separate pages (e.g., HomePage, ProjectPage).
 
 4. Implement Core Features
-- [ ] Header/Footer: Build your header (usually navigation) and footer components.
-- [ ] Content: Populate the pages with your actual content - personal info, projects, resume, etc.
-- [ ] Add Styling: Style your components. Consider using SCSS or styled-components for more advanced styling capabilities.
+- [ ] Header/Footer: Build the header (usually navigation) and footer components.
+- [ ] Content: Populate the pages with actual content - personal info, projects, resume, etc.
+- [ ] Add Styling: Style the components. Consider using SCSS or styled-components for more advanced styling capabilities.
 
 5. Integrate Material-UI for Responsiveness
 - [ ] Install Material-UI: Integrate Material-UI for responsive components and styling.
 - [ ] Use Material-UI Components: Replace or enhance custom components with MUI components where necessary for better responsiveness and design consistency.
 
 6. Analytics
-- [ ] Set Up Google Analytics: Create a Google Analytics account and get your tracking ID.
-- [ ] Integrate Analytics: Use a package like react-ga to integrate Google Analytics with your React app.
+- [ ] Set Up Google Analytics: Create a Google Analytics account and get a tracking ID.
+- [ ] Integrate Analytics: Use a package like react-ga to integrate Google Analytics with the React app.
 
 7. Testing
 - [ ] Responsive Testing: Ensure the site looks good on various device sizes.
@@ -36,14 +36,14 @@ TO DO:
 8. Deployment & CI/CD Pipeline
 - [x] GitHub Pages Setup: Create a GitHub repository for portfolio.
 - [ ] Deployment Setup: Use tools like gh-pages npm package to help automate the deployment to GitHub Pages.
-- [ ] Automate Deployment: Set up GitHub Actions for automatic deployment upon pushing to your main branch.
+- [ ] Automate Deployment: Set up GitHub Actions for automatic deployment upon pushing to the main branch.
 
 9. Documentation & Sharing
 - [ ] Document Process: Jot down the entire process, challenges faced, solutions found, and any other learnings.
-- [ ] Share on Dev.to: Write and publish an article on Dev.to sharing your experience and learnings. This not only showcases your project but also your writing and reflection skills.
+- [ ] Share on Dev.to: Write and publish an article on Dev.to sharing the experience and learnings. This not only showcases the project but also writing and reflection skills.
 
 10. Dockerize the React App
-- [ ] Create a Dockerfile in the root of your project with the following content:
+- [ ] Create a Dockerfile in the root of the project with the following content:
 # Use an official Node runtime as the parent image
 FROM node:14
 
@@ -65,7 +65,7 @@ EXPOSE 3000
 # Run the application when the container launches
 CMD ["npm", "start"]
 
-- [ ] Create a .dockerignore file in the root of your project to exclude unnecessary files:
+- [ ] Create a .dockerignore file in the root of the project to exclude unnecessary files:
 - [ ] Build the Docker Image
 - [ ] Run the React App in a Docker Container
 - [ ] Deploy
