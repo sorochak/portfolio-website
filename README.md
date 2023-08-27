@@ -5,7 +5,7 @@ This project will be my personal website/portfolio page.
 TO DO:
 
 1. Planning & Design
-- [ ] Sketch the Design
+- [x] Sketch the Design
 - [x] List Features & Sections (e.g., About, Projects, Contact)
 
 2. Setup Development Environment
@@ -70,6 +70,10 @@ CMD ["npm", "start"]
 - [ ] Run the React App in a Docker Container
 - [ ] Deploy
 - [ ] Update Documentation
+
+
+11. Think about SEO - maybe implement React-Helmet
+- [ ] Implement React-Helmet https://www.freecodecamp.org/news/react-helmet-examples/
 
 # Getting Started with Create React App
 
