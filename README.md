@@ -75,6 +75,8 @@ CMD ["npm", "start"]
 11. Think about SEO - maybe implement React-Helmet
 - [ ] Implement React-Helmet https://www.freecodecamp.org/news/react-helmet-examples/
 
+12. Add button to switch between dark and light theme
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
