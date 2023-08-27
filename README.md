@@ -1,3 +1,17 @@
+# My Personal Website Journey
+
+This project will be my personal website/portfolio page.
+
+TO DO:
+- [ ] add content for all pages
+- [ ] create functioning components for header and footer
+- [ ] deploy (maybe on GH pages?)
+- [ ] add analytics
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
