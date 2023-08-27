@@ -77,6 +77,8 @@ CMD ["npm", "start"]
 
 12. Add button to switch between dark and light theme
 
+13. Potentially consider implementing dependabot for non-breaking updates?
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
