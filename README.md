@@ -17,7 +17,8 @@ TO DO:
 - [ ] Setup Pages: Organize the major sections/views as separate pages (e.g., HomePage, ProjectPage).
 
 4. Implement Core Features
-- [ ] Header/Footer: Build the header (usually navigation) and footer components.
+- [ ] Header: Build the header (usually navigation)
+- [ ] Footer: Build the footer component
 - [ ] Content: Populate the pages with actual content - personal info, projects, resume, etc.
 - [ ] Add Styling: Style the components. Consider using SCSS or styled-components for more advanced styling capabilities.
 
