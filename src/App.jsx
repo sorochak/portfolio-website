@@ -3,18 +3,15 @@ import Home from './pages/Home';
 // import About from './pages/About';
 // import Projects from './pages/Projects';
 // import Contact from './pages/Contact';
-import Header from './components/Header';
+import NavBar from './components/NavBar';
 import './App.css';
 
 function App() {
   return (
     <Router>
-      <Header />
+      <NavBar />
       <Routes>
-        <Route exact path="/" component={Home} />
-        {/* Uncomment when you add these pages */}
-        {/* <Route path="/projects" component={Projects} />
-        <Route path="/contact" component={Contact} /> */}
+        {/* <Route path="/" element={Home} /> */}
       </Routes>
     </Router>
   );
