@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   AppBar,
   Box,
@@ -14,6 +14,10 @@ import {
 } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import AdbIcon from "@mui/icons-material/Adb";
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { useTheme } from '@mui/material/styles';
+import { ColorModeContext } from '../App'
 // import { Link as RouterLink } from "react-router-dom";
 // import styled from 'styled-components';
 // import NavDrawer from "./NavDrawer";
@@ -23,7 +27,8 @@ const pages = ["about", "projects", "contact"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
-  // const theme = useTheme();
+  const { toggleColorMode } = useContext(ColorModeContext);
+  const theme = useTheme();
   // const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleOpenNavMenu = (event) => {
@@ -123,6 +128,13 @@ const NavBar = () => {
               </Button>
             ))}
           </Box>
+          <IconButton
+        sx={{ ml: 1 }}
+        onClick={toggleColorMode}
+        color="inherit"
+      >
+        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+      </IconButton>
         </Toolbar>
       </Container>
     </AppBar>
