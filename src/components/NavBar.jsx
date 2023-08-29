@@ -3,6 +3,7 @@ import {
   AppBar,
   Box,
   Toolbar,
+  styled,
   IconButton,
   Typography,
   Menu,
@@ -31,6 +32,11 @@ const NavBar = () => {
   const theme = useTheme();
   // const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
+  const StyledToolbar = styled(Toolbar) ({
+    display: 'flex',
+    justifyContent: 'space-between',
+  })
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -42,7 +48,7 @@ const NavBar = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <StyledToolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
@@ -135,7 +141,7 @@ const NavBar = () => {
       >
         {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
-        </Toolbar>
+        </StyledToolbar>
       </Container>
     </AppBar>
   );
