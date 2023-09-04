@@ -40,15 +40,13 @@ const Footer = () => {
             </Typography>
             <Link
               href="https://www.linkedin.com/in/austensorochak/"
-              color="inherit"
               target="_blank"
             >
               <LinkedIn />
             </Link>
             <Link
               href="https://github.com/sorochak"
-              color="inherit"
-              sx={{ pl: 1, pr: 1, transition: "all 0.1s ease-in-out" }}
+              sx={{ pl: 1, pr: 1 }}
               target="_blank"
             >
               <GitHub />
@@ -58,7 +56,7 @@ const Footer = () => {
         <Box mt={5}>
           <Typography variant="body2" color="text.secondary" align="center">
             {"Copyright © "}
-            <Link color="inherit" component={RouterLink} to="/">
+            <Link component={RouterLink} to="/">
               Austen Sorochak
             </Link>{" "}
             {new Date().getFullYear()}
