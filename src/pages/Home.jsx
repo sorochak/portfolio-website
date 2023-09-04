@@ -1,13 +1,11 @@
 import { Box, Typography } from "@mui/material";
 
-
 const Home = () => {
   return (
     <Box>
-      <Typography>Body</Typography>
+      <Typography>Home</Typography>
     </Box>
-  )
-  
-}
+  );
+};
 
 export default Home;

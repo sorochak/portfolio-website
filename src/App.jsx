@@ -1,12 +1,10 @@
-import BaseView from './components/BaseView'
-import BaseRouter from './components/BaseRouter'
+import BaseView from "./components/BaseView";
 
 function App() {
-
   return (
-    <BaseView>
-      <BaseRouter />
-    </BaseView>
+    <div>
+      <BaseView />
+    </div>
   );
 }
 

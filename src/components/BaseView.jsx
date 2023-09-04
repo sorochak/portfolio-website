@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Box } from "@mui/material";
 import Header from "./Header";
 import Footer from "./Footer";
+import BaseRouter from "./BaseRouter";
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
@@ -40,7 +41,7 @@ const BaseView = ({ children }) => {
         <CssBaseline />
         <Box>
           <Header />
-          {children}
+          <BaseRouter />
           <Footer />
         </Box>
       </ThemeProvider>
