@@ -18,7 +18,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useTheme } from '@mui/material/styles';
-import { ColorModeContext } from "../App";
+import { ColorModeContext } from "./BaseView";
 // import { Link as RouterLink } from "react-router-dom";
 // import styled from 'styled-components';
 // import NavDrawer from "./NavDrawer";
@@ -26,7 +26,7 @@ import { ColorModeContext } from "../App";
 
 const pages = ["about", "projects", "contact"];
 
-const NavBar = () => {
+const Header = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const { toggleColorMode } = useContext(ColorModeContext);
   const theme = useTheme();
@@ -147,4 +147,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Header;
