@@ -14,8 +14,8 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AdbIcon from "@mui/icons-material/Adb";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
+import NightlightIcon from "@mui/icons-material/Nightlight";
+import LightModeIcon from "@mui/icons-material/LightMode";
 import { useTheme } from "@mui/material/styles";
 import { ColorModeContext } from "./BaseView";
 import Logo from "./Logo";
@@ -159,9 +159,15 @@ const Header = () => {
             onClick={toggleColorMode}
           >
             {theme.palette.mode === "dark" ? (
-              <Brightness7Icon />
+              <LightModeIcon
+                fontSize="large"
+                sx={{ color: theme.palette.primary.main }}
+              />
             ) : (
-              <Brightness4Icon />
+              <NightlightIcon
+                fontSize="large"
+                sx={{ color: theme.palette.primary.main }}
+              />
             )}
           </IconButton>
         </StyledToolbar>
