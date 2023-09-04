@@ -14,6 +14,7 @@ const Footer = () => {
       style={{
         backgroundColor: theme.palette.background.default,
         boxShadow: "none",
+        transition: "all 0.5s ease-in-out",
       }}
     >
       <Container maxWidth="lg">
@@ -47,7 +48,7 @@ const Footer = () => {
             <Link
               href="https://github.com/sorochak"
               color="inherit"
-              sx={{ pl: 1, pr: 1 }}
+              sx={{ pl: 1, pr: 1, transition: "all 0.1s ease-in-out" }}
               target="_blank"
             >
               <GitHub />
