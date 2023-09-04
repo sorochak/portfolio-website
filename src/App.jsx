@@ -1,4 +1,4 @@
-import { useMemo, createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import IconButton from '@mui/material/IconButton';
 // import Box from '@mui/material/Box';
@@ -11,7 +11,6 @@ import Home from './pages/Home';
 // import Projects from './pages/Projects';
 // import Contact from './pages/Contact';
 import NavBar from './components/NavBar';
-import './App.css';
 import Footer from './components/Footer';
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
