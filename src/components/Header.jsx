@@ -11,8 +11,6 @@ import {
   Container,
   Button,
   MenuItem,
-  //   List,
-  //   Link as MuiLink,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AdbIcon from "@mui/icons-material/Adb";
@@ -20,10 +18,6 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { useTheme } from "@mui/material/styles";
 import { ColorModeContext } from "./BaseView";
-// import { Link as RouterLink } from "react-router-dom";
-// import styled from 'styled-components';
-// import NavDrawer from "./NavDrawer";
-// import NavLink from "./NavLink";
 
 const pages = ["about", "projects", "contact"];
 
@@ -31,7 +25,6 @@ const Header = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const { toggleColorMode } = useContext(ColorModeContext);
   const theme = useTheme();
-  // const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
