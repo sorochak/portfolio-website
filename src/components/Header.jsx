@@ -41,14 +41,14 @@ const Header = () => {
   };
 
   return (
-    <AppBar
-      position="static"
-      style={{
-        backgroundColor: theme.palette.background.default,
-        boxShadow: "none",
-      }}
-    >
-      <Container maxWidth="xl">
+    <AppBar position="static">
+      <Container
+        maxWidth="xl"
+        style={{
+          backgroundColor: theme.palette.background.default,
+          boxShadow: "none",
+        }}
+      >
         <StyledToolbar disableGutters>
           <Box sx={{ m: "10px" }}>
             <Logo />

@@ -2,11 +2,20 @@ import { Link as RouterLink } from "react-router-dom";
 import { Box, Typography, Container, Grid } from "@mui/material";
 import Link from "@mui/material/Link";
 import { LinkedIn, GitHub } from "@mui/icons-material";
+import { useTheme } from "@mui/material/styles";
 import Logo from "./Logo";
 
 const Footer = () => {
+  const theme = useTheme();
+
   return (
-    <Box component="footer">
+    <Box
+      component="footer"
+      style={{
+        backgroundColor: theme.palette.background.default,
+        boxShadow: "none",
+      }}
+    >
       <Container maxWidth="lg">
         <Grid container spacing={5}>
           <Grid item xs={12} sm={4}>
