@@ -11,7 +11,9 @@ const Footer = () => {
         <Grid container spacing={5}>
           <Grid item xs={12} sm={4}>
             <Box width={150} height={150}>
-              <Logo width="75px" height="75px" />
+              <RouterLink to={"/"}>
+                <Logo width="75px" height="75px" />
+              </RouterLink>
             </Box>
           </Grid>
           <Grid item xs={12} sm={4}>
