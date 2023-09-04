@@ -18,6 +18,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { useTheme } from "@mui/material/styles";
 import { ColorModeContext } from "./BaseView";
+import Logo from "./Logo";
 
 const pages = ["about", "projects", "contact"];
 
@@ -42,12 +43,17 @@ const Header = () => {
   return (
     <AppBar
       position="static"
-      style={{ backgroundColor: "transparent", boxShadow: "none" }}
+      style={{
+        backgroundColor: theme.palette.background.default,
+        boxShadow: "none",
+      }}
     >
       <Container maxWidth="xl">
         <StyledToolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <RouterLink to={"/"}>
+          <Box sx={{ m: "10px" }}>
+            <Logo />
+          </Box>
+          <RouterLink to={"/"} style={{ textDecoration: "none" }}>
             <Typography
               variant="h6"
               noWrap
@@ -57,7 +63,7 @@ const Header = () => {
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "inherit",
+                color: theme.palette.text.primary,
                 textDecoration: "none",
               }}
             >
@@ -68,7 +74,6 @@ const Header = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -97,7 +102,12 @@ const Header = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <RouterLink to={`/${page}`}>
-                    <Typography textAlign="center">{page}</Typography>
+                    <Typography
+                      sx={{ color: theme.palette.text.primary }}
+                      textAlign="center"
+                    >
+                      {page}
+                    </Typography>
                   </RouterLink>
                 </MenuItem>
               ))}
@@ -116,7 +126,7 @@ const Header = () => {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: theme.palette.text.primary,
               textDecoration: "none",
             }}
           >
@@ -124,18 +134,29 @@ const Header = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <RouterLink key={page} to={`/${page}`}>
+              <RouterLink
+                key={page}
+                to={`/${page}`}
+                style={{ textDecoration: "none" }}
+              >
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{
+                    my: 2,
+                    color: theme.palette.text.primary,
+                    display: "block",
+                  }}
                 >
                   {page}
                 </Button>
               </RouterLink>
             ))}
           </Box>
-          <IconButton sx={{ ml: 1 }} onClick={toggleColorMode} color="inherit">
+          <IconButton
+            sx={{ ml: 1, color: theme.palette.text.primary }}
+            onClick={toggleColorMode}
+          >
             {theme.palette.mode === "dark" ? (
               <Brightness7Icon />
             ) : (
