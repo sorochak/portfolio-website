@@ -7,7 +7,9 @@ const Home = () => {
   const { mode } = useContext(ColorModeContext);
 
   const childBoxBackgroundColor =
-    mode === "dark" ? "rgba(0, 0, 0, 0.45)" : "rgba(255, 255, 255, 0.25)";
+    mode === "dark" ? "rgba(0, 0, 0, 0.5)" : "rgba(213, 255, 252, 0.35)";
+
+  //rgba(0, 0, 0, 0.29)
 
   console.log(childBoxBackgroundColor);
 
@@ -20,7 +22,7 @@ const Home = () => {
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
-        width: "100vw",
+        width: "100%",
         backgroundImage: `url(${backgroundImage})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
@@ -37,8 +39,6 @@ const Home = () => {
           height: "100%",
           top: 0,
           left: 0,
-          // background: "rgba(255, 255, 255, 0.25)",
-          // background: "rgba(0, 0, 0, 0.45)",
           background: childBoxBackgroundColor,
           display: "flex",
           flexDirection: "column",
@@ -46,20 +46,55 @@ const Home = () => {
           justifyContent: "center",
         }}
       >
-        <Typography component="p" variant="subtitle1" gutterBottom>
+        {/* <Typography
+          component="p"
+          variant="subtitle1"
+          gutterBottom
+          sx={{
+            fontWeight: 450,
+            textShadow: "0px 1px 2px rgba(0, 0, 0, 0.2)",
+          }}
+        >
           Hi, my name is
-        </Typography>
+        </Typography> */}
 
-        <Typography component="h1" variant="h2" gutterBottom>
+        <Typography
+          component="h1"
+          variant="h2"
+          gutterBottom
+          sx={{
+            fontWeight: 700,
+            fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
+            textShadow: "-3px 2px 10px rgba(0,0,0,0.8)",
+          }}
+        >
           Austen Sorochak
         </Typography>
 
-        <Typography component="h2" variant="h4" gutterBottom>
-          Full-stack Web Developer
-        </Typography>
+        {/* <Typography
+          component="h2"
+          variant="h4"
+          gutterBottom
+          sx={{
+            fontWeight: 600,
+            fontFamily: "Arial, sans-serif",
+            textShadow: "-3px 2px 10px rgba(0,0,0,0.8)",
+          }}
+        >
+          Tech-meets-Terra: A Digital Dive into Nature's Depths
+        </Typography> */}
 
-        <Typography component="p" variant="subtitle1" gutterBottom>
-          Crafting pixel-perfect designs and efficient code for the modern web.
+        <Typography
+          component="h6"
+          variant="h6"
+          gutterBottom
+          sx={{
+            fontWeight: 600,
+            fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
+            textShadow: "0px 1px 2px rgba(0, 0, 0, 0.2)",
+          }}
+        >
+          Full-stack Developer | Environmental Scientist
         </Typography>
 
         <Box mt={3}>
