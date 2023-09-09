@@ -12,30 +12,47 @@ const Footer = () => {
     <Box
       component="footer"
       style={{
-        marginTop: "30px",
+        paddingTop: "30px",
         backgroundColor: theme.palette.background.default,
         boxShadow: "none",
         transition: "all 0.5s ease-in-out",
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={5}>
-          <Grid item xs={12} sm={4}>
+        <Grid container spacing={5} justifyContent="space-between">
+          <Grid
+            item
+            xs={12}
+            sm={4}
+            style={{ display: "flex", alignItems: "center" }}
+          >
             <Box width={150} height={150}>
               <RouterLink to={"/"}>
                 <Logo width="75px" height="75px" />
               </RouterLink>
             </Box>
+            <Typography
+              variant="p"
+              color="text.secondary"
+              sx={{ marginTop: "-70px" }}
+            >
+              Tech-meets-Terra: A Digital Dive into Nature's Depths
+            </Typography>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Typography variant="h6" color="text.primary" gutterBottom>
+            <Typography
+              variant="h6"
+              color="text.primary"
+              gutterBottom
+              align="center"
+            >
               Let's Chat!
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" align="center">
               Email: info@austensorochak.com
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={4} align="right" sx={{ paddingRight: "40px" }}>
             <Typography variant="h6" color="text.primary" gutterBottom>
               Follow Me
             </Typography>
@@ -54,7 +71,7 @@ const Footer = () => {
             </Link>
           </Grid>
         </Grid>
-        <Box mt={5}>
+        {/* <Box mt={5} sx={{ marginTop: "none" }}>
           <Typography variant="body2" color="text.secondary" align="center">
             {"Copyright © "}
             <Link component={RouterLink} to="/">
@@ -63,7 +80,7 @@ const Footer = () => {
             {new Date().getFullYear()}
             {"."}
           </Typography>
-        </Box>
+        </Box> */}
       </Container>
     </Box>
   );

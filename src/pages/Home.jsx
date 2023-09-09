@@ -79,7 +79,7 @@ const Home = () => {
           variant="h6"
           gutterBottom
           sx={{
-            fontWeight: 600,
+            fontWeight: 700,
             fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
             textShadow: textShadow,
           }}
