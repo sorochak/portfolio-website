@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 import Header from "./Header";
 import Footer from "./Footer";
 import BaseRouter from "./BaseRouter";
+import { green } from "@mui/material/colors";
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
@@ -23,11 +24,17 @@ const BaseView = ({ children }) => {
       mode,
       ...(mode === "light"
         ? {
+            primary: {
+              main: "#00626B",
+            },
             background: {
               default: "#CAF0F8", // Light mode background color
             },
           }
         : {
+            primary: {
+              main: "#67D7CA",
+            },
             background: {
               default: "#211E1E", // Dark mode background color
             },
