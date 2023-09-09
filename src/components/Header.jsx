@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
   AppBar,
@@ -24,8 +24,27 @@ const pages = ["about", "projects", "contact"];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
+  const [appBarBackground, setAppBarBackground] = useState("transparent");
   const { toggleColorMode } = useContext(ColorModeContext);
   const theme = useTheme();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        // You can adjust this value as needed
+        setAppBarBackground(theme.palette.background.default);
+      } else {
+        setAppBarBackground("transparent");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the listener when the component is unmounted
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [theme.palette.background.default]);
 
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
@@ -41,15 +60,21 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static">
-      <Container
-        maxWidth="xl"
-        style={{
-          backgroundColor: theme.palette.background.default,
-          boxShadow: "none",
-          transition: "all 0.5s ease-in-out",
-        }}
-      >
+    <AppBar
+      position="absolute"
+      elevation={0}
+      style={{
+        backgroundColor: appBarBackground,
+        // backgroundColor: theme.palette.background.default,
+        transition: "all 0.5s ease-in-out",
+        borderBottom: `1px solid ${theme.palette.divider}`,
+      }}
+      onMouseEnter={() => setAppBarBackground(theme.palette.background.default)}
+      onMouseLeave={() =>
+        window.scrollY <= 50 && setAppBarBackground("transparent")
+      }
+    >
+      <Container maxWidth="xl">
         <StyledToolbar disableGutters>
           <Box sx={{ m: "10px" }}>
             <Logo />

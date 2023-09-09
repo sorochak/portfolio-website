@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+// import { useTheme } from "@mui/material/styles";
 import BaseView from "./components/BaseView";
 
 function App() {
-  const theme = useTheme();
+  // const theme = useTheme();
   return (
     <Box>
       <BaseView />
