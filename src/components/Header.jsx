@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AdbIcon from "@mui/icons-material/Adb";
-import NightlightIcon from "@mui/icons-material/Nightlight";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { useTheme } from "@mui/material/styles";
 import { ColorModeContext } from "./BaseView";
@@ -65,7 +65,10 @@ const Header = () => {
       elevation={0}
       style={{
         backgroundColor: appBarBackground,
-        // backgroundColor: theme.palette.background.default,
+        backgroundImage:
+          theme.palette.mode === "light"
+            ? "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0))"
+            : "none",
         transition: "all 0.5s ease-in-out",
         borderBottom: `1px solid ${theme.palette.divider}`,
       }}
@@ -189,7 +192,7 @@ const Header = () => {
                 sx={{ color: theme.palette.primary.main }}
               />
             ) : (
-              <NightlightIcon
+              <Brightness4Icon
                 fontSize="large"
                 sx={{ color: theme.palette.primary.main }}
               />

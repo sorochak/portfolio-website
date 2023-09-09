@@ -7,11 +7,12 @@ const Home = () => {
   const { mode } = useContext(ColorModeContext);
 
   const childBoxBackgroundColor =
-    mode === "dark" ? "rgba(0, 0, 0, 0.5)" : "rgba(213, 255, 252, 0.35)";
+    mode === "dark" ? "rgba(0, 0, 0, 0.5)" : "rgba(213, 255, 252, 0.3)";
 
-  //rgba(0, 0, 0, 0.29)
-
-  console.log(childBoxBackgroundColor);
+  const textShadow =
+    mode === "dark"
+      ? "1px 1px 20px #fff0, 0 0 25px #ffffff70, 0 0 15px #ffffff80"
+      : "1px 1px 20px #fff, 0 0 25px #fff, 0 0 15px #fff";
 
   return (
     <Box
@@ -44,20 +45,9 @@ const Home = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          transition: "all 0.5s ease-in-out",
         }}
       >
-        {/* <Typography
-          component="p"
-          variant="subtitle1"
-          gutterBottom
-          sx={{
-            fontWeight: 450,
-            textShadow: "0px 1px 2px rgba(0, 0, 0, 0.2)",
-          }}
-        >
-          Hi, my name is
-        </Typography> */}
-
         <Typography
           component="h1"
           variant="h2"
@@ -65,7 +55,7 @@ const Home = () => {
           sx={{
             fontWeight: 700,
             fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
-            textShadow: "-3px 2px 10px rgba(0,0,0,0.8)",
+            textShadow: textShadow,
           }}
         >
           Austen Sorochak
@@ -91,7 +81,7 @@ const Home = () => {
           sx={{
             fontWeight: 600,
             fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
-            textShadow: "0px 1px 2px rgba(0, 0, 0, 0.2)",
+            textShadow: textShadow,
           }}
         >
           Full-stack Developer | Environmental Scientist
