@@ -7,7 +7,7 @@ const Home = () => {
   const { mode } = useContext(ColorModeContext);
 
   const childBoxBackgroundColor =
-    mode === "dark" ? "rgba(0, 0, 0, 0.5)" : "rgba(213, 255, 252, 0.3)";
+    mode === "dark" ? "rgba(0, 0, 0, 0.38)" : "rgba(213, 255, 252, 0.3)";
 
   const textShadow =
     mode === "dark"
