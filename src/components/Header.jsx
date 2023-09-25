@@ -23,15 +23,16 @@ import Logo from "./Logo";
 const pages = ["about", "projects", "contact"];
 
 const Header = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [navMenuAnchor, setNavMenuAnchor] = useState(null);
   const [appBarBackground, setAppBarBackground] = useState("transparent");
   const { toggleColorMode } = useContext(ColorModeContext);
   const theme = useTheme();
+  const menuButtonRef = React.useRef(null);
 
+  // This effect listens for the window's scroll event to adjust the AppBar's background
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        // You can adjust this value as needed
         setAppBarBackground(theme.palette.background.default);
       } else {
         setAppBarBackground("transparent");
@@ -40,7 +41,7 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Clean up the listener when the component is unmounted
+    // Remove the listener when the component is unmounted
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -52,136 +53,172 @@ const Header = () => {
   });
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
+    setNavMenuAnchor(menuButtonRef.current);
   };
 
   const handleCloseNavMenu = (page) => {
-    setAnchorElNav(null);
+    setNavMenuAnchor(null);
   };
 
   return (
     <AppBar
       position="absolute"
+      // Set the shadow depth to zero, making the AppBar flat without shadows.
       elevation={0}
       style={{
+        // Set the background color of the AppBar, which changes dynamically based on user interactions.
         backgroundColor: appBarBackground,
         backgroundImage:
+          // If the theme's mode is light, give the AppBar a linear gradient background; otherwise, no background image.
           theme.palette.mode === "light"
             ? "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0))"
             : "none",
         transition: "all 0.5s ease-in-out",
         borderBottom: `1px solid ${theme.palette.divider}`,
       }}
+      // When the mouse enters the AppBar, change its background to the default theme background.
       onMouseEnter={() => setAppBarBackground(theme.palette.background.default)}
+      // When the mouse leaves the AppBar, if the current scroll position is less than or equal to 50, set the AppBar background to transparent.
       onMouseLeave={() =>
         window.scrollY <= 50 && setAppBarBackground("transparent")
       }
     >
+      {/* The container constrains the width of its children and centralizes them. */}
       <Container maxWidth="xl">
-        <StyledToolbar disableGutters>
-          <Box sx={{ m: "10px" }}>
-            <Logo />
-          </Box>
-          <RouterLink to={"/"} style={{ textDecoration: "none" }}>
-            <Typography
-              variant="h6"
-              noWrap
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: theme.palette.text.primary,
-                textDecoration: "none",
-              }}
-            >
-              AUSTEN SOROCHAK
-            </Typography>
-          </RouterLink>
+        {/* TOOL BAR */}
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
+        <StyledToolbar disableGutters>
+          {/* Left portion of the AppBar */}
+          <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
+            {/* The items on the left: Logo for medium and up screens, Typography, and Menu items for medium and up screens, and the Menu icon for small screens */}
+            {/* Logo for medium and up screens */}
+            <Box sx={{ display: { xs: "none", md: "block" }, m: "10px" }}>
+              <Logo />
+            </Box>
+
+            {/* A navigational link to the root ("/") path. */}
+            <RouterLink to={"/"} style={{ textDecoration: "none" }}>
+              {/* Typography component displaying the text "AUSTEN SOROCHAK" */}
+              <Typography
+                variant="h6"
+                noWrap
+                sx={{
+                  mr: 2,
+                  // On extra-small screens, the text is hidden.
+                  // On medium screens and up, it's displayed as a flex item.
+                  // Effectively, the text "AUSTEN SOROCHAK" is hidden on mobile views.
+                  display: { xs: "none", md: "flex" },
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: theme.palette.text.primary,
+                  textDecoration: "none",
+                }}
+              >
+                AUSTEN SOROCHAK
+              </Typography>
+            </RouterLink>
+
+            {/* Menu items for medium and up screens */}
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <RouterLink to={`/${page}`}>
-                    <Typography
-                      sx={{ color: theme.palette.text.primary }}
-                      textAlign="center"
-                    >
-                      {page}
-                    </Typography>
-                  </RouterLink>
-                </MenuItem>
+                <RouterLink
+                  key={page}
+                  to={`/${page}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button
+                    key={page}
+                    sx={{
+                      my: 2,
+                      color: theme.palette.text.primary,
+                      display: "block",
+                    }}
+                  >
+                    {page}
+                  </Button>
+                </RouterLink>
               ))}
-            </Menu>
+            </Box>
+
+            {/* Menu icon for small screens */}
+            <Box
+              sx={{
+                // This box and its child components are displayed on extra-small screens.
+                // On medium screens and above, they are hidden.
+                // Contains mobile navigation options.
+                display: { xs: "flex", md: "none" },
+              }}
+            >
+              <IconButton
+                ref={menuButtonRef}
+                size="large"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={navMenuAnchor}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(navMenuAnchor)}
+                onClose={handleCloseNavMenu}
+                // This menu is visible only on extra-small screens.
+                // Hidden on medium screens and up.
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <RouterLink to={`/${page}`}>
+                      <Typography
+                        sx={{ color: theme.palette.text.primary }}
+                        textAlign="center"
+                      >
+                        {page}
+                      </Typography>
+                    </RouterLink>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
+
+          {/* Center portion: Logo for small screens */}
+          <Box
             sx={{
-              mr: 2,
               display: { xs: "flex", md: "none" },
+              justifyContent: "center",
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: theme.palette.text.primary,
-              textDecoration: "none",
+              flexShrink: 1,
+              width: "100%",
+              position: "absolute",
+              left: "50%",
+              transform: "translateX(-50%)",
             }}
           >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <RouterLink
-                key={page}
-                to={`/${page}`}
-                style={{ textDecoration: "none" }}
-              >
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{
-                    my: 2,
-                    color: theme.palette.text.primary,
-                    display: "block",
-                  }}
-                >
-                  {page}
-                </Button>
-              </RouterLink>
-            ))}
+            <Logo />
           </Box>
+
+          {/* Right portion:  Only the Light Mode icon button */}
+          {/* <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          > */}
           <IconButton
             sx={{ ml: 1, color: theme.palette.text.primary }}
             onClick={toggleColorMode}
@@ -198,6 +235,7 @@ const Header = () => {
               />
             )}
           </IconButton>
+          {/* </Box> */}
         </StyledToolbar>
       </Container>
     </AppBar>
