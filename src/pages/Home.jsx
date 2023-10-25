@@ -1,10 +1,12 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, useTheme, useMediaQuery } from "@mui/material";
 import { useContext } from "react";
 import backgroundImage from "../static/nayuca.webp";
 import { ColorModeContext } from "../components/BaseView";
 
 const Home = () => {
+  const theme = useTheme();
   const { mode } = useContext(ColorModeContext);
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const childBoxBackgroundColor =
     mode === "dark" ? "rgba(0, 0, 0, 0.38)" : "rgba(213, 255, 252, 0.3)";
@@ -56,6 +58,7 @@ const Home = () => {
             fontWeight: 700,
             fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
             textShadow: textShadow,
+            textAlign: 'center'
           }}
         >
           Austen Sorochak
@@ -74,18 +77,49 @@ const Home = () => {
           Tech-meets-Terra: A Digital Dive into Nature's Depths
         </Typography> */}
 
-        <Typography
-          component="h6"
-          variant="h6"
-          gutterBottom
-          sx={{
-            fontWeight: 700,
-            fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
-            textShadow: textShadow,
-          }}
-        >
-          Full-stack Developer | Environmental Scientist
-        </Typography>
+        {
+        isMobile ? (
+          <>
+            <Typography
+              component="h6"
+              variant="h6"
+              gutterBottom
+              sx={{
+                fontWeight: 700,
+                fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
+                textShadow: textShadow,
+              }}
+            >
+              Full-stack Developer
+            </Typography>
+            <Typography
+              component="h6"
+              variant="h6"
+              gutterBottom
+              sx={{
+                fontWeight: 700,
+                fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
+                textShadow: textShadow,
+              }}
+            >
+              Environmental Scientist
+            </Typography>
+          </>
+        ) : (
+          <Typography
+            component="h6"
+            variant="h6"
+            gutterBottom
+            sx={{
+              fontWeight: 700,
+              fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
+              textShadow: textShadow,
+            }}
+          >
+            Full-stack Developer | Environmental Scientist
+          </Typography>
+        )
+      }
 
         <Box mt={3}>
           {" "}
