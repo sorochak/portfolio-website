@@ -24,18 +24,24 @@ const pages = ["about", "projects", "contact"];
 
 const Header = () => {
   const [navMenuAnchor, setNavMenuAnchor] = useState(null);
-  const [appBarBackground, setAppBarBackground] = useState("transparent");
+  const [appBarBackground, setAppBarBackground] = useState('transparent');
   const { toggleColorMode } = useContext(ColorModeContext);
   const theme = useTheme();
   const menuButtonRef = React.useRef(null);
 
   // This effect listens for the window's scroll event to adjust the AppBar's background
   useEffect(() => {
+
+    // Set the initial background based on screen width
+    if (window.innerWidth <= theme.breakpoints.values.md) {
+      setAppBarBackground(theme.palette.background.default);
+    }
+
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setAppBarBackground(theme.palette.background.default);
+      if (window.scrollY > 50 || window.innerWidth <= theme.breakpoints.values.md) {
+          setAppBarBackground(theme.palette.background.default);
       } else {
-        setAppBarBackground("transparent");
+          setAppBarBackground("transparent");
       }
     };
 
@@ -45,7 +51,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [theme.palette.background.default]);
+  }, [theme.palette.background.default, theme.breakpoints.values.md]);
 
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
@@ -68,11 +74,10 @@ const Header = () => {
       style={{
         // Set the background color of the AppBar, which changes dynamically based on user interactions.
         backgroundColor: appBarBackground,
-        backgroundImage:
-          // If the theme's mode is light, give the AppBar a linear gradient background; otherwise, no background image.
-          theme.palette.mode === "light"
-            ? "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0))"
-            : "none",
+        backgroundImage:{
+          xs: 'none',
+          md: theme.palette.mode === "light" ? "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0))" : "none",
+        },
         transition: "all 0.5s ease-in-out",
         borderBottom: `1px solid ${theme.palette.divider}`,
       }}
