@@ -1,11 +1,13 @@
 import { Box, Typography, Button, useTheme, useMediaQuery, Container, Grid, Paper } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import backgroundImage from "../static/nayuca.webp";
 import { ColorModeContext } from "../components/BaseView";
 import signature from "../static/sorochakSignature.png"
 
 const Home = () => {
   const theme = useTheme();
+  const location = useLocation();
   const { mode } = useContext(ColorModeContext);
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -16,6 +18,16 @@ const Home = () => {
     mode === "dark"
       ? "1px 1px 20px #fff0, 0 0 25px #ffffff70, 0 0 15px #ffffff80"
       : "1px 1px 20px #fff, 0 0 25px #fff, 0 0 15px #fff";
+
+      useEffect(() => {
+        // Only perform smooth scroll if the user navigates directly to the URL with hash
+        if (location.hash === '#about-section' && !location.state?.key) {
+          const section = document.querySelector('#about-section');
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }, [location]);
 
   return (
     <>
@@ -32,7 +44,7 @@ const Home = () => {
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        minHeight: "80vh", // taking up at least 80% of the viewport height
+        minHeight: "100vh", // taking up at least 80% of the viewport height
         px: 3, // padding for left and right
       }}
     >
@@ -135,7 +147,7 @@ const Home = () => {
     <Container maxWidth="lg">
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          <Paper elevation={3} style={{ padding: '20px' }}>
+          <Paper id="about-section" elevation={3} style={{ padding: '20px' }}>
             <Box display="flex" flexDirection="column" alignItems="center">
               <Typography variant="h4" gutterBottom>
                 Hi, I'm Austen!

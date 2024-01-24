@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -22,25 +22,29 @@ import Logo from "./Logo";
 const pages = ["about", "projects", "contact"];
 
 const Header = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   const [navMenuAnchor, setNavMenuAnchor] = useState(null);
-  const [appBarBackground, setAppBarBackground] = useState('transparent');
+  const [appBarBackground, setAppBarBackground] = useState("transparent");
   const { toggleColorMode } = useContext(ColorModeContext);
   const theme = useTheme();
   const menuButtonRef = React.useRef(null);
 
   // This effect listens for the window's scroll event to adjust the AppBar's background
   useEffect(() => {
-
     // Set the initial background based on screen width
     if (window.innerWidth <= theme.breakpoints.values.md) {
       setAppBarBackground(theme.palette.background.default);
     }
 
     const handleScroll = () => {
-      if (window.scrollY > 50 || window.innerWidth <= theme.breakpoints.values.md) {
-          setAppBarBackground(theme.palette.background.default);
+      if (
+        window.scrollY > 50 ||
+        window.innerWidth <= theme.breakpoints.values.md
+      ) {
+        setAppBarBackground(theme.palette.background.default);
       } else {
-          setAppBarBackground("transparent");
+        setAppBarBackground("transparent");
       }
     };
 
@@ -73,9 +77,12 @@ const Header = () => {
       style={{
         // Set the background color of the AppBar, which changes dynamically based on user interactions.
         backgroundColor: appBarBackground,
-        backgroundImage:{
-          xs: 'none',
-          md: theme.palette.mode === "light" ? "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0))" : "none",
+        backgroundImage: {
+          xs: "none",
+          md:
+            theme.palette.mode === "light"
+              ? "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0))"
+              : "none",
         },
         transition: "all 0.5s ease-in-out",
         borderBottom: `1px solid ${theme.palette.divider}`,
@@ -125,24 +132,39 @@ const Header = () => {
 
             {/* Menu items for medium and up screens */}
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
-                <RouterLink
-                  key={page}
-                  to={`/${page}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <Button
+              {pages.map((page) => {
+                const isAboutPage = page === "about";
+                const href = isAboutPage ? "/#about-section" : `/${page}`;
+
+                return (
+                  <a
                     key={page}
-                    sx={{
-                      my: 2,
-                      color: theme.palette.text.primary,
-                      display: "block",
+                    href={href}
+                    style={{ textDecoration: "none" }}
+                    onClick={(e) => {
+                      if (isAboutPage && isHomePage) {
+                        e.preventDefault(); // Prevent default only on home page
+                        const section =
+                          document.querySelector("#about-section");
+                        if (section) {
+                          section.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }
+                      // Let the default behavior handle navigation from other pages
                     }}
                   >
-                    {page}
-                  </Button>
-                </RouterLink>
-              ))}
+                    <Button
+                      sx={{
+                        my: 2,
+                        color: theme.palette.text.primary,
+                        display: "block",
+                      }}
+                    >
+                      {page}
+                    </Button>
+                  </a>
+                );
+              })}
             </Box>
 
             {/* Menu icon for small screens */}
@@ -186,14 +208,21 @@ const Header = () => {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <RouterLink to={`/${page}`}>
-                      <Typography
-                        sx={{ color: theme.palette.text.primary }}
-                        textAlign="center"
+                    {page === "about" ? (
+                      <a
+                        href="/#about-section"
+                        style={{ textDecoration: "none" }}
                       >
-                        {page}
-                      </Typography>
-                    </RouterLink>
+                        <Typography textAlign="center">{page}</Typography>
+                      </a>
+                    ) : (
+                      <RouterLink
+                        to={`/${page}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <Typography textAlign="center">{page}</Typography>
+                      </RouterLink>
+                    )}
                   </MenuItem>
                 ))}
               </Menu>
