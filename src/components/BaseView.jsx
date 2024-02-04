@@ -23,11 +23,17 @@ const BaseView = ({ children }) => {
       mode,
       ...(mode === "light"
         ? {
+            primary: {
+              main: "#2B544C",
+            },
             background: {
               default: "#CAF0F8", // Light mode background color
             },
           }
         : {
+            primary: {
+              main: "#67D7CA",
+            },
             background: {
               default: "#211E1E", // Dark mode background color
             },
