@@ -71,7 +71,7 @@ const Header = () => {
 
   return (
     <AppBar
-      position="absolute"
+      position={isHomePage ? "absolute" : "relative"}
       // Set the shadow depth to zero, making the AppBar flat without shadows.
       elevation={0}
       style={{
