@@ -1,6 +1,6 @@
 import { Box, Typography, Button, useTheme, useMediaQuery, Container, Grid, Paper } from "@mui/material";
 import { useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import backgroundImage from "../static/nayuca.webp";
 import { ColorModeContext } from "../components/BaseView";
 import signature from "../static/sorochakSignature.png"
@@ -138,9 +138,11 @@ const Home = () => {
         <Box mt={3}>
           {" "}
           {/* Margin top to give some space above the button */}
-          <Button variant="contained" color="primary">
-            View my work
-          </Button>
+          <Link to="/projects" style={{ textDecoration: 'none' }}>
+            <Button variant="contained" color="primary">
+              View my work
+            </Button>
+          </Link>
         </Box>
       </Box>
     </Box>
