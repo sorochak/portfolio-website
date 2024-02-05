@@ -147,7 +147,7 @@ const Home = () => {
     <Container maxWidth="lg">
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          <Paper id="about-section" elevation={3} style={{ padding: '20px' }}>
+          <Paper id="about-section" elevation={3} style={{ padding: '20px', marginTop: '20px' }}>
             <Box display="flex" flexDirection="column" alignItems="center">
               <Typography variant="h4" gutterBottom>
                 Hi, I'm Austen!

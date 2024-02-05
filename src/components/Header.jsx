@@ -103,7 +103,7 @@ const Header = () => {
           <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
             {/* The items on the left: Logo for medium and up screens, Typography, and Menu items for medium and up screens, and the Menu icon for small screens */}
             {/* Logo for medium and up screens */}
-            <Box sx={{ display: { xs: "none", md: "block" }, m: "10px" }}>
+            <Box sx={{ display: { xs: "none", md: "block" }, ml: "10px", mr: "5px" }}>
               <Logo />
             </Box>
 
