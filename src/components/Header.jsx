@@ -71,7 +71,8 @@ const Header = () => {
 
   return (
     <AppBar
-      position={isHomePage ? "absolute" : "relative"}
+      // position={isHomePage ? "absolute" : "relative"}
+      position="relative"
       // Set the shadow depth to zero, making the AppBar flat without shadows.
       elevation={0}
       style={{
@@ -132,39 +133,24 @@ const Header = () => {
 
             {/* Menu items for medium and up screens */}
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => {
-                const isAboutPage = page === "about";
-                const href = isAboutPage ? "/#about-section" : `/${page}`;
-
-                return (
-                  <a
+              {pages.map((page) => (
+                <RouterLink
+                  key={page}
+                  to={`/${page}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button
                     key={page}
-                    href={href}
-                    style={{ textDecoration: "none" }}
-                    onClick={(e) => {
-                      if (isAboutPage && isHomePage) {
-                        e.preventDefault(); // Prevent default only on home page
-                        const section =
-                          document.querySelector("#about-section");
-                        if (section) {
-                          section.scrollIntoView({ behavior: "smooth" });
-                        }
-                      }
-                      // Let the default behavior handle navigation from other pages
+                    sx={{
+                      my: 2,
+                      color: theme.palette.text.primary,
+                      display: "block",
                     }}
                   >
-                    <Button
-                      sx={{
-                        my: 2,
-                        color: theme.palette.text.primary,
-                        display: "block",
-                      }}
-                    >
-                      {page}
-                    </Button>
-                  </a>
-                );
-              })}
+                    {page}
+                  </Button>
+                </RouterLink>
+              ))}
             </Box>
 
             {/* Menu icon for small screens */}
