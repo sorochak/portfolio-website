@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "@mui/material/styles";
 
-const Logo = ({ size = "medium", width, height, color }) => {
+const Logo = ({ size = "medium", width, height }) => {
   const theme = useTheme();
 
   // Using theme's spacing to define standard sizes
@@ -15,15 +15,8 @@ const Logo = ({ size = "medium", width, height, color }) => {
   const finalWidth = width || sizes[size];
   const finalHeight = height || sizes[size];
 
-  // Determine the fill color: use the passed color prop or fall back to a default
-  // const fillColor = color || theme.palette.primary.main;
-
   // Adjust the stroke color based on the theme mode
   const strokeColor = theme.palette.mode === 'dark' ? '#ffffff' : '#000000';
-
-  // Define a filter ID for easy reference
-  const glowFilterId = "glow-effect";
-
 
   return (
     <svg viewBox="0 0 500 500" width={finalWidth} height={finalHeight} xmlSpace="preserve">
@@ -43,9 +36,6 @@ const Logo = ({ size = "medium", width, height, color }) => {
       }} transform=" translate(0, 0)" d="M 20 0 L 40 40 L 0 40 L -40 40 L -20 0 L 0 -40 z" strokeLinecap="round" />
     </g>
   </svg>
-
-
-
   );
 };
 
