@@ -105,7 +105,9 @@ const Header = () => {
             {/* The items on the left: Logo for medium and up screens, Typography, and Menu items for medium and up screens, and the Menu icon for small screens */}
             {/* Logo for medium and up screens */}
             <Box sx={{ display: { xs: "none", md: "block" }, ml: "10px", mr: "5px" }}>
+            <RouterLink to="/" style={{ textDecoration: "none" }}>
               <Logo />
+            </RouterLink>  
             </Box>
 
             {/* A navigational link to the root ("/") path. */}
@@ -228,7 +230,10 @@ const Header = () => {
               transform: "translateX(-50%)",
             }}
           >
+          <RouterLink to="/" style={{ textDecoration: "none" }}>
             <Logo />
+          </RouterLink>
+            
           </Box>
 
           {/* Right portion:  Only the Light Mode icon button */}
