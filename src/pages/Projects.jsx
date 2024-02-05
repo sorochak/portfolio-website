@@ -16,6 +16,11 @@ const Projects = () => {
             A bunch of text will go here...
             </Typography>
           </Paper>
+          <Paper id="shapes" elevation={3} style={{ padding: '20px', marginTop: '20px' }}>
+          <svg id="triangle" viewBox="0 0 100 100">
+            <polygon points="0 0, 100 0 50 100" fill="blue" stroke="red"/>
+      </svg>
+          </Paper>
         </Grid>
       </Grid>
     </Container>
