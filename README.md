@@ -13,18 +13,17 @@ TO DO:
 
 3. Create Structure
 - [x] Directory Structure: Organize the app's structure to have directories like components, pages, assets, etc.
-- [ ] Setup Components: Break down the UI into smaller reusable components (e.g., Navbar, Footer, Button).
-- [ ] Setup Pages: Organize the major sections/views as separate pages (e.g., HomePage, ProjectPage).
+- [x] Setup Components: Break down the UI into smaller reusable components (e.g., Navbar, Footer, Button).
+- [x] Setup Pages: Organize the major sections/views as separate pages (e.g., HomePage, ProjectPage).
 
 4. Implement Core Features
 - [ ] Header: Build the header (usually navigation)
-- [ ] Footer: Build the footer component
+- [x] Footer: Build the footer component
 - [ ] Content: Populate the pages with actual content - personal info, projects, resume, etc.
-- [ ] Add Styling: Style the components. Consider using SCSS or styled-components for more advanced styling capabilities.
 
 5. Integrate Material-UI for Responsiveness
-- [ ] Install Material-UI: Integrate Material-UI for responsive components and styling.
-- [ ] Use Material-UI Components: Replace or enhance custom components with MUI components where necessary for better responsiveness and design consistency.
+- [x] Install Material-UI: Integrate Material-UI for responsive components and styling.
+- [x] Use Material-UI Components: Replace or enhance custom components with MUI components where necessary for better responsiveness and design consistency.
 
 6. Analytics
 - [ ] Set Up Google Analytics: Create a Google Analytics account and get a tracking ID.
