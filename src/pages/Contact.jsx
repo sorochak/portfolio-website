@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Typography,
-  Container,
-  Grid,
-  Paper,
-  Button,
-  TextField,
-} from "@mui/material";
+import React, { useState, useEffect, useMemo } from "react";
+import { Typography, Container, Grid, Button, TextField } from "@mui/material";
 import validate from "validate.js";
 import emailjs from "emailjs-com";
 
+// Initialize environment variables for EmailJS configuration.
 const REACT_APP_EMAILJS_PUBLICKEY = process.env.REACT_APP_EMAILJS_PUBLICKEY;
 const REACT_APP_EMAILJS_TEMPLATEID = process.env.REACT_APP_EMAILJS_TEMPLATEID;
 const REACT_APP_EMAILJS_SERVICEID = process.env.REACT_APP_EMAILJS_SERVICEID;
 
+// Initialize EmailJS with the public key and additional configuration.
 emailjs.init({
   publicKey: REACT_APP_EMAILJS_PUBLICKEY,
   // Do not allow headless browsers
@@ -37,20 +31,23 @@ const Contact = () => {
 
   const [sendingStatus, setSendingStatus] = useState("Send");
 
-  const schema = {
-    name: {
-      presence: { allowEmpty: false, message: "is required" },
-      length: { maximum: 128 },
-    },
-    email: {
-      presence: { allowEmpty: false, message: "is required" },
-      email: true,
-      length: { maximum: 300 },
-    },
-    message: {
-      presence: { allowEmpty: false, message: "is required" },
-    },
-  };
+  const schema = useMemo(
+    () => ({
+      name: {
+        presence: { allowEmpty: false, message: "is required" },
+        length: { maximum: 128 },
+      },
+      email: {
+        presence: { allowEmpty: false, message: "is required" },
+        email: true,
+        length: { maximum: 300 },
+      },
+      message: {
+        presence: { allowEmpty: false, message: "is required" },
+      },
+    }),
+    []
+  );
 
   const handleChange = (e) => {
     e.persist();
@@ -99,7 +96,7 @@ const Contact = () => {
       isValid: errors ? false : true,
       errors: errors || {},
     }));
-  }, [formState.values]);
+  }, [formState.values, schema]);
 
   return (
     <>
@@ -122,7 +119,7 @@ const Contact = () => {
                 variant="h6"
                 align="center"
                 sx={{
-                  fontWeight: "medium", // Adjust font weight for distinction
+                  fontWeight: "medium",
                 }}
               >
                 Say Hello!
@@ -132,9 +129,9 @@ const Contact = () => {
                 color="textSecondary"
                 align="left"
                 sx={{
-                  fontWeight: "regular", // Lighten the weight for readability
-                  lineHeight: 1.5, // Improve line spacing
-                  mt: 1, // Add some margin-top for spacing
+                  fontWeight: "regular",
+                  lineHeight: 1.5,
+                  mt: 1,
                 }}
               >
                 If you’d like to send me a message, simply fill out the form
