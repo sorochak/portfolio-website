@@ -71,7 +71,8 @@ const Header = () => {
 
   return (
     <AppBar
-      position="absolute"
+      // position={isHomePage ? "absolute" : "relative"}
+      position="relative"
       // Set the shadow depth to zero, making the AppBar flat without shadows.
       elevation={0}
       style={{
@@ -103,8 +104,10 @@ const Header = () => {
           <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
             {/* The items on the left: Logo for medium and up screens, Typography, and Menu items for medium and up screens, and the Menu icon for small screens */}
             {/* Logo for medium and up screens */}
-            <Box sx={{ display: { xs: "none", md: "block" }, m: "10px" }}>
+            <Box sx={{ display: { xs: "none", md: "block" }, ml: "10px", mr: "5px" }}>
+            <RouterLink to="/" style={{ textDecoration: "none" }}>
               <Logo />
+            </RouterLink>  
             </Box>
 
             {/* A navigational link to the root ("/") path. */}
@@ -132,39 +135,24 @@ const Header = () => {
 
             {/* Menu items for medium and up screens */}
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => {
-                const isAboutPage = page === "about";
-                const href = isAboutPage ? "/#about-section" : `/${page}`;
-
-                return (
-                  <a
+              {pages.map((page) => (
+                <RouterLink
+                  key={page}
+                  to={`/${page}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button
                     key={page}
-                    href={href}
-                    style={{ textDecoration: "none" }}
-                    onClick={(e) => {
-                      if (isAboutPage && isHomePage) {
-                        e.preventDefault(); // Prevent default only on home page
-                        const section =
-                          document.querySelector("#about-section");
-                        if (section) {
-                          section.scrollIntoView({ behavior: "smooth" });
-                        }
-                      }
-                      // Let the default behavior handle navigation from other pages
+                    sx={{
+                      my: 2,
+                      color: theme.palette.text.primary,
+                      display: "block",
                     }}
                   >
-                    <Button
-                      sx={{
-                        my: 2,
-                        color: theme.palette.text.primary,
-                        display: "block",
-                      }}
-                    >
-                      {page}
-                    </Button>
-                  </a>
-                );
-              })}
+                    {page}
+                  </Button>
+                </RouterLink>
+              ))}
             </Box>
 
             {/* Menu icon for small screens */}
@@ -242,7 +230,10 @@ const Header = () => {
               transform: "translateX(-50%)",
             }}
           >
+          <RouterLink to="/" style={{ textDecoration: "none" }}>
             <Logo />
+          </RouterLink>
+            
           </Box>
 
           {/* Right portion:  Only the Light Mode icon button */}

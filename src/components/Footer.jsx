@@ -42,7 +42,7 @@ const Footer = () => {
               <Typography
                 variant="body1" // Changed from 'p' to 'body1'
                 color="text.secondary"
-                sx={{ marginTop: "-70px" }}
+                sx={{ marginTop: "-70px", marginLeft: "-20px" }}
               >
                 Tech-meets-Terra: A Digital Dive into Nature's Depths
               </Typography>
