@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link as RouterLink, useLocation } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -22,8 +22,6 @@ import Logo from "./Logo";
 const pages = ["about", "projects", "contact"];
 
 const Header = () => {
-  const location = useLocation();
-  const isHomePage = location.pathname === "/";
   const [navMenuAnchor, setNavMenuAnchor] = useState(null);
   const [appBarBackground, setAppBarBackground] = useState("transparent");
   const { toggleColorMode } = useContext(ColorModeContext);
@@ -71,7 +69,6 @@ const Header = () => {
 
   return (
     <AppBar
-      // position={isHomePage ? "absolute" : "relative"}
       position="relative"
       // Set the shadow depth to zero, making the AppBar flat without shadows.
       elevation={0}
