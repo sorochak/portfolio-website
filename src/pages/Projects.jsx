@@ -19,6 +19,7 @@ const Projects = () => {
             align="center"
             sx={{
               mb: 2,
+              marginTop: "50px",
               fontWeight: "bold",
               fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
             }}
@@ -119,7 +120,8 @@ const Projects = () => {
               >
                 {[
                   "Developed eight features for Reach by using React, Redux, and Material UI",
-                  "Implemented testing strategies with Jest and React Testing Library",
+                  "Implemented testing strategies with Chai and Mocha",
+                  ""
                   // ...add all the other points
                 ].map((item) => (
                   <Box component="li" key={item} sx={{ textAlign: "left" }}>
