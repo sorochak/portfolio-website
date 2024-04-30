@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 import {
   AppBar,
   Box,
@@ -101,10 +102,16 @@ const Header = () => {
           <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
             {/* The items on the left: Logo for medium and up screens, Typography, and Menu items for medium and up screens, and the Menu icon for small screens */}
             {/* Logo for medium and up screens */}
-            <Box sx={{ display: { xs: "none", md: "block" }, ml: "10px", mr: "5px" }}>
-            <RouterLink to="/" style={{ textDecoration: "none" }}>
-              <Logo />
-            </RouterLink>  
+            <Box
+              sx={{
+                display: { xs: "none", md: "block" },
+                ml: "10px",
+                mr: "5px",
+              }}
+            >
+              <RouterLink to="/" style={{ textDecoration: "none" }}>
+                <Logo />
+              </RouterLink>
             </Box>
 
             {/* A navigational link to the root ("/") path. */}
@@ -132,24 +139,38 @@ const Header = () => {
 
             {/* Menu items for medium and up screens */}
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
-                <RouterLink
-                  key={page}
-                  to={`/${page}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <Button
-                    key={page}
-                    sx={{
-                      my: 2,
-                      color: theme.palette.text.primary,
-                      display: "block",
-                    }}
+              {pages.map((page) =>
+                page === "about" ? (
+                  // Use HashLink for the "about" link which should scroll to the section on the home page
+                  <Link to="/#about-section" style={{ textDecoration: "none" }}>
+                    <Button
+                      sx={{
+                        my: 2,
+                        color: theme.palette.text.primary,
+                        display: "block",
+                      }}
+                    >
+                      {page}
+                    </Button>
+                  </Link>
+                ) : (
+                  // Use RouterLink for other links which change the route
+                  <RouterLink
+                    to={`/${page}`}
+                    style={{ textDecoration: "none" }}
                   >
-                    {page}
-                  </Button>
-                </RouterLink>
-              ))}
+                    <Button
+                      sx={{
+                        my: 2,
+                        color: theme.palette.text.primary,
+                        display: "block",
+                      }}
+                    >
+                      {page}
+                    </Button>
+                  </RouterLink>
+                )
+              )}
             </Box>
 
             {/* Menu icon for small screens */}
@@ -192,14 +213,14 @@ const Header = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem key={page} onClick={() => setNavMenuAnchor(null)}>
                     {page === "about" ? (
-                      <a
-                        href="/#about-section"
+                      <Link
+                        to="/#about-section"
                         style={{ textDecoration: "none" }}
                       >
                         <Typography textAlign="center">{page}</Typography>
-                      </a>
+                      </Link>
                     ) : (
                       <RouterLink
                         to={`/${page}`}
@@ -227,10 +248,9 @@ const Header = () => {
               transform: "translateX(-50%)",
             }}
           >
-          <RouterLink to="/" style={{ textDecoration: "none" }}>
-            <Logo />
-          </RouterLink>
-            
+            <RouterLink to="/" style={{ textDecoration: "none" }}>
+              <Logo />
+            </RouterLink>
           </Box>
 
           {/* Right portion:  Only the Light Mode icon button */}
