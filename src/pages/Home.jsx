@@ -146,10 +146,10 @@ const Home = () => {
         </Box>
       </Box>
       <Container maxWidth="lg" id="about-section" sx={{ minHeight: "30vh" }}>
-        <Box sx={{ paddingTop: 5 }}>
+        <Box sx={{ marginTop: 8, marginBottom: 8 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={6}>
-              <Box sx={{ marginLeft: 5, paddingTop: 4 }}>
+              <Box sx={{ marginLeft: 9 }}>
                 <CardMedia
                   component="img"
                   image={avatarImage}
@@ -166,25 +166,25 @@ const Home = () => {
               </Box>
             </Grid>
             <Grid item xs={12} sm={6} md={6}>
-              <Box sx={{ flex: 1, paddingRight: 4 }}>
+              <Box sx={{ flex: 1, marginRight: 4, marginTop: 3 }}>
                 <Typography variant="h4" gutterBottom>
                   Hi, I'm Austen!
                 </Typography>
-                <Typography variant="body1" sx={{ mb: 2, fontSize: '1.2rem' }}>
+                <Typography variant="body1" sx={{ mb: 2, fontSize: "1rem" }}>
                   I am driven by a vision to contribute to an enlightened
                   society through technology. My background as an Environmental
                   Scientist and a Full-Stack Software Developer has equipped me
                   to address critical 21st-century challenges by bringing
                   scientific data to the web in engaging and impactful ways.
                 </Typography>
-                <Typography variant="body1" sx={{ mb: 2, fontSize: '1.2rem' }}>
+                <Typography variant="body1" sx={{ mb: 2, fontSize: "1rem" }}>
                   I graduated from Camosun College with a focus on Information &
                   Computer Systems and currently design, develop, and deploy
                   software that simplifies interactions with complex datasets.
                   My technical expertise includes JavaScript, PostgreSQL,
                   Docker, Git, Python/Django, and various Cloud Products.
                 </Typography>
-                <Typography variant="body1" sx={{ mb: 2, fontSize: '1.2rem' }}>
+                <Typography variant="body1" sx={{ mb: 2, fontSize: "1rem" }}>
                   With over seven years in environmental management, I have
                   gained diverse experiences across Canada—from military
                   training areas to the icy shores of northern Baffin Island and
