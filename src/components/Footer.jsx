@@ -7,21 +7,27 @@ import Logo from "./Logo";
 
 const Footer = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box
       component="footer"
       sx={{
-        paddingTop: isMobile ? "15px" : "15px", // Reduced paddingTop for mobile
+        paddingTop: "10px",
+        paddingBottom: "10px",
         backgroundColor: theme.palette.background.default,
         boxShadow: "none",
         transition: "all 0.5s ease-in-out",
-        maxHeight: "10vh"
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={isMobile ? 3 : 5} justifyContent="space-between"> {/* Reduced spacing for mobile */}
+        <Grid
+          container
+          spacing={isMobile ? 3 : 5}
+          justifyContent="space-between"
+        >
+          {" "}
+          {/* Reduced spacing for mobile */}
           {!isMobile && (
             <Grid
               item
@@ -29,28 +35,32 @@ const Footer = () => {
               sm={4}
               sx={{
                 display: "flex",
-                flexDirection: 'row',
+                flexDirection: "row",
                 alignItems: "center",
-                justifyContent: 'flex-start',
-                textAlign: 'left'
+                justifyContent: "flex-start",
+                textAlign: "left",
               }}
             >
-              <Box width={150} height={150}>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
                 <RouterLink to={"/"}>
-                  <Logo width="75px" height="75px" />
+                  <Logo width="50px" height="50px" />
                 </RouterLink>
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{ ml: 2, mt: 0 }}
+                >
+                  Tech-meets-Terra: A Digital Dive into Nature's Depths
+                </Typography>
               </Box>
-              <Typography
-                variant="body1" // Changed from 'p' to 'body1'
-                color="text.secondary"
-                sx={{ marginTop: "-70px", marginLeft: "-20px" }}
-              >
-                Tech-meets-Terra: A Digital Dive into Nature's Depths
-              </Typography>
             </Grid>
           )}
-
-          <Grid item xs={12} sm={isMobile ? 6 : 4} sx={{ textAlign: isMobile ? 'center' : 'inherit' }}>
+          <Grid
+            item
+            xs={12}
+            sm={isMobile ? 6 : 4}
+            sx={{ textAlign: isMobile ? "center" : "inherit" }}
+          >
             <Typography
               variant="h6"
               color="text.primary"
@@ -63,7 +73,15 @@ const Footer = () => {
               Email: info@austensorochak.com
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={isMobile ? 6 : 4} sx={{ textAlign: isMobile ? 'center' : 'right', paddingRight: isMobile ? '0px' : '40px' }}>
+          <Grid
+            item
+            xs={12}
+            sm={isMobile ? 6 : 4}
+            sx={{
+              textAlign: isMobile ? "center" : "right",
+              paddingRight: isMobile ? "0px" : "40px",
+            }}
+          >
             <Typography variant="h6" color="text.primary" gutterBottom>
               Follow Me
             </Typography>
