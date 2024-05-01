@@ -39,6 +39,15 @@ const BaseView = ({ children }) => {
             },
           }),
     },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: {
+            transition: "background-color 0.5s ease-in-out",
+          },
+        },
+      },
+    },
   });
 
   return (
