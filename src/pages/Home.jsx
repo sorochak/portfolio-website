@@ -193,7 +193,7 @@ const Home = () => {
                   remediation, providing a solid foundation for my
                   technology-driven projects.
                 </Typography>
-                <Box mt={4} display="flex" justifyContent="flex-end">
+                <Box mt={-4} pr={14} display="flex" justifyContent="flex-end">
                   <img
                     src={signature}
                     alt="Austen's Signature"
