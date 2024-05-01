@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link as RouterLink } from "react-router-dom"; // Import for handling declarative navigation in the app
+import { Link as RouterLink, useLocation } from "react-router-dom"; // Import for handling declarative navigation in the app
 import {
   AppBar,
   Box,
@@ -26,11 +26,8 @@ const Header = () => {
   const [appBarBackground, setAppBarBackground] = useState("transparent");
   const { toggleColorMode } = useContext(ColorModeContext);
   const theme = useTheme();
+  const location = useLocation();
   const menuButtonRef = React.useRef(null);
-
-  useEffect(() => {
-    // This effect will run every time appBarBackground changes
-  }, [appBarBackground]);
 
   // This effect listens for the window's scroll event to adjust the AppBar's background
   useEffect(() => {
@@ -175,7 +172,11 @@ const Header = () => {
                   <Button
                     sx={{
                       my: 2,
-                      color: theme.palette.text.primary,
+                      color:
+                        location.pathname === `/${page}` ||
+                        (location.pathname === "/" && page === "about")
+                          ? theme.palette.primary.main
+                          : theme.palette.text.primary,
                       display: "block",
                     }}
                   >
