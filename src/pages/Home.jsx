@@ -43,8 +43,8 @@ const Home = () => {
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          minHeight: "30vh", // taking up at least 80% of the viewport height
-          px: 3, // padding for left and right
+          minHeight: "50vh",
+          px: 3,
           borderBottom: 1,
           borderColor: "primary.main",
         }}
@@ -65,21 +65,22 @@ const Home = () => {
             transition: "all 0.5s ease-in-out",
           }}
         >
-          <Typography
-            component="h1"
-            variant="h2"
-            gutterBottom
-            sx={{
-              fontWeight: 700,
-              fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
-              textShadow: textShadow,
-              textAlign: "center",
-            }}
-          >
-            Austen Sorochak
-          </Typography>
+          <Box sx={{ mt: 5 }}>
+            <Typography
+              component="h1"
+              variant="h2"
+              gutterBottom
+              sx={{
+                fontWeight: 700,
+                fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
+                textShadow: textShadow,
+                textAlign: "center",
+              }}
+            >
+              Austen Sorochak
+            </Typography>
 
-          {/* <Typography
+            {/* <Typography
           component="h2"
           variant="h4"
           gutterBottom
@@ -92,8 +93,34 @@ const Home = () => {
           Tech-meets-Terra: A Digital Dive into Nature's Depths
         </Typography> */}
 
-          {isMobile ? (
-            <>
+            {isMobile ? (
+              <>
+                <Typography
+                  component="h6"
+                  variant="h6"
+                  gutterBottom
+                  sx={{
+                    fontWeight: 700,
+                    fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
+                    textShadow: textShadow,
+                  }}
+                >
+                  Full-stack Developer
+                </Typography>
+                <Typography
+                  component="h6"
+                  variant="h6"
+                  gutterBottom
+                  sx={{
+                    fontWeight: 700,
+                    fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
+                    textShadow: textShadow,
+                  }}
+                >
+                  Environmental Scientist
+                </Typography>
+              </>
+            ) : (
               <Typography
                 component="h6"
                 variant="h6"
@@ -104,36 +131,10 @@ const Home = () => {
                   textShadow: textShadow,
                 }}
               >
-                Full-stack Developer
+                Full-stack Developer | Environmental Scientist
               </Typography>
-              <Typography
-                component="h6"
-                variant="h6"
-                gutterBottom
-                sx={{
-                  fontWeight: 700,
-                  fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
-                  textShadow: textShadow,
-                }}
-              >
-                Environmental Scientist
-              </Typography>
-            </>
-          ) : (
-            <Typography
-              component="h6"
-              variant="h6"
-              gutterBottom
-              sx={{
-                fontWeight: 700,
-                fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
-                textShadow: textShadow,
-              }}
-            >
-              Full-stack Developer | Environmental Scientist
-            </Typography>
-          )}
-
+            )}
+          </Box>
           <Box mt={3}>
             {" "}
             {/* Margin top to give some space above the button */}
@@ -146,7 +147,12 @@ const Home = () => {
         </Box>
       </Box>
       <Container maxWidth="lg" id="about-section" sx={{ minHeight: "30vh" }}>
-        <Box sx={{ marginTop: 8, marginBottom: 8 }}>
+        <Box
+          sx={{
+            marginTop: 8,
+            marginBottom: 8,
+          }}
+        >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={6}>
               <Box sx={{ marginLeft: 9 }}>
