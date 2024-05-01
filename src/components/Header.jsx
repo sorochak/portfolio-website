@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link as RouterLink } from "react-router-dom";
-import { HashLink as Link } from "react-router-hash-link";
+import { Link as RouterLink } from "react-router-dom"; // Import for handling declarative navigation in the app
 import {
   AppBar,
   Box,
@@ -139,38 +138,19 @@ const Header = () => {
 
             {/* Menu items for medium and up screens */}
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) =>
-                page === "about" ? (
-                  // Use HashLink for the "about" link which should scroll to the section on the home page
-                  <Link to="/#about-section" style={{ textDecoration: "none" }}>
-                    <Button
-                      sx={{
-                        my: 2,
-                        color: theme.palette.text.primary,
-                        display: "block",
-                      }}
-                    >
-                      {page}
-                    </Button>
-                  </Link>
-                ) : (
-                  // Use RouterLink for other links which change the route
-                  <RouterLink
-                    to={`/${page}`}
-                    style={{ textDecoration: "none" }}
+              {pages.map((page) => (
+                <RouterLink to={`/${page}`} style={{ textDecoration: "none" }}>
+                  <Button
+                    sx={{
+                      my: 2,
+                      color: theme.palette.text.primary,
+                      display: "block",
+                    }}
                   >
-                    <Button
-                      sx={{
-                        my: 2,
-                        color: theme.palette.text.primary,
-                        display: "block",
-                      }}
-                    >
-                      {page}
-                    </Button>
-                  </RouterLink>
-                )
-              )}
+                    {page}
+                  </Button>
+                </RouterLink>
+              ))}
             </Box>
 
             {/* Menu icon for small screens */}
@@ -214,21 +194,12 @@ const Header = () => {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={() => setNavMenuAnchor(null)}>
-                    {page === "about" ? (
-                      <Link
-                        to="/#about-section"
-                        style={{ textDecoration: "none" }}
-                      >
-                        <Typography textAlign="center">{page}</Typography>
-                      </Link>
-                    ) : (
-                      <RouterLink
-                        to={`/${page}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <Typography textAlign="center">{page}</Typography>
-                      </RouterLink>
-                    )}
+                    <RouterLink
+                      to={`/${page}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <Typography textAlign="center">{page}</Typography>
+                    </RouterLink>
                   </MenuItem>
                 ))}
               </Menu>
