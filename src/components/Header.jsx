@@ -28,12 +28,24 @@ const Header = () => {
   const theme = useTheme();
   const menuButtonRef = React.useRef(null);
 
+  useEffect(() => {
+    // This effect will run every time appBarBackground changes
+  }, [appBarBackground]);
+
   // This effect listens for the window's scroll event to adjust the AppBar's background
   useEffect(() => {
     // Set the initial background based on screen width
     if (window.innerWidth <= theme.breakpoints.values.md) {
       setAppBarBackground(theme.palette.background.default);
     }
+
+    const handleResize = () => {
+      if (window.innerWidth <= theme.breakpoints.values.md) {
+        setAppBarBackground(theme.palette.background.default);
+      } else if (window.scrollY <= 50) {
+        setAppBarBackground("transparent");
+      }
+    };
 
     const handleScroll = () => {
       if (
@@ -46,11 +58,16 @@ const Header = () => {
       }
     };
 
+    // Attach the scroll event listener
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
 
     // Remove the listener when the component is unmounted
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, [theme.palette.background.default, theme.breakpoints.values.md]);
 
@@ -59,6 +76,7 @@ const Header = () => {
     justifyContent: "space-between",
   });
 
+  // Handlers for opening and closing the navigation menu
   const handleOpenNavMenu = (event) => {
     setNavMenuAnchor(menuButtonRef.current);
   };
@@ -69,7 +87,7 @@ const Header = () => {
 
   return (
     <AppBar
-      position="relative"
+      position="absolute"
       // Set the shadow depth to zero, making the AppBar flat without shadows.
       elevation={0}
       style={{
@@ -83,14 +101,24 @@ const Header = () => {
               : "none",
         },
         transition: "all 0.5s ease-in-out",
-        borderBottom: `1px solid ${theme.palette.divider}`,
       }}
       // When the mouse enters the AppBar, change its background to the default theme background.
-      onMouseEnter={() => setAppBarBackground(theme.palette.background.default)}
-      // When the mouse leaves the AppBar, if the current scroll position is less than or equal to 50, set the AppBar background to transparent.
-      onMouseLeave={() =>
-        window.scrollY <= 50 && setAppBarBackground("transparent")
-      }
+      onMouseEnter={() => {
+        if (
+          window.scrollY <= 50 &&
+          window.innerWidth > theme.breakpoints.values.md
+        ) {
+          setAppBarBackground(theme.palette.background.default);
+        }
+      }}
+      onMouseLeave={() => {
+        if (
+          window.scrollY <= 50 &&
+          window.innerWidth > theme.breakpoints.values.md
+        ) {
+          setAppBarBackground("transparent");
+        }
+      }}
     >
       {/* The container constrains the width of its children and centralizes them. */}
       <Container maxWidth="xl">
@@ -139,7 +167,11 @@ const Header = () => {
             {/* Menu items for medium and up screens */}
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
-                <RouterLink to={`/${page}`} style={{ textDecoration: "none" }}>
+                <RouterLink
+                  key={page}
+                  to={`/${page}`}
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     sx={{
                       my: 2,
