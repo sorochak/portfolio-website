@@ -197,7 +197,7 @@ const Home = () => {
                   <img
                     src={signature}
                     alt="Austen's Signature"
-                    style={{ maxWidth: "150px" }}
+                    style={{ maxWidth: "180px" }}
                   />
                 </Box>
               </Box>
