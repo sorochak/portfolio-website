@@ -13,10 +13,11 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        paddingTop: isMobile ? "15px" : "30px", // Reduced paddingTop for mobile
+        paddingTop: isMobile ? "15px" : "15px", // Reduced paddingTop for mobile
         backgroundColor: theme.palette.background.default,
         boxShadow: "none",
         transition: "all 0.5s ease-in-out",
+        maxHeight: "10vh"
       }}
     >
       <Container maxWidth="lg">
