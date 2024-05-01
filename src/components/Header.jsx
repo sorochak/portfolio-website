@@ -89,8 +89,8 @@ const Header = () => {
 
   const graphicalShadow =
     theme.palette.mode === "light"
-      ? "drop-shadow(1px 1px 5px rgba(255,255,255,0.5))"
-      : "none";
+      ? "drop-shadow(2px 2px 1.5px rgba(255,255,255,1))"
+      : "drop-shadow(2px 2px 1.5px rgba(255,255,255,1))";
 
   return (
     <AppBar
@@ -144,7 +144,7 @@ const Header = () => {
               }}
             >
               <RouterLink to="/" style={{ textDecoration: "none" }}>
-                <Logo />
+                <Logo style={{ filter: graphicalShadow }} />
               </RouterLink>
             </Box>
 
