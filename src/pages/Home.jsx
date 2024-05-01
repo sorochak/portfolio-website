@@ -46,7 +46,7 @@ const Home = () => {
           minHeight: "30vh", // taking up at least 80% of the viewport height
           px: 3, // padding for left and right
           borderBottom: 1,
-          borderColor: 'primary.main'
+          borderColor: "primary.main",
         }}
       >
         <Box
@@ -145,24 +145,24 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-      <Container maxWidth="lg" id="about-section" sx={{minHeight: "30vh",}}>
+      <Container maxWidth="lg" id="about-section" sx={{ minHeight: "30vh" }}>
         <Box sx={{ paddingTop: 5 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={6}>
               <Box sx={{ paddingTop: 5, marginLeft: 5 }}>
-              <CardMedia
-                component="img"
-                image={avatarImage}
-                alt="Austen Paddling"
-                sx={{
-                  width: 400, // Adjust width as needed
-                  // height: 400, // Adjust height as needed
-                  objectFit: "cover",
-                  borderRadius: "15%",
-                  border: 2,
-                  borderColor: 'primary.main',
-                }}
-              />
+                <CardMedia
+                  component="img"
+                  image={avatarImage}
+                  alt="Austen Paddling"
+                  sx={{
+                    width: 400, // Adjust width as needed
+                    // height: 400, // Adjust height as needed
+                    objectFit: "cover",
+                    borderRadius: "15%",
+                    border: 2,
+                    borderColor: "primary.main",
+                  }}
+                />
               </Box>
             </Grid>
             <Grid item xs={12} sm={6} md={6}>
@@ -171,39 +171,27 @@ const Home = () => {
                   Hi, I'm Austen!
                 </Typography>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                  My vision is to help create an enlightened society...
+                  I am driven by a vision to contribute to an enlightened
+                  society through technology. My background as an Environmental
+                  Scientist and a Full-Stack Software Developer has equipped me
+                  to address critical 21st-century challenges by bringing
+                  scientific data to the web in engaging and impactful ways.
                 </Typography>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                  This begins with examining my own experiences to understand
-                  the value I bring to the world.
+                  I graduated from Camosun College with a focus on Information &
+                  Computer Systems and currently design, develop, and deploy
+                  software that simplifies interactions with complex datasets.
+                  My technical expertise includes JavaScript, PostgreSQL,
+                  Docker, Git, Python/Django, and various Cloud Products.
                 </Typography>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                  Passionate about leveraging technology to better understand
-                  our surroundings, I aim to bring scientific data to the web in
-                  interactive and impactful ways, assisting in addressing the
-                  pressing challenges of the 21st century. From my roots as an
-                  Environmental Scientist, technology has always held a pivotal
-                  role in my endeavours.
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Having graduated from Camosun College with a focus on
-                  Information & Computer Systems, I now work as a Full-Stack
-                  Software Developer. My core responsibility revolves around
-                  designing, developing, and deploying software solutions that
-                  efficiently collect, transform, visualize, and distribute
-                  scientific data. With expertise in tools such as JavaScript,
-                  Postgresql, Docker, and Git, I ensure seamless interactions
-                  for users with intricate datasets. My proficiency also extends
-                  to Python/Django and various Cloud Products.
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  My environmental management journey spans over seven years,
-                  touching various industries like mining, oil & gas, water
-                  treatment, and contaminated sites remediation. This profession
-                  has taken me across the vast expanses of Canada, from military
-                  training areas in the prairies to the icy shores of northern
-                  Baffin Island, Nunavut, and even remote indigenous communities
-                  on the central coast of British Columbia.
+                  With over seven years in environmental management, I have
+                  gained diverse experiences across Canada—from military
+                  training areas to the icy shores of northern Baffin Island and
+                  remote Indigenous communities. My work spans industries such
+                  as mining, oil & gas, water treatment, and contaminated sites
+                  remediation, providing a solid foundation for my
+                  technology-driven projects.
                 </Typography>
                 <Box mt={4} display="flex" justifyContent="flex-end">
                   <img
