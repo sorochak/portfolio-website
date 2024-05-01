@@ -44,26 +44,13 @@ const Header = () => {
       }
     };
 
-    const handleScroll = () => {
-      if (
-        window.scrollY > 50 ||
-        window.innerWidth <= theme.breakpoints.values.md
-      ) {
-        setAppBarBackground(theme.palette.background.default);
-      } else {
-        setAppBarBackground("transparent");
-      }
-    };
-
-    // Attach the scroll event listener
-    window.addEventListener("scroll", handleScroll);
+    // Attach the event listener
     window.addEventListener("resize", handleResize);
 
     handleResize();
 
     // Remove the listener when the component is unmounted
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
   }, [theme.palette.background.default, theme.breakpoints.values.md]);
@@ -111,18 +98,12 @@ const Header = () => {
       }}
       // When the mouse enters the AppBar, change its background to the default theme background.
       onMouseEnter={() => {
-        if (
-          window.scrollY <= 50 &&
-          window.innerWidth > theme.breakpoints.values.md
-        ) {
+        if (window.innerWidth > theme.breakpoints.values.md) {
           setAppBarBackground(theme.palette.background.default);
         }
       }}
       onMouseLeave={() => {
-        if (
-          window.scrollY <= 50 &&
-          window.innerWidth > theme.breakpoints.values.md
-        ) {
+        if (window.innerWidth > theme.breakpoints.values.md) {
           setAppBarBackground("transparent");
         }
       }}
