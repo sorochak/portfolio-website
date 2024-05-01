@@ -43,7 +43,13 @@ const Footer = () => {
             >
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <RouterLink to={"/"}>
-                  <Logo width="50px" height="50px" />
+                  <Logo
+                    width="50px"
+                    height="50px"
+                    style={{
+                      filter: "drop-shadow(2px 2px 1.5px rgba(255,255,255,1))",
+                    }}
+                  />
                 </RouterLink>
                 <Typography
                   variant="body1"
