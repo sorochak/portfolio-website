@@ -82,6 +82,16 @@ const Header = () => {
     setNavMenuAnchor(null);
   };
 
+  const textShadow =
+    theme.palette.mode === "light"
+      ? "1px 1px 20px #fff, 0 0 25px #fff, 0 0 15px #fff"
+      : "1px 1px 20px #fff0, 0 0 25px #ffffff70, 0 0 15px #ffffff80";
+
+  const graphicalShadow =
+    theme.palette.mode === "light"
+      ? "drop-shadow(1px 1px 5px rgba(255,255,255,0.5))"
+      : "none";
+
   return (
     <AppBar
       position="absolute"
@@ -143,7 +153,7 @@ const Header = () => {
               {/* Typography component displaying the text "AUSTEN SOROCHAK" */}
               <Typography
                 variant="h6"
-                noWrap
+                // noWrap
                 sx={{
                   mr: 2,
                   // On extra-small screens, the text is hidden.
@@ -155,6 +165,7 @@ const Header = () => {
                   letterSpacing: ".3rem",
                   color: theme.palette.text.primary,
                   textDecoration: "none",
+                  textShadow: textShadow,
                 }}
               >
                 AUSTEN SOROCHAK
@@ -172,6 +183,7 @@ const Header = () => {
                   <Button
                     sx={{
                       my: 2,
+                      textShadow: textShadow,
                       color:
                         location.pathname === `/${page}` ||
                         (location.pathname === "/" && page === "about")
@@ -265,18 +277,26 @@ const Header = () => {
             }}
           > */}
           <IconButton
-            sx={{ ml: 1, color: theme.palette.text.primary }}
+            sx={{
+              ml: 1,
+              color: theme.palette.text.primary,
+              filter: graphicalShadow,
+            }}
             onClick={toggleColorMode}
           >
             {theme.palette.mode === "dark" ? (
               <LightModeIcon
                 fontSize="large"
-                sx={{ color: theme.palette.primary.main }}
+                sx={{
+                  color: theme.palette.primary.main,
+                }}
               />
             ) : (
               <Brightness4Icon
                 fontSize="large"
-                sx={{ color: theme.palette.primary.main }}
+                sx={{
+                  color: theme.palette.primary.main,
+                }}
               />
             )}
           </IconButton>
