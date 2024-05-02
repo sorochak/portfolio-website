@@ -48,6 +48,16 @@ const BaseView = ({ children }) => {
         },
       },
     },
+    // Adding custom breakpoints
+    breakpoints: {
+      values: {
+        xs: 0, // Extra-small devices
+        sm: 600, // Small devices
+        md: 1024, // Medium devices - adjusted to start at a wider screen width
+        lg: 1440, // Large devices
+        xl: 1920, // Extra-large devices
+      },
+    },
   });
 
   return (
