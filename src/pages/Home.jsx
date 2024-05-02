@@ -81,23 +81,14 @@ const Home = () => {
                 fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                 textShadow: textShadow,
                 textAlign: "center",
+                fontSize: {
+                  xs: "1.75rem", // Smaller font size for xs screens
+                  sm: "2.25rem", // Default size for sm screens and above
+                },
               }}
             >
               Austen Sorochak
             </Typography>
-
-            {/* <Typography
-          component="h2"
-          variant="h4"
-          gutterBottom
-          sx={{
-            fontWeight: 600,
-            fontFamily: "Arial, sans-serif",
-            textShadow: "-3px 2px 10px rgba(0,0,0,0.8)",
-          }}
-        >
-          Tech-meets-Terra: A Digital Dive into Nature's Depths
-        </Typography> */}
 
             {/* Conditional rendering based on screen size for job titles */}
             {isMobile ? (
@@ -110,6 +101,9 @@ const Home = () => {
                     fontWeight: 700,
                     fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                     textShadow: textShadow,
+                    textAlign: "center",
+                    fontSize: "0.9rem", // Smaller font size for more compact display
+                    lineHeight: 1.2, // Adjust line height to improve readability
                   }}
                 >
                   Full-stack Developer
@@ -122,6 +116,9 @@ const Home = () => {
                     fontWeight: 700,
                     fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                     textShadow: textShadow,
+                    textAlign: "center",
+                    fontSize: "0.9rem", // Consistent font size for uniform appearance
+                    lineHeight: 1.2,
                   }}
                 >
                   Environmental Scientist
@@ -146,7 +143,11 @@ const Home = () => {
           {/* Button to view work - Link to projects */}
           <Box mt={3}>
             <Link to="/projects" style={{ textDecoration: "none" }}>
-              <Button variant="contained" color="primary">
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ transition: "all 0.5s ease-in-out" }}
+              >
                 View my work
               </Button>
             </Link>
@@ -158,24 +159,39 @@ const Home = () => {
         {/* Outer box providing consistent spacing for the about section */}
         <Box
           sx={{
-            marginTop: 8,
-            marginBottom: 8,
+            marginTop: {
+              xs: 5, // marginTop of 5 for extra small screens (up to 600px)
+              sm: 8, // marginTop of 8 for small screens (600px and above)
+            },
+            marginBottom: 0,
           }}
         >
           {/* Grid container to structure the layout into two columns on larger screens and one column on smaller screens */}
-          <Grid container spacing={2}>
+          <Grid container>
             {/* Grid item for the profile image */}
-            <Grid item xs={12} sm={6} md={6}>
+            <Grid item xs={12} sm={12} md={6}>
               {/* Box for adding left margin specifically on larger screens, ensuring the image is not too close to the screen edge */}
-              <Box sx={{ marginLeft: 9 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center", // Ensures the image is centered
+                  marginLeft: { md: 9 }, // Adds left margin on larger screens only if needed
+                }}
+              >
                 {/* CardMedia component for profile image with responsive adjustments */}
                 <CardMedia
                   component="img"
                   image={avatarImage}
-                  alt="Austen Paddling"
+                  alt="selfie"
                   sx={{
-                    width: 400, // Fixed width for larger screens, consider making this responsive
-                    // height: 400,
+                    width: {
+                      xs: "85%", // Full width on extra small screens
+                      sm: "80%", // 80% width on small screens
+                      md: "80%", // 50% width on medium screens, adjust as needed
+                      lg: "80%", // Fixed width on large screens or adjust as needed
+                    },
+
+                    height: "auto", // Adjust height automatically based on the aspect ratio
                     objectFit: "cover",
                     borderRadius: "15%",
                     border: 2,
@@ -185,15 +201,35 @@ const Home = () => {
               </Box>
             </Grid>
             {/* Grid item for the textual content next to the image */}
-            <Grid item xs={12} sm={6} md={6}>
+            <Grid item xs={12} sm={12} md={6}>
               {/* Box to manage spacing and alignment of the text content */}
-              <Box sx={{ flex: 1, marginRight: 4, marginTop: 3 }}>
+              <Box
+                sx={{
+                  flex: 1,
+                  marginRight: { lg: 4 },
+                  marginTop: 2,
+                  padding: {
+                    xs: 3,
+                    sm: 5,
+                    md: 1,
+                  },
+                }}
+              >
                 {/* Heading introducing Austen */}
                 <Typography variant="h4" gutterBottom>
                   Hi, I'm Austen!
                 </Typography>
                 {/* Paragraph describing professional vision and impact */}
-                <Typography variant="body1" sx={{ mb: 2, fontSize: "1rem" }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    mb: 2,
+                    fontSize: {
+                      xs: "1rem",
+                      xl: "1.1rem",
+                    },
+                  }}
+                >
                   I am driven by a vision to contribute to an enlightened
                   society through technology. My background as an Environmental
                   Scientist and a Full-Stack Software Developer has equipped me
@@ -201,7 +237,16 @@ const Home = () => {
                   scientific data to the web in engaging and impactful ways.
                 </Typography>
                 {/* Paragraph detailing academic and professional background */}
-                <Typography variant="body1" sx={{ mb: 2, fontSize: "1rem" }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    mb: 2,
+                    fontSize: {
+                      xs: "1rem", // Apply 1rem font size for 'xs' and 'sm' sizes
+                      xl: "1.1rem", // Apply 1.1rem starting from 'md' sizes
+                    },
+                  }}
+                >
                   I graduated from Camosun College with a focus on Information &
                   Computer Systems and currently design, develop, and deploy
                   software that simplifies interactions with complex datasets.
@@ -209,7 +254,16 @@ const Home = () => {
                   Docker, Git, Python/Django, and various Cloud Products.
                 </Typography>
                 {/* Paragraph highlighting diverse experiences in environmental management */}
-                <Typography variant="body1" sx={{ mb: 2, fontSize: "1rem" }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    mb: 2,
+                    fontSize: {
+                      xs: "1rem", // Apply 1rem font size for 'xs' and 'sm' sizes
+                      xl: "1.1rem", // Apply 1.1rem starting from 'md' sizes
+                    },
+                  }}
+                >
                   With over seven years in environmental management, I have
                   gained diverse experiences across Canada—from military
                   training areas to the icy shores of northern Baffin Island and
@@ -219,7 +273,7 @@ const Home = () => {
                   technology-driven projects.
                 </Typography>
                 {/* Container for Austen's signature, aligned to the right */}
-                <Box mt={-4} pr={14} display="flex" justifyContent="flex-end">
+                <Box mt={2} pr={2} display="flex" justifyContent="flex-end">
                   <img
                     src={signature}
                     alt="Austen's Signature"
