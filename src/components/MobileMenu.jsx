@@ -1,33 +1,43 @@
-import * as React from "react";
+import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { IconButton, Typography } from "@mui/material";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import {
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
 
 export default function MobileMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const [isOpen, setIsOpen] = React.useState(false);
   const theme = useTheme();
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorEl(event.currentTarget);
+  const toggleDrawer = (open) => (event) => {
+    // This function will toggle the state of the drawer
+    // It will also check if the click was made with a keyboard or not to maintain accessibility
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+    setIsOpen(open);
   };
 
-  const handleCloseNav = () => {
-    setAnchorEl(null);
-  };
+  const menuItems = [
+    { name: "About", path: "/about" },
+    { name: "Projects", path: "/projects" },
+    { name: "Contact", path: "/contact" },
+  ];
 
   return (
-    <div>
+    <React.Fragment>
       <IconButton
-        id="menu-button"
+        onClick={toggleDrawer(true)}
         size="large"
-        aria-controls={open ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleOpenNavMenu}
         sx={{
           color: theme.palette.primary.main,
           position: "relative",
@@ -36,63 +46,30 @@ export default function MobileMenu() {
       >
         <MenuIcon />
       </IconButton>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleCloseNav}
-        sx={{
-          color: theme.palette.primary.main,
-          // position: "relative",
-          zIndex: 1300,
-        }}
-        MenuListProps={{
-          "aria-labelledby": "menu-button",
-        }}
+      <Drawer
+        anchor="top" // Drawer will slide in from the right
+        open={isOpen}
+        disableScrollLock={true}
+        onClose={toggleDrawer(false)}
       >
-        <MenuItem onClick={handleCloseNav}>
-          <RouterLink to="/about" style={{ textDecoration: "none" }}>
-            <Typography
-              textAlign="center"
-              sx={{
-                color: theme.palette.text.primary,
-                fontWeight: theme.typography.fontWeightRegular,
-                letterSpacing: theme.typography.letterSpacing,
-              }}
+        <List
+          sx={{ width: 150 }} // You can set the width of the Drawer
+          role="presentation"
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
+        >
+          {menuItems.map((item) => (
+            <ListItem
+              button
+              key={item.name}
+              component={RouterLink}
+              to={item.path}
             >
-              About
-            </Typography>
-          </RouterLink>
-        </MenuItem>
-        <MenuItem onClick={handleCloseNav}>
-          <RouterLink to="/projects" style={{ textDecoration: "none" }}>
-            <Typography
-              textAlign="center"
-              sx={{
-                color: theme.palette.text.primary,
-                fontWeight: theme.typography.fontWeightRegular,
-                letterSpacing: theme.typography.letterSpacing,
-              }}
-            >
-              Projects
-            </Typography>
-          </RouterLink>
-        </MenuItem>
-        <MenuItem onClick={handleCloseNav}>
-          <RouterLink to="/contact" style={{ textDecoration: "none" }}>
-            <Typography
-              textAlign="center"
-              sx={{
-                color: theme.palette.text.primary,
-                fontWeight: theme.typography.fontWeightRegular,
-                letterSpacing: theme.typography.letterSpacing,
-              }}
-            >
-              Contact
-            </Typography>
-          </RouterLink>
-        </MenuItem>
-      </Menu>
-    </div>
+              <ListItemText primary={item.name} />
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </React.Fragment>
   );
 }
