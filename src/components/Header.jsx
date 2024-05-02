@@ -7,27 +7,23 @@ import {
   styled,
   IconButton,
   Typography,
-  Menu,
   Container,
   Button,
-  MenuItem,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { useTheme } from "@mui/material/styles";
 import { ColorModeContext } from "./BaseView";
 import Logo from "./Logo";
+import MobileMenu from "./MobileMenu";
 
 const pages = ["about", "projects", "contact"];
 
 const Header = () => {
-  const [navMenuAnchor, setNavMenuAnchor] = useState(null);
   const [appBarBackground, setAppBarBackground] = useState("transparent");
   const { toggleColorMode } = useContext(ColorModeContext);
   const theme = useTheme();
   const location = useLocation();
-  const menuButtonRef = React.useRef(null);
 
   // This effect listens for the window's scroll event to adjust the AppBar's background
   useEffect(() => {
@@ -60,15 +56,6 @@ const Header = () => {
     justifyContent: "space-between",
   });
 
-  // Handlers for opening and closing the navigation menu
-  const handleOpenNavMenu = (event) => {
-    setNavMenuAnchor(menuButtonRef.current);
-  };
-
-  const handleCloseNavMenu = (page) => {
-    setNavMenuAnchor(null);
-  };
-
   const textShadow =
     theme.palette.mode === "light"
       ? "1px 1px 20px #fff, 0 0 25px #fff, 0 0 15px #fff"
@@ -81,7 +68,7 @@ const Header = () => {
 
   return (
     <AppBar
-      position="absolute"
+      position="fixed"
       // Set the shadow depth to zero, making the AppBar flat without shadows.
       elevation={0}
       style={{
@@ -111,7 +98,6 @@ const Header = () => {
       {/* The container constrains the width of its children and centralizes them. */}
       <Container maxWidth="xl">
         {/* TOOL BAR */}
-
         <StyledToolbar disableGutters>
           {/* Left portion of the AppBar */}
           <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
@@ -188,47 +174,8 @@ const Header = () => {
                 display: { xs: "flex", md: "none" },
               }}
             >
-              <IconButton
-                ref={menuButtonRef}
-                size="large"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={navMenuAnchor}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(navMenuAnchor)}
-                onClose={handleCloseNavMenu}
-                // This menu is visible only on extra-small screens.
-                // Hidden on medium screens and up.
-                sx={{
-                  display: { xs: "block", md: "none" },
-                }}
-              >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={() => setNavMenuAnchor(null)}>
-                    <RouterLink
-                      to={`/${page}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <Typography textAlign="center">{page}</Typography>
-                    </RouterLink>
-                  </MenuItem>
-                ))}
-              </Menu>
+              {/* <BasicMenu /> */}
+              <MobileMenu />
             </Box>
           </Box>
 
