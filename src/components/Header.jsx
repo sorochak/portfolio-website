@@ -99,7 +99,7 @@ const Header = () => {
         }}
       >
         {/* The container constrains the width of its children and centralizes them. */}
-        <Container maxWidth="xl">
+        <Container maxWidth="lg">
           {/* TOOL BAR */}
           <StyledToolbar disableGutters>
             {/* Left portion of the AppBar */}
