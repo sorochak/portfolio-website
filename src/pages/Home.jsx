@@ -129,6 +129,7 @@ const Home = () => {
                   fontWeight: 700,
                   fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                   textShadow: textShadow,
+                  textAlign: "center",
                 }}
               >
                 Full-stack Developer | Environmental Scientist
