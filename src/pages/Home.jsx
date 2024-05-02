@@ -18,8 +18,11 @@ import avatarImage from "../static/selfie.jpg";
 const Home = () => {
   const theme = useTheme();
   const { mode } = useContext(ColorModeContext);
+
+  // Using useMediaQuery to detect if the screen size is <='small' for conditional rendering
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  // Background color for the overlay box, changes based on theme mode
   const childBoxBackgroundColor =
     mode === "dark" ? "rgba(0, 0, 0, 0.38)" : "rgba(213, 255, 252, 0.3)";
 
@@ -30,6 +33,7 @@ const Home = () => {
 
   return (
     <>
+      {/* Main hero container with background image */}
       <Box
         component="div"
         sx={{
@@ -49,6 +53,7 @@ const Home = () => {
           borderColor: "primary.main",
         }}
       >
+        {/* Overlay box  */}
         <Box
           component="div"
           sx={{
@@ -65,6 +70,7 @@ const Home = () => {
             transition: "all 0.5s ease-in-out",
           }}
         >
+          {/* Container for titles and roles */}
           <Box sx={{ mt: 5 }}>
             <Typography
               component="h1"
@@ -93,6 +99,7 @@ const Home = () => {
           Tech-meets-Terra: A Digital Dive into Nature's Depths
         </Typography> */}
 
+            {/* Conditional rendering based on screen size for job titles */}
             {isMobile ? (
               <>
                 <Typography
@@ -136,9 +143,8 @@ const Home = () => {
               </Typography>
             )}
           </Box>
+          {/* Button to view work - Link to projects */}
           <Box mt={3}>
-            {" "}
-            {/* Margin top to give some space above the button */}
             <Link to="/projects" style={{ textDecoration: "none" }}>
               <Button variant="contained" color="primary">
                 View my work
@@ -147,23 +153,29 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
+      {/* About section with responsive grid layout */}
       <Container maxWidth="lg" id="about-section" sx={{ minHeight: "30vh" }}>
+        {/* Outer box providing consistent spacing for the about section */}
         <Box
           sx={{
             marginTop: 8,
             marginBottom: 8,
           }}
         >
+          {/* Grid container to structure the layout into two columns on larger screens and one column on smaller screens */}
           <Grid container spacing={2}>
+            {/* Grid item for the profile image */}
             <Grid item xs={12} sm={6} md={6}>
+              {/* Box for adding left margin specifically on larger screens, ensuring the image is not too close to the screen edge */}
               <Box sx={{ marginLeft: 9 }}>
+                {/* CardMedia component for profile image with responsive adjustments */}
                 <CardMedia
                   component="img"
                   image={avatarImage}
                   alt="Austen Paddling"
                   sx={{
-                    width: 400, // Adjust width as needed
-                    // height: 400, // Adjust height as needed
+                    width: 400, // Fixed width for larger screens, consider making this responsive
+                    // height: 400,
                     objectFit: "cover",
                     borderRadius: "15%",
                     border: 2,
@@ -172,11 +184,15 @@ const Home = () => {
                 />
               </Box>
             </Grid>
+            {/* Grid item for the textual content next to the image */}
             <Grid item xs={12} sm={6} md={6}>
+              {/* Box to manage spacing and alignment of the text content */}
               <Box sx={{ flex: 1, marginRight: 4, marginTop: 3 }}>
+                {/* Heading introducing Austen */}
                 <Typography variant="h4" gutterBottom>
                   Hi, I'm Austen!
                 </Typography>
+                {/* Paragraph describing professional vision and impact */}
                 <Typography variant="body1" sx={{ mb: 2, fontSize: "1rem" }}>
                   I am driven by a vision to contribute to an enlightened
                   society through technology. My background as an Environmental
@@ -184,6 +200,7 @@ const Home = () => {
                   to address critical 21st-century challenges by bringing
                   scientific data to the web in engaging and impactful ways.
                 </Typography>
+                {/* Paragraph detailing academic and professional background */}
                 <Typography variant="body1" sx={{ mb: 2, fontSize: "1rem" }}>
                   I graduated from Camosun College with a focus on Information &
                   Computer Systems and currently design, develop, and deploy
@@ -191,6 +208,7 @@ const Home = () => {
                   My technical expertise includes JavaScript, PostgreSQL,
                   Docker, Git, Python/Django, and various Cloud Products.
                 </Typography>
+                {/* Paragraph highlighting diverse experiences in environmental management */}
                 <Typography variant="body1" sx={{ mb: 2, fontSize: "1rem" }}>
                   With over seven years in environmental management, I have
                   gained diverse experiences across Canada—from military
@@ -200,6 +218,7 @@ const Home = () => {
                   remediation, providing a solid foundation for my
                   technology-driven projects.
                 </Typography>
+                {/* Container for Austen's signature, aligned to the right */}
                 <Box mt={-4} pr={14} display="flex" justifyContent="flex-end">
                   <img
                     src={signature}
