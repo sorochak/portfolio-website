@@ -9,6 +9,7 @@ const Projects = () => {
         alignItems: "center",
         minHeight: "100vh",
         padding: 3, // Adjust the overall padding as needed
+        marginTop: 5,
       }}
     >
       <Container maxWidth="false">
@@ -121,7 +122,7 @@ const Projects = () => {
                 {[
                   "Developed eight features for Reach by using React, Redux, and Material UI",
                   "Implemented testing strategies with Chai and Mocha",
-                  ""
+                  "",
                   // ...add all the other points
                 ].map((item) => (
                   <Box component="li" key={item} sx={{ textAlign: "left" }}>
