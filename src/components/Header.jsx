@@ -196,7 +196,7 @@ const Header = () => {
               }}
             >
               <RouterLink to="/" style={{ textDecoration: "none" }}>
-                <Logo />
+                <Logo style={{ filter: graphicalShadow }} />
               </RouterLink>
             </Box>
 
