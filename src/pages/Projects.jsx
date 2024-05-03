@@ -8,8 +8,9 @@ const Projects = () => {
         justifyContent: "center",
         alignItems: "center",
         minHeight: "100vh",
-        padding: 3, // Adjust the overall padding as needed
-        marginTop: 5,
+        padding: 3,
+        paddingTop: "100px",
+        // marginTop: 5,
       }}
     >
       <Container maxWidth="false">
