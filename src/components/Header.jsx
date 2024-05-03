@@ -17,7 +17,7 @@ import { ColorModeContext } from "./BaseView";
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 
-const pages = ["about", "projects", "contact"];
+const pages = ["about", "projects"];
 
 const Header = () => {
   const [appBarBackground, setAppBarBackground] = useState("transparent");
