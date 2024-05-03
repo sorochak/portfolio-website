@@ -163,7 +163,7 @@ const Home = () => {
               xs: 5, // marginTop of 5 for extra small screens (up to 600px)
               sm: 8, // marginTop of 8 for small screens (600px and above)
             },
-            marginBottom: 0,
+            marginBottom: { lg: 5 },
           }}
         >
           {/* Grid container to structure the layout into two columns on larger screens and one column on smaller screens */}
