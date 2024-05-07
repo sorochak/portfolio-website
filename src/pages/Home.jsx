@@ -14,6 +14,7 @@ import backgroundImage from "../static/nayuca.webp";
 import { ColorModeContext } from "../components/BaseView";
 import signature from "../static/sorochakSignature.png";
 import avatarImage from "../static/selfie.jpg";
+import Logo from "../components/Logo";
 
 const Home = () => {
   const theme = useTheme();
@@ -215,7 +216,26 @@ const Home = () => {
                   },
                 }}
               >
-                {/* Heading introducing Austen */}
+                {isMobile ? (
+                  <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                    <Logo
+                      width="50px"
+                      height="50px"
+                      style={{
+                        filter:
+                          "drop-shadow(2px 2px 1.5px rgba(255,255,255,1))",
+                      }}
+                    />
+                    <Typography
+                      variant="body1"
+                      color="text.secondary"
+                      sx={{ ml: 2, mt: 0 }}
+                    >
+                      Tech-meets-Terra: A Digital Dive into Nature's Depths
+                    </Typography>
+                  </Box>
+                ) : null}
+                {/* Heading introducing Austen */}{" "}
                 <Typography variant="h4" gutterBottom>
                   Hi, I'm Austen!
                 </Typography>
