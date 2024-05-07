@@ -18,6 +18,10 @@ import Logo from "../components/Logo";
 
 const Home = () => {
   const theme = useTheme();
+  const isMobileLandscape = useMediaQuery(
+    "(max-width: 930px) and (orientation: landscape)"
+  );
+
   const { mode } = useContext(ColorModeContext);
 
   // Using useMediaQuery to detect if the screen size is <='small' for conditional rendering
@@ -31,6 +35,9 @@ const Home = () => {
     mode === "dark"
       ? "1px 1px 20px #fff0, 0 0 25px #ffffff70, 0 0 15px #ffffff80"
       : "1px 1px 20px #fff, 0 0 25px #fff, 0 0 15px #fff";
+
+  console.log("Is mobile:", isMobile); // Should be true on mobile devices
+  console.log("Is landscape:", isMobileLandscape); // Should be true only in landscape orientation
 
   return (
     <>
@@ -48,7 +55,7 @@ const Home = () => {
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          minHeight: "50vh",
+          minHeight: isMobileLandscape ? "100vh" : "50vh",
           px: 3,
           borderBottom: 1,
           borderColor: "primary.main",
@@ -176,7 +183,7 @@ const Home = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "center",
-                  marginLeft: { md: 9 },
+                  marginLeft: { lg: 9 },
                   marginBottom: { md: 3 },
                 }}
               >
