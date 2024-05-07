@@ -82,7 +82,7 @@ const Home = () => {
                 textShadow: textShadow,
                 textAlign: "center",
                 fontSize: {
-                  xs: "2.2rem",
+                  xs: "2rem",
                   sm: "2.25rem",
                 },
               }}
