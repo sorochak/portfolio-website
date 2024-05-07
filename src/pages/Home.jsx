@@ -271,9 +271,8 @@ const Home = () => {
                 >
                   I graduated from Camosun College with a focus on Information &
                   Computer Systems and currently design, develop, and deploy
-                  software that simplifies interactions with complex datasets.
-                  My technical expertise includes JavaScript, PostgreSQL,
-                  Docker, Git, Python/Django, and various Cloud Products.
+                  software that enhances the accessibility and usability of
+                  complex datasets.
                 </Typography>
                 {/* Paragraph highlighting diverse experiences in environmental management */}
                 <Typography
