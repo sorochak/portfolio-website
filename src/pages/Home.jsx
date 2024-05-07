@@ -156,13 +156,13 @@ const Home = () => {
         </Box>
       </Box>
       {/* About section with responsive grid layout */}
-      <Container maxWidth="lg" id="about-section" sx={{ minHeight: "30vh" }}>
+      <Container maxWidth="lg" id="about-section">
         {/* Outer box providing consistent spacing for the about section */}
         <Box
           sx={{
             marginTop: {
-              xs: 5, // marginTop of 5 for extra small screens (up to 600px)
-              sm: 8, // marginTop of 8 for small screens (600px and above)
+              xs: 5,
+              sm: 8,
             },
             marginBottom: { lg: 5 },
           }}
@@ -175,8 +175,9 @@ const Home = () => {
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: "center", // Ensures the image is centered
-                  marginLeft: { md: 9 }, // Adds left margin on larger screens only if needed
+                  justifyContent: "center",
+                  marginLeft: { md: 9 },
+                  marginBottom: { md: 3 },
                 }}
               >
                 {/* CardMedia component for profile image with responsive adjustments */}
@@ -209,6 +210,7 @@ const Home = () => {
                   flex: 1,
                   marginRight: { lg: 4 },
                   marginTop: 2,
+                  marginLeft: { xs: 1.5, sm: 0 },
                   padding: {
                     xs: 3,
                     sm: 5,
@@ -262,8 +264,8 @@ const Home = () => {
                   sx={{
                     mb: 2,
                     fontSize: {
-                      xs: "1rem", // Apply 1rem font size for 'xs' and 'sm' sizes
-                      xl: "1.1rem", // Apply 1.1rem starting from 'md' sizes
+                      xs: "1rem",
+                      xl: "1.1rem",
                     },
                   }}
                 >
@@ -279,8 +281,8 @@ const Home = () => {
                   sx={{
                     mb: 2,
                     fontSize: {
-                      xs: "1rem", // Apply 1rem font size for 'xs' and 'sm' sizes
-                      xl: "1.1rem", // Apply 1.1rem starting from 'md' sizes
+                      xs: "1rem",
+                      xl: "1.1rem",
                     },
                   }}
                 >
