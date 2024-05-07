@@ -176,6 +176,7 @@ const Home = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "center",
+                  marginLeft: { md: 9 },
                   marginBottom: { md: 3 },
                 }}
               >
@@ -211,7 +212,7 @@ const Home = () => {
                   marginTop: 2,
                   marginLeft: { xs: 1.5, sm: 0 },
                   padding: {
-                    xs: 3,
+                    xs: 2,
                     sm: 5,
                     md: 1,
                   },
