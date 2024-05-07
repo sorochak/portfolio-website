@@ -177,7 +177,7 @@ const Projects = () => {
                 variant="body1"
                 sx={{ textAlign: "left", marginBottom: 2 }}
               >
-                A React app improving oceanographic data access, relying on
+                A React app facilitating oceanographic data access, relying on
                 Flask and Google Cloud Platform for back-end services.
               </Typography>
 
