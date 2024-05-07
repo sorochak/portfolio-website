@@ -7,8 +7,6 @@ const Projects = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
-        padding: 2,
         paddingTop: "70px",
       }}
     >
@@ -45,6 +43,7 @@ const Projects = () => {
                 sx={{
                   textAlign: "left",
                   fontSize: { xs: "1.4rem", lg: "2.3rem" },
+                  lineHeight: 1.2,
                 }}
               >
                 Hakai Ecological Information Management System (EIMS)
@@ -74,7 +73,7 @@ const Projects = () => {
                     key={tag}
                     variant="body2"
                     color="textSecondary"
-                    sx={{ marginRight: 1, marginBottom: 1 }}
+                    sx={{ marginRight: 1, marginBottom: 1, lineHeight: 1 }}
                   >
                     #{tag}
                   </Typography>
@@ -140,6 +139,7 @@ const Projects = () => {
                 sx={{
                   textAlign: "left",
                   fontSize: { xs: "1.4rem", lg: "2.3rem" },
+                  lineHeight: 1.2,
                 }}
               >
                 Canadian Integrated Ocean Observing System (CIOOS) Metadata
@@ -165,7 +165,7 @@ const Projects = () => {
                     key={tag}
                     variant="body2"
                     color="textSecondary"
-                    sx={{ marginRight: 1, marginBottom: 1 }}
+                    sx={{ marginRight: 1, marginBottom: 1, lineHeight: 1 }}
                   >
                     #{tag}
                   </Typography>
