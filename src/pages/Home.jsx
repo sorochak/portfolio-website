@@ -82,8 +82,8 @@ const Home = () => {
                 textShadow: textShadow,
                 textAlign: "center",
                 fontSize: {
-                  xs: "1.75rem", // Smaller font size for xs screens
-                  sm: "2.25rem", // Default size for sm screens and above
+                  xs: "2.2rem",
+                  sm: "2.25rem",
                 },
               }}
             >
@@ -102,7 +102,7 @@ const Home = () => {
                     fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                     textShadow: textShadow,
                     textAlign: "center",
-                    fontSize: "0.9rem", // Smaller font size for more compact display
+                    fontSize: "1.5rem", // Smaller font size for more compact display
                     lineHeight: 1.2, // Adjust line height to improve readability
                   }}
                 >
@@ -117,7 +117,7 @@ const Home = () => {
                     fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                     textShadow: textShadow,
                     textAlign: "center",
-                    fontSize: "0.9rem", // Consistent font size for uniform appearance
+                    fontSize: "1.1rem", // Consistent font size for uniform appearance
                     lineHeight: 1.2,
                   }}
                 >
