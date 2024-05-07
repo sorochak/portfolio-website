@@ -176,7 +176,6 @@ const Home = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "center",
-                  marginLeft: { md: 9 },
                   marginBottom: { md: 3 },
                 }}
               >
@@ -187,13 +186,13 @@ const Home = () => {
                   alt="selfie"
                   sx={{
                     width: {
-                      xs: "85%", // Full width on extra small screens
-                      sm: "80%", // 80% width on small screens
-                      md: "80%", // 50% width on medium screens, adjust as needed
-                      lg: "80%", // Fixed width on large screens or adjust as needed
+                      xs: "85%",
+                      sm: "80%",
+                      md: "80%",
+                      lg: "80%",
                     },
 
-                    height: "auto", // Adjust height automatically based on the aspect ratio
+                    height: "auto",
                     objectFit: "cover",
                     borderRadius: "15%",
                     border: 2,
