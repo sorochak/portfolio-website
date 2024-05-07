@@ -8,19 +8,19 @@ const Projects = () => {
         justifyContent: "center",
         alignItems: "center",
         minHeight: "100vh",
-        padding: 3,
-        paddingTop: "100px",
+        padding: 2,
+        paddingTop: "70px",
       }}
     >
-      <Container maxWidth="false">
-        <Grid container spacing={3} justifyContent="center">
+      <Container maxWidth="md">
+        <Grid justifyContent="center">
           {/* Project Header */}
           <Typography
             variant="h4"
             align="center"
             sx={{
               mb: 2,
-              marginTop: "50px",
+              mt: { xs: 3, md: 6 },
               fontWeight: "bold",
               fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
             }}
@@ -28,25 +28,24 @@ const Projects = () => {
             SELECTED PROJECTS
           </Typography>
           <Grid item xs={12} md={12} lg={12}>
-            {/* Hakai Data Portal */}
+            {/* EIMS */}
             <Box
-              sx={{
-                pl: 8,
-                pr: 8,
-                pb: 2,
-                flexDirection: "column",
-                // minHeight: "60vh",
-                alignItems: "center",
-                margin: 3,
-              }}
               elevation={3}
+              sx={{
+                padding: { xs: 2, sm: 4 },
+                margin: { xs: 1, md: 3 },
+                flexDirection: "column",
+                alignItems: "center",
+              }}
             >
               {/* Project Title */}
               <Typography
-                variant="h3"
                 color="primary"
                 gutterBottom
-                sx={{ textAlign: "left" }}
+                sx={{
+                  textAlign: "left",
+                  fontSize: { xs: "1.4rem", lg: "2.3rem" },
+                }}
               >
                 Hakai Ecological Information Management System (EIMS)
               </Typography>
@@ -56,8 +55,7 @@ const Projects = () => {
                 sx={{
                   display: "flex",
                   flexWrap: "wrap",
-                  justifyContent: "left",
-                  // margin: 2,
+                  mb: 2,
                 }}
               >
                 {[
@@ -84,10 +82,7 @@ const Projects = () => {
               </Box>
 
               {/* Description */}
-              <Typography
-                variant="body1"
-                sx={{ textAlign: "left", marginBottom: 2 }}
-              >
+              <Typography variant="body1" sx={{ marginBottom: 2 }}>
                 The EIMS integrates a dynamic React web portal and a RESTful API
                 (Node.js and Koa) to efficiently manage scientific data from a
                 PostgreSQL database.
@@ -103,15 +98,15 @@ const Projects = () => {
                 sx={{
                   listStyle: "none",
                   padding: 0,
-                  margin: 0,
                   "& li": {
                     position: "relative",
-                    paddingLeft: "1em", // Adjust as necessary for alignment
+                    paddingLeft: "1em",
+                    mb: 1,
                   },
                   "& li:before": {
                     content: '"•"',
                     position: "absolute",
-                    left: 0, // Adjust as necessary
+                    left: 0,
                   },
                 }}
               >
@@ -132,20 +127,20 @@ const Projects = () => {
             {/* Metadata Entry Form */}
             <Box
               sx={{
-                pl: 8,
-                pr: 8,
+                padding: { xs: 2, sm: 4, md: 6 },
+                margin: { xs: 1, md: 3 },
                 flexDirection: "column",
                 alignItems: "center",
-                margin: 3,
               }}
-              elevation={3}
             >
               {/* Project Title */}
               <Typography
-                variant="h3"
                 color="primary"
                 gutterBottom
-                sx={{ textAlign: "left" }}
+                sx={{
+                  textAlign: "left",
+                  fontSize: { xs: "1.4rem", lg: "2.3rem" },
+                }}
               >
                 Canadian Integrated Ocean Observing System (CIOOS) Metadata
                 Entry Form
@@ -156,8 +151,7 @@ const Projects = () => {
                 sx={{
                   display: "flex",
                   flexWrap: "wrap",
-                  justifyContent: "left",
-                  // margin: 2,
+                  mb: 2,
                 }}
               >
                 {[
@@ -197,10 +191,10 @@ const Projects = () => {
                 sx={{
                   listStyle: "none",
                   padding: 0,
-                  margin: 0,
                   "& li": {
                     position: "relative",
-                    paddingLeft: "1em", // Adjust as necessary for alignment
+                    paddingLeft: "1em",
+                    mb: 1,
                   },
                   "& li:before": {
                     content: '"•"',
