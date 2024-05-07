@@ -102,8 +102,8 @@ const Home = () => {
                     fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                     textShadow: textShadow,
                     textAlign: "center",
-                    fontSize: "1.5rem", // Smaller font size for more compact display
-                    lineHeight: 1.2, // Adjust line height to improve readability
+                    fontSize: "1.3rem",
+                    lineHeight: 1.2,
                   }}
                 >
                   Full-stack Developer
@@ -117,7 +117,7 @@ const Home = () => {
                     fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                     textShadow: textShadow,
                     textAlign: "center",
-                    fontSize: "1.1rem", // Consistent font size for uniform appearance
+                    fontSize: "1rem",
                     lineHeight: 1.2,
                   }}
                 >
