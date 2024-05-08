@@ -126,7 +126,9 @@ const Projects = () => {
             {/* Metadata Entry Form */}
             <Box
               sx={{
-                padding: { xs: 2, sm: 4, md: 6 },
+                pl: { xs: 2, sm: 4 },
+                pr: { xs: 2, sm: 4 },
+                pb: { xs: 2, sm: 4 },
                 margin: { xs: 1, md: 3 },
                 flexDirection: "column",
                 alignItems: "center",
