@@ -13,13 +13,16 @@ const Contact = () => {
   // State object to hold the form's current state
   const [formState, setFormState] = useState({
     isValid: false,
-    values: {},
+    values: { name: "", email: "", message: "", userCode: "" }, //userCode is a honeypot field to prevent spam bots from submitting the form.
     touched: {},
     errors: {},
   });
 
   // State to handle the status message of the "Send" button.
   const [sendingStatus, setSendingStatus] = useState("Send");
+
+  // lambda endpoint
+  const endpoint = "https://TBD...LambdaURL...TBD"; // Add this later
 
   // Validation schema for the form, which checks for required fields and validates email format.
   // Schema will not change, so this memoized function is only created once.
@@ -63,26 +66,13 @@ const Contact = () => {
   const hasError = (field) =>
     formState.touched[field] && formState.errors[field] ? true : false;
 
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-  //   setSendingStatus("Just a moment...");
-
-  //   emailjs
-  //     .sendForm(
-  //       REACT_APP_EMAILJS_SERVICEID,
-  //       REACT_APP_EMAILJS_TEMPLATEID,
-  //       e.target,
-  //       REACT_APP_EMAILJS_PUBLICKEY
-  //     )
-  //     .then((res) => {
-  //       console.log("SUCCESS!", res.status, res.text);
-  //       setSendingStatus("Message Sent Successfully");
-  //     })
-  //     .catch((error) => {
-  //       console.log("FAILED...", error);
-  //       setSendingStatus("Send");
-  //     });
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formState.values.userCode) {
+      setSendingStatus("Just a moment...");
+      return;
+    }
+  };
 
   // Form validation logic that updates errors and the `isValid` property.
   // re-runs validation when form values change.
@@ -106,7 +96,7 @@ const Contact = () => {
       }}
     >
       <Container maxWidth="md">
-        <form name="contact-form" onSubmit={console.log("submitted")}>
+        <form name="contact-form" onSubmit={handleSubmit}>
           <Grid container spacing={2} justifyContent="center">
             <Grid item xs={12}>
               <Typography
@@ -142,6 +132,18 @@ const Contact = () => {
                 If you’d like to send me a message, simply fill out the form
                 below or send me a message directly at info@austensorochak.com.
               </Typography>
+            </Grid>
+            {/* Input field for the honeypot */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                sx={{ position: "absolute", left: "-5000px" }} // CSS to move the field off-screen
+                aria-hidden="true" // Hide from screen readers
+                placeholder="Code"
+                name="userCode"
+                id="userCode"
+                value={formState.values.userCode || ""}
+                onChange={handleChange}
+              />
             </Grid>
             {/* Input field for the Name */}
             <Grid item xs={12} sm={6}>
