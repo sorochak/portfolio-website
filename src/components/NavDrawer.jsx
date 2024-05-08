@@ -14,6 +14,7 @@ const NavDrawer = () => {
         <List>
           <NavLink to="/" label="About" onClick={handleClose} />
           <NavLink to="/projects" label="Projects" onClick={handleClose} />
+          <NavLink to="/contact" label="Contact" onClick={handleClose} />
         </List>
       </Drawer>
       <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
