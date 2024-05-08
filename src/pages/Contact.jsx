@@ -134,17 +134,15 @@ const Contact = () => {
               </Typography>
             </Grid>
             {/* Input field for the honeypot */}
-            <Grid item xs={12} sm={6}>
-              <TextField
-                sx={{ position: "absolute", left: "-5000px" }} // CSS to move the field off-screen
-                aria-hidden="true" // Hide from screen readers
-                placeholder="Code"
-                name="userCode"
-                id="userCode"
-                value={formState.values.userCode || ""}
-                onChange={handleChange}
-              />
-            </Grid>
+            <TextField
+              sx={{ position: "absolute", left: "-5000px" }} // CSS to move the field off-screen
+              aria-hidden="true" // Hide from screen readers
+              placeholder="Code"
+              name="userCode"
+              id="userCode"
+              value={formState.values.userCode || ""}
+              onChange={handleChange}
+            />
             {/* Input field for the Name */}
             <Grid item xs={12} sm={6}>
               <TextField
