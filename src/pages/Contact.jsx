@@ -1,25 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Typography, Container, Grid, Button, TextField } from "@mui/material";
 import validate from "validate.js";
-import emailjs from "emailjs-com";
 
-// Initialize environment variables for EmailJS configuration.
-const REACT_APP_EMAILJS_PUBLICKEY = process.env.REACT_APP_EMAILJS_PUBLICKEY;
-const REACT_APP_EMAILJS_TEMPLATEID = process.env.REACT_APP_EMAILJS_TEMPLATEID;
-const REACT_APP_EMAILJS_SERVICEID = process.env.REACT_APP_EMAILJS_SERVICEID;
-
-// Initialize EmailJS with the public key and additional configuration.
-emailjs.init({
-  publicKey: REACT_APP_EMAILJS_PUBLICKEY,
-  // Do not allow headless browsers
-  blockHeadless: true,
-  limitRate: {
-    // Set the limit rate for the application
-    id: "app",
-    // Allow 1 request per 10s
-    throttle: 10000,
-  },
-});
 
 const Contact = () => {
   const [formState, setFormState] = useState({
@@ -68,26 +50,26 @@ const Contact = () => {
   const hasError = (field) =>
     formState.touched[field] && formState.errors[field] ? true : false;
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    setSendingStatus("Just a moment...");
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+  //   setSendingStatus("Just a moment...");
 
-    emailjs
-      .sendForm(
-        REACT_APP_EMAILJS_SERVICEID,
-        REACT_APP_EMAILJS_TEMPLATEID,
-        e.target,
-        REACT_APP_EMAILJS_PUBLICKEY
-      )
-      .then((res) => {
-        console.log("SUCCESS!", res.status, res.text);
-        setSendingStatus("Message Sent Successfully");
-      })
-      .catch((error) => {
-        console.log("FAILED...", error);
-        setSendingStatus("Send");
-      });
-  };
+  //   emailjs
+  //     .sendForm(
+  //       REACT_APP_EMAILJS_SERVICEID,
+  //       REACT_APP_EMAILJS_TEMPLATEID,
+  //       e.target,
+  //       REACT_APP_EMAILJS_PUBLICKEY
+  //     )
+  //     .then((res) => {
+  //       console.log("SUCCESS!", res.status, res.text);
+  //       setSendingStatus("Message Sent Successfully");
+  //     })
+  //     .catch((error) => {
+  //       console.log("FAILED...", error);
+  //       setSendingStatus("Send");
+  //     });
+  // };
 
   useEffect(() => {
     const errors = validate(formState.values, schema);
@@ -101,7 +83,7 @@ const Contact = () => {
   return (
     <>
       <Container maxWidth="md">
-        <form name="contact-form" onSubmit={sendEmail}>
+        <form name="contact-form" onSubmit={}>
           <Grid container spacing={2} justifyContent="center">
             <Grid item xs={12}>
               <Typography
