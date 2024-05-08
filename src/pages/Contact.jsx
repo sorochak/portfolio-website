@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Typography, Container, Grid, Button, TextField } from "@mui/material";
+import {
+  Typography,
+  Container,
+  Grid,
+  Button,
+  TextField,
+  Box,
+} from "@mui/material";
 import validate from "validate.js";
-
 
 const Contact = () => {
   const [formState, setFormState] = useState({
@@ -81,9 +87,17 @@ const Contact = () => {
   }, [formState.values, schema]);
 
   return (
-    <>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        paddingTop: "70px",
+        height: "90vh",
+      }}
+    >
       <Container maxWidth="md">
-        <form name="contact-form" onSubmit={}>
+        <form name="contact-form" onSubmit={console.log("submitted")}>
           <Grid container spacing={2} justifyContent="center">
             <Grid item xs={12}>
               <Typography
@@ -187,7 +201,7 @@ const Contact = () => {
           </Grid>
         </form>
       </Container>
-    </>
+    </Box>
   );
 };
 
