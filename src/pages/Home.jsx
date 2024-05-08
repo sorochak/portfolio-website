@@ -14,9 +14,14 @@ import backgroundImage from "../static/nayuca.webp";
 import { ColorModeContext } from "../components/BaseView";
 import signature from "../static/sorochakSignature.png";
 import avatarImage from "../static/selfie.jpg";
+import Logo from "../components/Logo";
 
 const Home = () => {
   const theme = useTheme();
+  const isMobileLandscape = useMediaQuery(
+    "(max-width: 930px) and (orientation: landscape)"
+  );
+
   const { mode } = useContext(ColorModeContext);
 
   // Using useMediaQuery to detect if the screen size is <='small' for conditional rendering
@@ -47,7 +52,7 @@ const Home = () => {
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          minHeight: "50vh",
+          minHeight: isMobileLandscape ? "100vh" : "50vh",
           px: 3,
           borderBottom: 1,
           borderColor: "primary.main",
@@ -82,8 +87,8 @@ const Home = () => {
                 textShadow: textShadow,
                 textAlign: "center",
                 fontSize: {
-                  xs: "1.75rem", // Smaller font size for xs screens
-                  sm: "2.25rem", // Default size for sm screens and above
+                  xs: "2rem",
+                  sm: "2.25rem",
                 },
               }}
             >
@@ -102,8 +107,8 @@ const Home = () => {
                     fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                     textShadow: textShadow,
                     textAlign: "center",
-                    fontSize: "0.9rem", // Smaller font size for more compact display
-                    lineHeight: 1.2, // Adjust line height to improve readability
+                    fontSize: "1.3rem",
+                    lineHeight: 1.2,
                   }}
                 >
                   Full-stack Developer
@@ -117,7 +122,7 @@ const Home = () => {
                     fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                     textShadow: textShadow,
                     textAlign: "center",
-                    fontSize: "0.9rem", // Consistent font size for uniform appearance
+                    fontSize: "1rem",
                     lineHeight: 1.2,
                   }}
                 >
@@ -155,13 +160,13 @@ const Home = () => {
         </Box>
       </Box>
       {/* About section with responsive grid layout */}
-      <Container maxWidth="lg" id="about-section" sx={{ minHeight: "30vh" }}>
+      <Container maxWidth="lg" id="about-section">
         {/* Outer box providing consistent spacing for the about section */}
         <Box
           sx={{
             marginTop: {
-              xs: 5, // marginTop of 5 for extra small screens (up to 600px)
-              sm: 8, // marginTop of 8 for small screens (600px and above)
+              xs: 5,
+              sm: 8,
             },
             marginBottom: { lg: 5 },
           }}
@@ -174,8 +179,9 @@ const Home = () => {
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: "center", // Ensures the image is centered
-                  marginLeft: { md: 9 }, // Adds left margin on larger screens only if needed
+                  justifyContent: "center",
+                  marginLeft: { lg: 9 },
+                  marginBottom: { md: 3 },
                 }}
               >
                 {/* CardMedia component for profile image with responsive adjustments */}
@@ -185,13 +191,13 @@ const Home = () => {
                   alt="selfie"
                   sx={{
                     width: {
-                      xs: "85%", // Full width on extra small screens
-                      sm: "80%", // 80% width on small screens
-                      md: "80%", // 50% width on medium screens, adjust as needed
-                      lg: "80%", // Fixed width on large screens or adjust as needed
+                      xs: "85%",
+                      sm: "80%",
+                      md: "80%",
+                      lg: "80%",
                     },
 
-                    height: "auto", // Adjust height automatically based on the aspect ratio
+                    height: "auto",
                     objectFit: "cover",
                     borderRadius: "15%",
                     border: 2,
@@ -208,14 +214,34 @@ const Home = () => {
                   flex: 1,
                   marginRight: { lg: 4 },
                   marginTop: 2,
+                  marginLeft: { xs: 1.5, sm: 0 },
                   padding: {
-                    xs: 3,
+                    xs: 2,
                     sm: 5,
                     md: 1,
                   },
                 }}
               >
-                {/* Heading introducing Austen */}
+                {isMobile ? (
+                  <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                    <Logo
+                      width="50px"
+                      height="50px"
+                      style={{
+                        filter:
+                          "drop-shadow(2px 2px 1.5px rgba(255,255,255,1))",
+                      }}
+                    />
+                    <Typography
+                      variant="body1"
+                      color="text.secondary"
+                      sx={{ ml: 2, mt: 0 }}
+                    >
+                      Tech-meets-Terra: A Digital Dive into Nature's Depths
+                    </Typography>
+                  </Box>
+                ) : null}
+                {/* Heading introducing Austen */}{" "}
                 <Typography variant="h4" gutterBottom>
                   Hi, I'm Austen!
                 </Typography>
@@ -242,16 +268,15 @@ const Home = () => {
                   sx={{
                     mb: 2,
                     fontSize: {
-                      xs: "1rem", // Apply 1rem font size for 'xs' and 'sm' sizes
-                      xl: "1.1rem", // Apply 1.1rem starting from 'md' sizes
+                      xs: "1rem",
+                      xl: "1.1rem",
                     },
                   }}
                 >
                   I graduated from Camosun College with a focus on Information &
                   Computer Systems and currently design, develop, and deploy
-                  software that simplifies interactions with complex datasets.
-                  My technical expertise includes JavaScript, PostgreSQL,
-                  Docker, Git, Python/Django, and various Cloud Products.
+                  software that enhances the accessibility and usability of
+                  complex datasets.
                 </Typography>
                 {/* Paragraph highlighting diverse experiences in environmental management */}
                 <Typography
@@ -259,8 +284,8 @@ const Home = () => {
                   sx={{
                     mb: 2,
                     fontSize: {
-                      xs: "1rem", // Apply 1rem font size for 'xs' and 'sm' sizes
-                      xl: "1.1rem", // Apply 1.1rem starting from 'md' sizes
+                      xs: "1rem",
+                      xl: "1.1rem",
                     },
                   }}
                 >

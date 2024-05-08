@@ -189,6 +189,7 @@ const Header = () => {
                 justifyContent: "center",
                 flexGrow: 1,
                 flexShrink: 1,
+                marginTop: "8px",
                 width: "100%",
                 position: "absolute",
                 left: "50%",

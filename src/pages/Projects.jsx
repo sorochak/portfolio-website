@@ -1,4 +1,4 @@
-import { Box, Typography, Container, Grid, Paper } from "@mui/material";
+import { Box, Typography, Container, Grid } from "@mui/material";
 
 const Projects = () => {
   return (
@@ -7,21 +7,18 @@ const Projects = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
-        padding: 3,
-        paddingTop: "100px",
-        // marginTop: 5,
+        paddingTop: "70px",
       }}
     >
-      <Container maxWidth="false">
-        <Grid container spacing={3} justifyContent="center">
+      <Container maxWidth="md">
+        <Grid justifyContent="center">
           {/* Project Header */}
           <Typography
             variant="h4"
             align="center"
             sx={{
               mb: 2,
-              marginTop: "50px",
+              mt: { xs: 3, md: 6 },
               fontWeight: "bold",
               fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
             }}
@@ -29,25 +26,27 @@ const Projects = () => {
             SELECTED PROJECTS
           </Typography>
           <Grid item xs={12} md={12} lg={12}>
-            {/* Hakai Data Portal */}
-            <Paper
-              sx={{
-                padding: 8,
-                flexDirection: "column",
-                minHeight: "60vh",
-                alignItems: "center",
-                margin: 3,
-              }}
+            {/* EIMS */}
+            <Box
               elevation={3}
+              sx={{
+                padding: { xs: 2, sm: 4 },
+                margin: { xs: 1, md: 3 },
+                flexDirection: "column",
+                alignItems: "center",
+              }}
             >
               {/* Project Title */}
               <Typography
-                variant="h3"
                 color="primary"
                 gutterBottom
-                sx={{ textAlign: "left" }}
+                sx={{
+                  textAlign: "left",
+                  fontSize: { xs: "1.4rem", lg: "2.3rem" },
+                  lineHeight: 1.2,
+                }}
               >
-                Hakai Data Portal
+                Hakai Ecological Information Management System (EIMS)
               </Typography>
 
               {/* Tags */}
@@ -55,25 +54,26 @@ const Projects = () => {
                 sx={{
                   display: "flex",
                   flexWrap: "wrap",
-                  justifyContent: "left",
-                  // margin: 2,
+                  mb: 2,
                 }}
               >
                 {[
+                  "JavaScript",
                   "React",
                   "Redux",
-                  "Chai",
-                  "Docker",
+                  "Node",
+                  "Webpack",
                   "Leaflet",
                   "ObservablePlot",
-                  "Node",
+                  "MUI",
                   "postgreSQL",
+                  "Docker",
                 ].map((tag) => (
                   <Typography
                     key={tag}
                     variant="body2"
                     color="textSecondary"
-                    sx={{ marginRight: 1, marginBottom: 1 }}
+                    sx={{ marginRight: 1, marginBottom: 1, lineHeight: 1 }}
                   >
                     #{tag}
                   </Typography>
@@ -81,21 +81,10 @@ const Projects = () => {
               </Box>
 
               {/* Description */}
-              <Typography
-                variant="body1"
-                sx={{ textAlign: "left", marginBottom: 2 }}
-              >
-                The Hakai Data Portal is an internal dynamic React web
-                application designed to facilitate the management and
-                distribution of scientific data. Integrating with the Hakai-API,
-                which provides access to data in JSON format, directly from the
-                Hakai EIMS (Ecological Information Management System) PostgreSQL
-                database. Primarily serving researchers and data analysts, the
-                portal simplifies the process of incorporating vast datasets
-                into scripts for statistical analysis, eliminating the need for
-                pre-downloading. It's an essential tool for scientific
-                researchers, optimizing data handling and accessibility to
-                empower discovery and innovation.
+              <Typography variant="body1" sx={{ marginBottom: 2 }}>
+                The EIMS integrates a dynamic React web portal and a RESTful API
+                (Node.js and Koa) to efficiently manage scientific data from a
+                PostgreSQL database.
               </Typography>
 
               {/* List of Work */}
@@ -108,50 +97,55 @@ const Projects = () => {
                 sx={{
                   listStyle: "none",
                   padding: 0,
-                  margin: 0,
                   "& li": {
                     position: "relative",
-                    paddingLeft: "1em", // Adjust as necessary for alignment
+                    paddingLeft: "1em",
+                    mb: 1,
                   },
                   "& li:before": {
                     content: '"•"',
                     position: "absolute",
-                    left: 0, // Adjust as necessary
+                    left: 0,
                   },
                 }}
               >
                 {[
-                  "Developed eight features for Reach by using React, Redux, and Material UI",
-                  "Implemented testing strategies with Chai and Mocha",
-                  "",
-                  // ...add all the other points
+                  "Developed and updated API endpoints, ensuring alignment with data access requirements",
+                  "Updated database queries, views, and migration files to enhance functionality and support efficient data retrieval",
+                  "Enhanced CI/CD pipeline by integrating Github Actions with Docker, optimizing configurations for multi-environment builds and improved deployment",
+                  "Advanced error tracking and debugging capabilities by incorporating monitoring tools such as Sentry, improving reliability and operational efficiency",
+                  "Enhanced functionality by integrating geospatial mapping features and dynamic charts for data visualization",
                 ].map((item) => (
                   <Box component="li" key={item} sx={{ textAlign: "left" }}>
                     <Typography variant="body1">{item}</Typography>
                   </Box>
                 ))}
               </Box>
-            </Paper>
+            </Box>
 
             {/* Metadata Entry Form */}
-            <Paper
+            <Box
               sx={{
-                padding: 8,
+                pl: { xs: 2, sm: 4 },
+                pr: { xs: 2, sm: 4 },
+                pb: { xs: 2, sm: 4 },
+                margin: { xs: 1, md: 3 },
                 flexDirection: "column",
-                minHeight: "60vh",
                 alignItems: "center",
-                margin: 3,
               }}
-              elevation={3}
             >
               {/* Project Title */}
               <Typography
-                variant="h3"
                 color="primary"
                 gutterBottom
-                sx={{ textAlign: "left" }}
+                sx={{
+                  textAlign: "left",
+                  fontSize: { xs: "1.4rem", lg: "2.3rem" },
+                  lineHeight: 1.2,
+                }}
               >
-                Metadata Entry Form
+                Canadian Integrated Ocean Observing System (CIOOS) Metadata
+                Entry Form
               </Typography>
 
               {/* Tags */}
@@ -159,25 +153,21 @@ const Projects = () => {
                 sx={{
                   display: "flex",
                   flexWrap: "wrap",
-                  justifyContent: "left",
-                  // margin: 2,
+                  mb: 2,
                 }}
               >
                 {[
+                  "JavaScript",
                   "React",
-                  "Redux",
-                  "Chai",
-                  "Docker",
-                  "Leaflet",
-                  "ObservablePlot",
-                  "Node",
-                  "postgreSQL",
+                  "GoogleCloudFunctions",
+                  "GoogleRealtimeDatabase",
+                  "GitHubActions",
                 ].map((tag) => (
                   <Typography
                     key={tag}
                     variant="body2"
                     color="textSecondary"
-                    sx={{ marginRight: 1, marginBottom: 1 }}
+                    sx={{ marginRight: 1, marginBottom: 1, lineHeight: 1 }}
                   >
                     #{tag}
                   </Typography>
@@ -189,17 +179,8 @@ const Projects = () => {
                 variant="body1"
                 sx={{ textAlign: "left", marginBottom: 2 }}
               >
-                The Hakai Data Portal is an internal dynamic React web
-                application designed to facilitate the management and
-                distribution of scientific data. Integrating with the Hakai-API,
-                which provides access to data in JSON format, directly from the
-                Hakai EIMS (Ecological Information Management System) PostgreSQL
-                database. Primarily serving researchers and data analysts, the
-                portal simplifies the process of incorporating vast datasets
-                into scripts for statistical analysis, eliminating the need for
-                pre-downloading. It's an essential tool for scientific
-                researchers, optimizing data handling and accessibility to
-                empower discovery and innovation.
+                A React app facilitating oceanographic data access, relying on
+                Flask and Google Cloud Platform for back-end services.
               </Typography>
 
               {/* List of Work */}
@@ -212,10 +193,10 @@ const Projects = () => {
                 sx={{
                   listStyle: "none",
                   padding: 0,
-                  margin: 0,
                   "& li": {
                     position: "relative",
-                    paddingLeft: "1em", // Adjust as necessary for alignment
+                    paddingLeft: "1em",
+                    mb: 1,
                   },
                   "& li:before": {
                     content: '"•"',
@@ -225,8 +206,12 @@ const Projects = () => {
                 }}
               >
                 {[
-                  "Developed eight features for Reach by using React, Redux, and Material UI",
-                  "Implemented testing strategies with Jest and React Testing Library",
+                  "Crafted UI/UX designs emphasizing usability and aesthetic appeal",
+                  "Implemented form controls and validation for user input management, enhancing data integrity and user experience",
+                  "Improved security, reliability, and maintainability of the Google Firebase back-end through the adoption of Google’s best practices",
+                  "Refined CI/CD processes and environment configs to ensure reliable operations.",
+                  "Integrated with third-party APIs, expanding the capability of metadata handling.",
+                  "Authored updates to documentation and systems diagrams, ensuring maintainability",
                   // ...add all the other points
                 ].map((item) => (
                   <Box component="li" key={item} sx={{ textAlign: "left" }}>
@@ -234,7 +219,7 @@ const Projects = () => {
                   </Box>
                 ))}
               </Box>
-            </Paper>
+            </Box>
           </Grid>
         </Grid>
       </Container>
