@@ -10,6 +10,7 @@ import {
 import validate from "validate.js";
 
 const Contact = () => {
+  // State object to hold the form's current state
   const [formState, setFormState] = useState({
     isValid: false,
     values: {},
@@ -17,8 +18,11 @@ const Contact = () => {
     errors: {},
   });
 
+  // State to handle the status message of the "Send" button.
   const [sendingStatus, setSendingStatus] = useState("Send");
 
+  // Validation schema for the form, which checks for required fields and validates email format.
+  // Schema will not change, so this memoized function is only created once.
   const schema = useMemo(
     () => ({
       name: {
@@ -37,15 +41,18 @@ const Contact = () => {
     []
   );
 
+  // Updates the form state whenever a field changes. Persists the event and tracks touched fields.
   const handleChange = (e) => {
-    e.persist();
+    e.persist(); // Keeps the event available even after the function has run.
     setFormState((formState) => ({
       ...formState,
       values: {
+        // Updates the corresponding form field's value.
         ...formState.values,
         [e.target.name]:
           e.target.type === "checkbox" ? e.target.checked : e.target.value,
       },
+      // Marks the field as touched to trigger validation.
       touched: {
         ...formState.touched,
         [e.target.name]: true,
@@ -77,6 +84,8 @@ const Contact = () => {
   //     });
   // };
 
+  // Form validation logic that updates errors and the `isValid` property.
+  // re-runs validation when form values change.
   useEffect(() => {
     const errors = validate(formState.values, schema);
     setFormState((formState) => ({
@@ -134,6 +143,7 @@ const Contact = () => {
                 below or send me a message directly at info@austensorochak.com.
               </Typography>
             </Grid>
+            {/* Input field for the Name */}
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
@@ -149,6 +159,7 @@ const Contact = () => {
                 onChange={handleChange}
               />
             </Grid>
+            {/* Input field for the Email */}
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
@@ -167,6 +178,7 @@ const Contact = () => {
                 value={formState.values.email || ""}
               />
             </Grid>
+            {/* Input field for the Message */}
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -186,6 +198,7 @@ const Contact = () => {
                 onChange={handleChange}
               />
             </Grid>
+            {/* Submit button to send the form data */}
             <Grid item xs={12}>
               <Button
                 fullWidth
