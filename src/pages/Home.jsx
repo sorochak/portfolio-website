@@ -36,9 +36,6 @@ const Home = () => {
       ? "1px 1px 20px #fff0, 0 0 25px #ffffff70, 0 0 15px #ffffff80"
       : "1px 1px 20px #fff, 0 0 25px #fff, 0 0 15px #fff";
 
-  console.log("Is mobile:", isMobile); // Should be true on mobile devices
-  console.log("Is landscape:", isMobileLandscape); // Should be true only in landscape orientation
-
   return (
     <>
       {/* Main hero container with background image */}
