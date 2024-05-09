@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  ContactFormFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: contact-form-function/
+      Handler: app.lambdaHandler
+      Runtime: nodejs18.x
+      Timeout: 10
+      Architectures:
+        - x86_64
+      Policies:
+        Statement:
+          - Effect: "Allow"
+            Action:
+              - "logs:CreateLogGroup"
+              - "logs:CreateLogStream"
+              - "logs:PutLogEvents"
+            Resource: "arn:aws:logs:*:*:*"
+          - Effect: "Allow"
+            Action:
+              - "ses:SendEmail"
+            Resource: "*"
+      Events:
+        ContactFormApi:
+          Type: Api
+          Properties:
+            Path: /contact
+            Method: post
+
+Outputs:
+  ContactFormApiUrl:
+    Description: "API Gateway endpoint URL for Prod stage for Contact Form function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/contact/"
+  ContactFormFunctionArn:
+    Description: "Contact Form Lambda Function ARN"
+    Value: !GetAtt ContactFormFunction.Arn
+  ContactFormFunctionIamRole:
+    Description: "Implicit IAM Role created for Contact Form function"
+    Value: !GetAtt ContactFormFunctionRole.Arn
