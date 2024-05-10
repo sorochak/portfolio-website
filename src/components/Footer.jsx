@@ -1,5 +1,12 @@
 import { Link as RouterLink } from "react-router-dom";
-import { Box, Typography, Container, Grid, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Container,
+  Grid,
+  useMediaQuery,
+  Button,
+} from "@mui/material";
 import Link from "@mui/material/Link";
 import { LinkedIn, GitHub } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
@@ -67,17 +74,39 @@ const Footer = () => {
             sm={isMobile ? 6 : 4}
             sx={{ textAlign: isMobile ? "center" : "inherit" }}
           >
-            <Typography
-              variant="h6"
-              color="text.primary"
-              gutterBottom
-              align="center"
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
             >
-              Let's Chat!
-            </Typography>
-            <Typography variant="body2" color="text.secondary" align="center">
-              Email: info@austensorochak.com
-            </Typography>
+              <Typography
+                variant="h6"
+                color="text.primary"
+                gutterBottom={false}
+                align="center"
+              >
+                Let's Chat!
+              </Typography>
+              <Typography
+                variant="h6"
+                color="primary"
+                gutterBottom
+                align="center"
+                component={RouterLink}
+                to="/contact"
+                sx={{
+                  cursor: "pointer",
+                  textDecoration: "none",
+                  "&:hover": {
+                    transform: "scale(1.1)",
+                  },
+                }}
+              >
+                CONTACT ME
+              </Typography>
+            </Box>
           </Grid>
           <Grid
             item
