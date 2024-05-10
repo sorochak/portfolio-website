@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import {
   Typography,
   Container,
@@ -10,23 +10,35 @@ import {
 import validate from "validate.js";
 
 const Contact = () => {
-  // State object to manage the current form state, including validation.
+  /**
+   * `formState` stores the state of the contact form, which includes:
+   * - `isValid`: Whether the form is valid or not.
+   * - `values`: An object containing the current values of form fields.
+   * - `touched`: Tracks which fields have been interacted with.
+   * - `errors`: Stores validation errors for each form field.
+   */
   const [formState, setFormState] = useState({
     isValid: false,
-    values: { name: "", email: "", message: "", userCode: "" }, //userCode is a honeypot field to prevent spam bots from submitting the form.
-    touched: {}, // Tracks which form fields have been interacted with.
-    errors: {}, // Contains validation errors for each form field.
+    values: { name: "", email: "", message: "", userCode: "" },
+    touched: {},
+    errors: {},
   });
 
   // State to handle the status message of the "Send" button.
+  // It updates to show different messages like "Send," "Just a moment...," or error messages.
   const [sendingStatus, setSendingStatus] = useState("Send");
 
   // Lambda API endpoint to which the form data will be sent.
   const contactEndpoint =
     "https://sbanydhmje.execute-api.us-east-1.amazonaws.com/Prod/contact";
 
-  // Form validation schema, which defines rules for each field.
-  // Memoized for efficiency since it remains constant throughout the component's lifecycle.
+  /**
+   * `schema` defines validation rules for each form field using `validate.js`.
+   * - `name`: Must be present and under 128 characters.
+   * - `email`: Must be present, a valid email address, and under 300 characters.
+   * - `message`: Must be present (not empty).
+   * The useMemo hook ensures that the validation schema is only created once
+   */
   const schema = useMemo(
     () => ({
       name: {
@@ -45,18 +57,16 @@ const Contact = () => {
     []
   );
 
-  // Updates the form state whenever a field changes. Persists the event and tracks touched fields.
+  // Handles form field changes, updating the form state but not triggering validation.
   const handleChange = (e) => {
-    e.persist(); // Persists the event object beyond the function's execution.
+    e.persist();
     setFormState((formState) => ({
       ...formState,
       values: {
-        // Updates the corresponding form field's value.
         ...formState.values,
         [e.target.name]:
           e.target.type === "checkbox" ? e.target.checked : e.target.value,
       },
-      // Marks the field as touched to trigger validation.
       touched: {
         ...formState.touched,
         [e.target.name]: true,
@@ -68,26 +78,39 @@ const Contact = () => {
   const hasError = (field) =>
     formState.touched[field] && formState.errors[field] ? true : false;
 
-  // Handles form submission via an HTTP POST request to the Lambda endpoint.
+  // Handles form submission via an HTTP POST request to the Lambda endpoint, validating the form first.
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevents the form's default submission behavior.
-    if (!formState.values.userCode) {
-      // Submit only if the honeypot field is empty.
+    e.preventDefault();
+
+    // Perform validation when the form is submitted
+    const errors = validate(formState.values, schema);
+    const isValid = !errors;
+
+    setFormState((formState) => ({
+      ...formState,
+      isValid,
+      errors: errors || {},
+      touched: {
+        name: true,
+        email: true,
+        message: true,
+      },
+    }));
+
+    // Proceed only if the form is valid and honeypot field is empty.
+    if (isValid && !formState.values.userCode) {
       setSendingStatus("Just a moment...");
 
       try {
-        // Sends a POST request to the Lambda endpoint with the form data.
+        // Send the form data to the specified endpoint using a POST request
         const response = await fetch(contactEndpoint, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formState.values),
         });
-        // Extracts the response data and updates the sending status.
-        const data = await response.json();
-        setSendingStatus(data.message);
-        resetFormState(); // Resets the form fields after successful submission.
+        const data = await response.json(); // Parse the JSON response
+        setSendingStatus(data.message); // Display the server response message
+        resetFormState(); // Reset the form after a successful submission
       } catch (error) {
         console.error("Error sending contact form:", error);
         setSendingStatus("Failed to send message");
@@ -95,7 +118,7 @@ const Contact = () => {
     }
   };
 
-  // Resets the form state to its initial values, effectively clearing the form.
+  // Resets the form state to its initial values.
   const resetFormState = () => {
     setFormState({
       isValid: false,
@@ -104,18 +127,6 @@ const Contact = () => {
       errors: {},
     });
   };
-
-  // Effect that runs form validation whenever the form values change.
-  useEffect(() => {
-    // Validate form values against the defined schema.
-    const errors = validate(formState.values, schema);
-    // Updates form state with validation results.
-    setFormState((formState) => ({
-      ...formState,
-      isValid: errors ? false : true,
-      errors: errors || {},
-    }));
-  }, [formState.values, schema]);
 
   return (
     <Box
@@ -145,30 +156,15 @@ const Contact = () => {
               <Typography
                 variant="h6"
                 align="center"
-                sx={{
-                  fontWeight: "medium",
-                }}
+                sx={{ fontWeight: "medium" }}
               >
                 Say Hello!
               </Typography>
-              <Typography
-                variant="body1"
-                color="textSecondary"
-                align="left"
-                sx={{
-                  fontWeight: "regular",
-                  lineHeight: 1.5,
-                  mt: 1,
-                }}
-              >
-                If you’d like to send me a message, simply fill out the form
-                below or send me a message directly at info@austensorochak.com.
-              </Typography>
             </Grid>
-            {/* Input field for the honeypot */}
+            {/* Honeypot field */}
             <TextField
-              sx={{ position: "absolute", left: "-5000px" }} // CSS to move the field off-screen
-              aria-hidden="true" // Hide from screen readers
+              sx={{ position: "absolute", left: "-5000px" }}
+              aria-hidden="true"
               placeholder="Code"
               name="userCode"
               id="userCode"
@@ -201,7 +197,7 @@ const Contact = () => {
                 size="medium"
                 name="email"
                 id="email"
-                type="email"
+                type="text" // Changed from "email" to "text"
                 helperText={
                   hasError("email") ? formState.errors.email[0] : null
                 }
@@ -238,7 +234,6 @@ const Contact = () => {
                 variant="contained"
                 type="submit"
                 color="primary"
-                disabled={!formState.isValid}
               >
                 {sendingStatus}
               </Button>
