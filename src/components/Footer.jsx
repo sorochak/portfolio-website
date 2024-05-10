@@ -1,12 +1,5 @@
-import { Link as RouterLink } from "react-router-dom";
-import {
-  Box,
-  Typography,
-  Container,
-  Grid,
-  useMediaQuery,
-  Button,
-} from "@mui/material";
+import { Link as RouterLink, useLocation } from "react-router-dom";
+import { Box, Typography, Container, Grid, useMediaQuery } from "@mui/material";
 import Link from "@mui/material/Link";
 import { LinkedIn, GitHub } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
@@ -15,6 +8,10 @@ import Logo from "./Logo";
 const Footer = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const location = useLocation();
+
+  // Check if the user is on the contact page
+  const isOnContactPage = location.pathname === "/contact";
 
   return (
     <Box
@@ -74,39 +71,42 @@ const Footer = () => {
             sm={isMobile ? 6 : 4}
             sx={{ textAlign: isMobile ? "center" : "inherit" }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                variant="h6"
-                color="text.primary"
-                gutterBottom={false}
-                align="center"
-              >
-                Let's Chat!
-              </Typography>
-              <Typography
-                variant="h6"
-                color="primary"
-                gutterBottom
-                align="center"
-                component={RouterLink}
-                to="/contact"
+            {/* Conditionally render Let's Chat and Contact Me based on location */}
+            {!isOnContactPage && (
+              <Box
                 sx={{
-                  cursor: "pointer",
-                  textDecoration: "none",
-                  "&:hover": {
-                    transform: "scale(1.1)",
-                  },
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
-                CONTACT ME
-              </Typography>
-            </Box>
+                <Typography
+                  variant="h6"
+                  color="text.primary"
+                  gutterBottom={false}
+                  align="center"
+                >
+                  Let's Chat!
+                </Typography>
+                <Typography
+                  variant="h6"
+                  color="primary"
+                  gutterBottom
+                  align="center"
+                  component={RouterLink}
+                  to="/contact"
+                  sx={{
+                    cursor: "pointer",
+                    textDecoration: "none",
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                    },
+                  }}
+                >
+                  CONTACT ME
+                </Typography>
+              </Box>
+            )}
           </Grid>
           <Grid
             item
