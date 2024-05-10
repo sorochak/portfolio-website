@@ -10,23 +10,23 @@ import {
 import validate from "validate.js";
 
 const Contact = () => {
-  // State object to hold the form's current state
+  // State object to manage the current form state, including validation.
   const [formState, setFormState] = useState({
     isValid: false,
     values: { name: "", email: "", message: "", userCode: "" }, //userCode is a honeypot field to prevent spam bots from submitting the form.
-    touched: {},
-    errors: {},
+    touched: {}, // Tracks which form fields have been interacted with.
+    errors: {}, // Contains validation errors for each form field.
   });
 
   // State to handle the status message of the "Send" button.
   const [sendingStatus, setSendingStatus] = useState("Send");
 
-  // lambda endpoint
+  // Lambda API endpoint to which the form data will be sent.
   const contactEndpoint =
     "https://sbanydhmje.execute-api.us-east-1.amazonaws.com/Prod/contact";
 
-  // Validation schema for the form, which checks for required fields and validates email format.
-  // Schema will not change, so this memoized function is only created once.
+  // Form validation schema, which defines rules for each field.
+  // Memoized for efficiency since it remains constant throughout the component's lifecycle.
   const schema = useMemo(
     () => ({
       name: {
@@ -47,7 +47,7 @@ const Contact = () => {
 
   // Updates the form state whenever a field changes. Persists the event and tracks touched fields.
   const handleChange = (e) => {
-    e.persist(); // Keeps the event available even after the function has run.
+    e.persist(); // Persists the event object beyond the function's execution.
     setFormState((formState) => ({
       ...formState,
       values: {
@@ -64,15 +64,19 @@ const Contact = () => {
     }));
   };
 
+  // Helper function to check if a form field has an error.
   const hasError = (field) =>
     formState.touched[field] && formState.errors[field] ? true : false;
 
+  // Handles form submission via an HTTP POST request to the Lambda endpoint.
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevents the form's default submission behavior.
     if (!formState.values.userCode) {
+      // Submit only if the honeypot field is empty.
       setSendingStatus("Just a moment...");
 
       try {
+        // Sends a POST request to the Lambda endpoint with the form data.
         const response = await fetch(contactEndpoint, {
           method: "POST",
           headers: {
@@ -80,9 +84,10 @@ const Contact = () => {
           },
           body: JSON.stringify(formState.values),
         });
+        // Extracts the response data and updates the sending status.
         const data = await response.json();
         setSendingStatus(data.message);
-        resetFormState();
+        resetFormState(); // Resets the form fields after successful submission.
       } catch (error) {
         console.error("Error sending contact form:", error);
         setSendingStatus("Failed to send message");
@@ -90,6 +95,7 @@ const Contact = () => {
     }
   };
 
+  // Resets the form state to its initial values, effectively clearing the form.
   const resetFormState = () => {
     setFormState({
       isValid: false,
@@ -99,10 +105,11 @@ const Contact = () => {
     });
   };
 
-  // Form validation logic that updates errors and the `isValid` property.
-  // re-runs validation when form values change.
+  // Effect that runs form validation whenever the form values change.
   useEffect(() => {
+    // Validate form values against the defined schema.
     const errors = validate(formState.values, schema);
+    // Updates form state with validation results.
     setFormState((formState) => ({
       ...formState,
       isValid: errors ? false : true,
