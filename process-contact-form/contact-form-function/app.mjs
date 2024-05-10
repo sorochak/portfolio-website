@@ -16,11 +16,8 @@ const ses = new AWS.SES({ region: "us-east-1" });
 
 export const lambdaHandler = async (event, context) => {
   console.log("Lambda function started");
-  const body = {
-    name: "Agustin",
-    email: "hi@ilovemexico.com",
-    message: "I love Mexico",
-  };
+
+  const { name, email, message } = JSON.parse(event.body);
 
   const params = {
     Destination: {
@@ -29,13 +26,13 @@ export const lambdaHandler = async (event, context) => {
     Message: {
       Body: {
         Text: {
-          Data: `Name: ${body.name}\nEmail: ${body.email}\nMessage: ${body.message}`,
+          Data: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
         },
       },
       Subject: { Data: "New Contact Form Submission" },
     },
     Source: "austensorochak@gmail.com", // Your verified email address in SES
-    ReplyToAddresses: [body.email], // User's email address for easy reply
+    ReplyToAddresses: [email], // User's email address for easy reply
   };
 
   try {
@@ -43,13 +40,17 @@ export const lambdaHandler = async (event, context) => {
     console.log("Lambda function finished");
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        body: JSON.stringify({ message: "Email sent successfully" }),
-      }),
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+      },
+      body: JSON.stringify({ message: "Email sent successfully" }),
     };
   } catch (err) {
     return {
       statusCode: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+      },
       body: JSON.stringify({ message: "Error sending email", err }),
     };
   }
