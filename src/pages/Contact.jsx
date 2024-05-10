@@ -17,12 +17,14 @@ const Contact = () => {
     touched: {},
     errors: {},
   });
+  const [responseMessage, setResponseMessage] = useState("");
 
   // State to handle the status message of the "Send" button.
   const [sendingStatus, setSendingStatus] = useState("Send");
 
   // lambda endpoint
-  const endpoint = "https://TBD...LambdaURL...TBD"; // Add this later
+  const endpoint =
+    "https://sbanydhmje.execute-api.us-east-1.amazonaws.com/Prod/contact";
 
   // Validation schema for the form, which checks for required fields and validates email format.
   // Schema will not change, so this memoized function is only created once.
@@ -66,11 +68,25 @@ const Contact = () => {
   const hasError = (field) =>
     formState.touched[field] && formState.errors[field] ? true : false;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formState.values.userCode) {
       setSendingStatus("Just a moment...");
-      return;
+
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formState.values),
+        });
+        const data = await response.json();
+        setSendingStatus(data.message);
+      } catch (error) {
+        console.error("Error sending contact form:", error);
+        setResponseMessage("Failed to send message");
+      }
     }
   };
 
