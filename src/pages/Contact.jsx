@@ -17,13 +17,12 @@ const Contact = () => {
     touched: {},
     errors: {},
   });
-  const [responseMessage, setResponseMessage] = useState("");
 
   // State to handle the status message of the "Send" button.
   const [sendingStatus, setSendingStatus] = useState("Send");
 
   // lambda endpoint
-  const endpoint =
+  const contactEndpoint =
     "https://sbanydhmje.execute-api.us-east-1.amazonaws.com/Prod/contact";
 
   // Validation schema for the form, which checks for required fields and validates email format.
@@ -74,7 +73,7 @@ const Contact = () => {
       setSendingStatus("Just a moment...");
 
       try {
-        const response = await fetch(endpoint, {
+        const response = await fetch(contactEndpoint, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -83,11 +82,21 @@ const Contact = () => {
         });
         const data = await response.json();
         setSendingStatus(data.message);
+        resetFormState();
       } catch (error) {
         console.error("Error sending contact form:", error);
-        setResponseMessage("Failed to send message");
+        setSendingStatus("Failed to send message");
       }
     }
+  };
+
+  const resetFormState = () => {
+    setFormState({
+      isValid: false,
+      values: { name: "", email: "", message: "", userCode: "" },
+      touched: {},
+      errors: {},
+    });
   };
 
   // Form validation logic that updates errors and the `isValid` property.
