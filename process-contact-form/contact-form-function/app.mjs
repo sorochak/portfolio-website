@@ -2,16 +2,12 @@ import AWS from "aws-sdk";
 const ses = new AWS.SES({ region: "us-east-1" });
 
 /**
+ * Lambda function handler for processing contact form submissions.
  *
- * Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
- * @param {Object} event - API Gateway Lambda Proxy Input Format
+ * @param {Object} event - The event object containing the request details.
+ * @param {Object} context - The context object containing runtime information.
  *
- * Context doc: https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html
- * @param {Object} context
- *
- * Return doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html
- * @returns {Object} object - API Gateway Lambda Proxy Output Format
- *
+ * @returns {Object} - The response object containing the result of the function execution.
  */
 
 export const lambdaHandler = async (event, context) => {
@@ -26,10 +22,10 @@ export const lambdaHandler = async (event, context) => {
     Message: {
       Body: {
         Text: {
-          Data: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+          Data: `New Contact Form Submission\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`,
         },
       },
-      Subject: { Data: "New Contact Form Submission" },
+      Subject: { Data: `New Contact Form Submission from ${name}` },
     },
     Source: "austensorochak@gmail.com", // Your verified email address in SES
     ReplyToAddresses: [email], // User's email address for easy reply
