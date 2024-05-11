@@ -67,8 +67,7 @@ const Header = () => {
       : "drop-shadow(2px 2px 1.5px rgba(255,255,255,1))";
 
   return (
-    <Box sx={{ flexGrow: 1, position: "relative" }}>
-      {" "}
+    <Box sx={{ position: "relative" }}>
       {/* Container for AppBar */}
       <AppBar
         position="absolute"
