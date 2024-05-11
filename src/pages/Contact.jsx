@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from "react";
-import { useContext } from "react";
 import {
   Typography,
   Container,
@@ -7,13 +6,15 @@ import {
   Button,
   TextField,
   Box,
-  useMediaQuery,
 } from "@mui/material";
 import validate from "validate.js";
 import backgroundImage from "../static/nayuca.webp";
-import { ColorModeContext } from "../components/BaseView";
+import useSharedStyles from "../hooks/useSharedStyles";
 
 const Contact = () => {
+  const { isMobileLandscape, childBoxBackgroundColor, textShadow } =
+    useSharedStyles();
+
   /**
    * `formState` stores the state of the contact form, which includes:
    * - `isValid`: Whether the form is valid or not.
@@ -31,24 +32,10 @@ const Contact = () => {
   // State to handle the status message of the "Send" button.
   // It updates to show different messages like "Send," "Just a moment...," or error messages.
   const [sendingStatus, setSendingStatus] = useState("Send");
-  const { mode } = useContext(ColorModeContext);
-
-  const isMobileLandscape = useMediaQuery(
-    "(max-width: 930px) and (orientation: landscape)"
-  );
 
   // Lambda API endpoint to which the form data will be sent.
   const contactEndpoint =
     "https://sbanydhmje.execute-api.us-east-1.amazonaws.com/Prod/contact";
-
-  // Background color for the overlay box, changes based on theme mode
-  const childBoxBackgroundColor =
-    mode === "dark" ? "rgba(0, 0, 0, 0.38)" : "rgba(213, 255, 252, 0.3)";
-
-  const textShadow =
-    mode === "dark"
-      ? "3px 3px 10px #ffffff70, 0 0 35px #ffffff90, 0 0 25px #ffffffa0"
-      : "1px 1px 20px #fff, 0 0 25px #fff, 0 0 15px #fff";
 
   /**
    * `schema` defines validation rules for each form field using `validate.js`.

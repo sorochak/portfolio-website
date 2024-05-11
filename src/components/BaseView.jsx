@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import BaseRouter from "./BaseRouter";
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
+export const StyleContext = createContext();
 
 const BaseView = ({ children }) => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -16,6 +17,24 @@ const BaseView = ({ children }) => {
   // Toggle function
   const toggleColorMode = () => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+  };
+
+  const isMobileLandscape = useMediaQuery(
+    "(max-width: 930px) and (orientation: landscape)"
+  );
+
+  const childBoxBackgroundColor =
+    mode === "dark" ? "rgba(0, 0, 0, 0.38)" : "rgba(213, 255, 252, 0.3)";
+
+  const textShadow =
+    mode === "dark"
+      ? "3px 3px 10px #ffffff70, 0 0 35px #ffffff90, 0 0 25px #ffffffa0"
+      : "1px 1px 20px #fff, 0 0 25px #fff, 0 0 15px #fff";
+
+  const sharedStyles = {
+    isMobileLandscape,
+    childBoxBackgroundColor,
+    textShadow,
   };
 
   const appliedTheme = createTheme({
@@ -62,44 +81,46 @@ const BaseView = ({ children }) => {
 
   return (
     <ColorModeContext.Provider value={{ mode, toggleColorMode }}>
-      <ThemeProvider theme={appliedTheme}>
-        <CssBaseline />
-        <GlobalStyles
-          styles={{
-            body: {
-              scrollbarWidth: "none", // Hide scrollbar for Firefox
-              msOverflowStyle: "none", // Hide scrollbar for Internet Explorer and Edge
-            },
-            "body::-webkit-scrollbar": {
-              display: "none", // Hide scrollbar for WebKit browsers (Chrome, Safari)
-            },
-            "::-webkit-scrollbar": {
-              display: "none", // Ensure it's applied to all scrollbars
-            },
-          }}
-        />
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            minHeight: "100vh",
-          }}
-        >
-          <Header />
+      <StyleContext.Provider value={sharedStyles}>
+        <ThemeProvider theme={appliedTheme}>
+          <CssBaseline />
+          <GlobalStyles
+            styles={{
+              body: {
+                scrollbarWidth: "none", // Hide scrollbar for Firefox
+                msOverflowStyle: "none", // Hide scrollbar for Internet Explorer and Edge
+              },
+              "body::-webkit-scrollbar": {
+                display: "none", // Hide scrollbar for WebKit browsers (Chrome, Safari)
+              },
+              "::-webkit-scrollbar": {
+                display: "none", // Ensure it's applied to all scrollbars
+              },
+            }}
+          />
           <Box
-            component="main"
             sx={{
-              flexGrow: 1,
               display: "flex",
               flexDirection: "column",
+              minHeight: "100vh",
             }}
           >
-            <BaseRouter />
-          </Box>
+            <Header />
+            <Box
+              component="main"
+              sx={{
+                flexGrow: 1,
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <BaseRouter />
+            </Box>
 
-          <Footer />
-        </Box>
-      </ThemeProvider>
+            <Footer />
+          </Box>
+        </ThemeProvider>
+      </StyleContext.Provider>
     </ColorModeContext.Provider>
   );
 };
