@@ -1,22 +1,10 @@
-import { useContext } from "react";
-import { Box, Typography, Container, Grid, useMediaQuery } from "@mui/material";
+import { Box, Typography, Container, Grid } from "@mui/material";
 import backgroundImage from "../static/nayuca.webp";
-import { ColorModeContext } from "../components/BaseView";
+import useSharedStyles from "../hooks/useSharedStyles";
 
 const Projects = () => {
-  const { mode } = useContext(ColorModeContext);
-
-  const isMobileLandscape = useMediaQuery(
-    "(max-width: 930px) and (orientation: landscape)"
-  );
-  // Background color for the overlay box, changes based on theme mode
-  const childBoxBackgroundColor =
-    mode === "dark" ? "rgba(0, 0, 0, 0.38)" : "rgba(213, 255, 252, 0.3)";
-
-  const textShadow =
-    mode === "dark"
-      ? "3px 3px 10px #ffffff70, 0 0 35px #ffffff90, 0 0 25px #ffffffa0"
-      : "1px 1px 20px #fff, 0 0 25px #fff, 0 0 15px #fff";
+  const { isMobileLandscape, childBoxBackgroundColor, textShadow } =
+    useSharedStyles();
 
   return (
     <>

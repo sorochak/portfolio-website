@@ -8,33 +8,20 @@ import {
   Grid,
   CardMedia,
 } from "@mui/material";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import backgroundImage from "../static/nayuca.webp";
-import { ColorModeContext } from "../components/BaseView";
 import signature from "../static/sorochakSignature.png";
 import avatarImage from "../static/selfie.webp";
 import Logo from "../components/Logo";
+import useSharedStyles from "../hooks/useSharedStyles";
 
 const Home = () => {
   const theme = useTheme();
-  const isMobileLandscape = useMediaQuery(
-    "(max-width: 930px) and (orientation: landscape)"
-  );
-
-  const { mode } = useContext(ColorModeContext);
+  const { isMobileLandscape, childBoxBackgroundColor, textShadow } =
+    useSharedStyles();
 
   // Using useMediaQuery to detect if the screen size is <='small' for conditional rendering
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-  // Background color for the overlay box, changes based on theme mode
-  const childBoxBackgroundColor =
-    mode === "dark" ? "rgba(0, 0, 0, 0.38)" : "rgba(213, 255, 252, 0.3)";
-
-  const textShadow =
-    mode === "dark"
-      ? "1px 1px 20px #fff0, 0 0 25px #ffffff70, 0 0 15px #ffffff80"
-      : "1px 1px 20px #fff, 0 0 25px #fff, 0 0 15px #fff";
 
   return (
     <>
