@@ -180,7 +180,6 @@ const Contact = () => {
             align="center"
             sx={{
               mb: 2,
-              fontWeight: "bold",
               fontWeight: 700,
               fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
               fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },

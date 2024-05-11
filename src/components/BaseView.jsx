@@ -7,36 +7,47 @@ import Header from "./Header";
 import Footer from "./Footer";
 import BaseRouter from "./BaseRouter";
 
+// Context to provide color mode toggle function throughout the app
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
+
+// Context to provide shared styles throughout the app
 export const StyleContext = createContext();
 
 const BaseView = ({ children }) => {
+  // Detects the user's color scheme preference
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
+  // State variable to track the current color mode ('light' or 'dark')
   const [mode, setMode] = useState(prefersDarkMode ? "dark" : "light");
 
-  // Toggle function
+  // Function to toggle between light and dark color modes
   const toggleColorMode = () => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
   };
 
+  // Detects if the screen is a mobile landscape
   const isMobileLandscape = useMediaQuery(
     "(max-width: 930px) and (orientation: landscape)"
   );
 
+  // Determines background color for child elements based on the current mode
   const childBoxBackgroundColor =
     mode === "dark" ? "rgba(0, 0, 0, 0.38)" : "rgba(213, 255, 252, 0.3)";
 
+  // Applies text shadow styling based on the current mode
   const textShadow =
     mode === "dark"
       ? "3px 3px 10px #ffffff70, 0 0 35px #ffffff90, 0 0 25px #ffffffa0"
       : "1px 1px 20px #fff, 0 0 25px #fff, 0 0 15px #fff";
 
+  // Stores shared style values to be provided throughout the app
   const sharedStyles = {
     isMobileLandscape,
     childBoxBackgroundColor,
     textShadow,
   };
 
+  // Creates a custom theme based on the current color mode
   const appliedTheme = createTheme({
     palette: {
       mode,
@@ -59,6 +70,7 @@ const BaseView = ({ children }) => {
           }),
     },
     components: {
+      // Apply custom baseline styles
       MuiCssBaseline: {
         styleOverrides: {
           body: {
@@ -80,8 +92,11 @@ const BaseView = ({ children }) => {
   });
 
   return (
+    // Provide color mode context to the entire app
     <ColorModeContext.Provider value={{ mode, toggleColorMode }}>
+      {/* Provide shared style context to the entire app */}
       <StyleContext.Provider value={sharedStyles}>
+        {/* Apply the theme using the ThemeProvider component */}
         <ThemeProvider theme={appliedTheme}>
           <CssBaseline />
           <GlobalStyles
@@ -105,6 +120,7 @@ const BaseView = ({ children }) => {
               minHeight: "100vh",
             }}
           >
+            {/* Renders the header component */}
             <Header />
             <Box
               component="main"
@@ -114,9 +130,10 @@ const BaseView = ({ children }) => {
                 flexDirection: "column",
               }}
             >
+              {/* Renders the main content router */}
               <BaseRouter />
             </Box>
-
+            {/* Renders the footer component */}
             <Footer />
           </Box>
         </ThemeProvider>
