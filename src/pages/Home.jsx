@@ -243,11 +243,11 @@ const Home = () => {
                     },
                   }}
                 >
-                  I am driven by a vision to contribute to an enlightened
-                  society through technology. My background as an Environmental
-                  Scientist and a Full-Stack Software Developer has equipped me
-                  to address critical 21st-century challenges by bringing
-                  scientific data to the web in engaging and impactful ways.
+                  I am driven by a passion for developing technologies that
+                  benefit the Earth. With a background that bridges software
+                  engineering and environmental science, I am equipped to help
+                  address critical challenges by bringing scientific data to the
+                  web in engaging and impactful ways.
                 </Typography>
                 {/* Paragraph detailing academic and professional background */}
                 <Typography
@@ -262,8 +262,7 @@ const Home = () => {
                 >
                   I graduated from Camosun College with a focus on Information &
                   Computer Systems and currently design, develop, and deploy
-                  software that enhances the accessibility and usability of
-                  complex datasets.
+                  software solutions that make complex datasets more accessible.
                 </Typography>
                 {/* Paragraph highlighting diverse experiences in environmental management */}
                 <Typography
@@ -276,12 +275,9 @@ const Home = () => {
                     },
                   }}
                 >
-                  With over seven years in environmental management, I have
-                  gained diverse experiences across Canada—from military
-                  training areas to the icy shores of northern Baffin Island and
-                  remote Indigenous communities. My work spans industries such
-                  as mining, oil & gas, water treatment, and contaminated sites
-                  remediation, providing a solid foundation for my
+                  With eight years of experience in environmental management, my
+                  work in mining, oil & gas, water treatment, and contaminated
+                  site remediation provides a strong foundation for my
                   technology-driven projects.
                 </Typography>
                 {/* Container for Austen's signature, aligned to the right */}
