@@ -1,6 +1,8 @@
 import { Box, Typography, Container, Grid } from "@mui/material";
 import backgroundImage from "../static/nayuca.webp";
 import useSharedStyles from "../hooks/useSharedStyles";
+import cioosLogo from "../static/cioos.png";
+import hakaiLogo from "../static/hakai.png";
 
 const Projects = () => {
   const { isMobileLandscape, childBoxBackgroundColor, textShadow } =
@@ -82,6 +84,23 @@ const Projects = () => {
                   alignItems: "center",
                 }}
               >
+                <a
+                  href="https://hakai.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: "inline-block", marginRight: "10px" }} // Adjust spacing between the logo and title
+                >
+                  <Box
+                    component="img"
+                    src={hakaiLogo}
+                    alt="Hakai Logo"
+                    sx={{
+                      width: { xs: "70%", sm: "60%", md: "40%", lg: "300px" },
+                      maxWidth: "100%",
+                      height: "auto",
+                    }}
+                  />
+                </a>
                 {/* Project Title */}
                 <Typography
                   color="primary"
@@ -92,7 +111,7 @@ const Projects = () => {
                     lineHeight: 1.2,
                   }}
                 >
-                  Hakai Ecological Information Management System (EIMS)
+                  Ecological Information Management System (EIMS)
                 </Typography>
 
                 {/* Tags */}
@@ -180,6 +199,23 @@ const Projects = () => {
                   alignItems: "center",
                 }}
               >
+                <a
+                  href="https://cioos.ca/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: "inline-block", marginRight: "10px" }} // Adjust spacing between the logo and title
+                >
+                  <Box
+                    component="img"
+                    src={cioosLogo}
+                    alt="CIOOS Logo"
+                    sx={{
+                      width: { xs: "70%", sm: "60%", md: "40%", lg: "300px" },
+                      maxWidth: "100%",
+                      height: "auto",
+                    }}
+                  />
+                </a>
                 {/* Project Title */}
                 <Typography
                   color="primary"
@@ -190,8 +226,7 @@ const Projects = () => {
                     lineHeight: 1.2,
                   }}
                 >
-                  Canadian Integrated Ocean Observing System (CIOOS) Metadata
-                  Entry Form
+                  Metadata Entry Form
                 </Typography>
 
                 {/* Tags */}
