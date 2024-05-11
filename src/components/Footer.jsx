@@ -22,6 +22,7 @@ const Footer = () => {
         backgroundColor: theme.palette.background.default,
         boxShadow: "none",
         transition: "all 0.5s ease-in-out",
+        mt: "auto",
       }}
     >
       <Container maxWidth="lg">

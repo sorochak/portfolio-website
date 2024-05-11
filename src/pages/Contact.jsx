@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { useContext } from "react";
 import {
   Typography,
   Container,
@@ -6,8 +7,11 @@ import {
   Button,
   TextField,
   Box,
+  useMediaQuery,
 } from "@mui/material";
 import validate from "validate.js";
+import backgroundImage from "../static/nayuca.webp";
+import { ColorModeContext } from "../components/BaseView";
 
 const Contact = () => {
   /**
@@ -27,10 +31,24 @@ const Contact = () => {
   // State to handle the status message of the "Send" button.
   // It updates to show different messages like "Send," "Just a moment...," or error messages.
   const [sendingStatus, setSendingStatus] = useState("Send");
+  const { mode } = useContext(ColorModeContext);
+
+  const isMobileLandscape = useMediaQuery(
+    "(max-width: 930px) and (orientation: landscape)"
+  );
 
   // Lambda API endpoint to which the form data will be sent.
   const contactEndpoint =
     "https://sbanydhmje.execute-api.us-east-1.amazonaws.com/Prod/contact";
+
+  // Background color for the overlay box, changes based on theme mode
+  const childBoxBackgroundColor =
+    mode === "dark" ? "rgba(0, 0, 0, 0.38)" : "rgba(213, 255, 252, 0.3)";
+
+  const textShadow =
+    mode === "dark"
+      ? "3px 3px 10px #ffffff70, 0 0 35px #ffffff90, 0 0 25px #ffffffa0"
+      : "1px 1px 20px #fff, 0 0 25px #fff, 0 0 15px #fff";
 
   /**
    * `schema` defines validation rules for each form field using `validate.js`.
@@ -129,119 +147,172 @@ const Contact = () => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        paddingTop: "70px",
-        height: "90vh",
-      }}
-    >
-      <Container maxWidth="md">
-        <form name="contact-form" onSubmit={handleSubmit}>
-          <Grid container spacing={2} justifyContent="center">
-            <Grid item xs={12}>
-              <Typography
-                variant="h4"
-                align="center"
-                sx={{
-                  mb: 2,
-                  fontWeight: "bold",
-                  fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
-                }}
-              >
-                GET IN TOUCH
-              </Typography>
-              <Typography
-                variant="h6"
-                align="center"
-                sx={{ fontWeight: "medium" }}
-              >
-                Say Hello!
-              </Typography>
-            </Grid>
-            {/* Honeypot field */}
-            <TextField
-              sx={{ position: "absolute", left: "-5000px" }}
-              aria-hidden="true"
-              placeholder="Code"
-              name="userCode"
-              id="userCode"
-              value={formState.values.userCode || ""}
-              onChange={handleChange}
-            />
-            {/* Input field for the Name */}
-            <Grid item xs={12} sm={6}>
+    <>
+      <Box
+        component="div"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "relative",
+          width: "100%",
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          minHeight: {
+            xs: "40vh", // For small screens
+            sm: isMobileLandscape ? "100vh" : "40vh", // For landscape mode on mobile
+            md: "40vh", // For medium and up screens
+          },
+          px: 3,
+          borderBottom: 1,
+          borderColor: "primary.main",
+        }}
+      >
+        {/* Overlay box for the "Get in Touch" content */}
+        <Box
+          component="div"
+          sx={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            top: 0,
+            left: 0,
+            background: childBoxBackgroundColor,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "all 0.5s ease-in-out",
+          }}
+        >
+          <Typography
+            variant="h6"
+            align="center"
+            sx={{
+              mb: 2,
+              fontWeight: "bold",
+              fontWeight: 700,
+              fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
+              fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
+              textShadow: textShadow,
+              textAlign: "center",
+              mt: 3,
+            }}
+          >
+            GET IN TOUCH
+          </Typography>
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          paddingTop: "10px",
+        }}
+      >
+        <Container maxWidth="md">
+          <form name="contact-form" onSubmit={handleSubmit}>
+            <Grid container spacing={2} justifyContent="center">
+              <Grid item xs={12}>
+                <Typography
+                  variant="h4"
+                  align="center"
+                  sx={{
+                    fontWeight: "medium",
+                    margin: { sm: "20px 0px", xs: "10px 0px" },
+                  }}
+                >
+                  Say Hello!
+                </Typography>
+              </Grid>
+              {/* Honeypot field */}
               <TextField
-                fullWidth
-                placeholder="Name"
-                label="Name *"
-                variant="outlined"
-                size="medium"
-                name="name"
-                id="name"
-                value={formState.values.name || ""}
-                helperText={hasError("name") ? formState.errors.name[0] : null}
-                error={hasError("name")}
+                sx={{ position: "absolute", left: "-5000px" }}
+                aria-hidden="true"
+                placeholder="Code"
+                name="userCode"
+                id="userCode"
+                value={formState.values.userCode || ""}
                 onChange={handleChange}
               />
+              {/* Input field for the Name */}
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  placeholder="Name"
+                  label="Name *"
+                  variant="outlined"
+                  size="medium"
+                  name="name"
+                  id="name"
+                  value={formState.values.name || ""}
+                  helperText={
+                    hasError("name") ? formState.errors.name[0] : null
+                  }
+                  error={hasError("name")}
+                  onChange={handleChange}
+                />
+              </Grid>
+              {/* Input field for the Email */}
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  placeholder="E-mail"
+                  label="E-mail *"
+                  variant="outlined"
+                  size="medium"
+                  name="email"
+                  id="email"
+                  type="text" // Changed from "email" to "text"
+                  helperText={
+                    hasError("email") ? formState.errors.email[0] : null
+                  }
+                  error={hasError("email")}
+                  onChange={handleChange}
+                  value={formState.values.email || ""}
+                />
+              </Grid>
+              {/* Input field for the Message */}
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  placeholder="Message"
+                  label="Message *"
+                  variant="outlined"
+                  size="medium"
+                  name="message"
+                  id="message"
+                  multiline
+                  rows={4}
+                  helperText={
+                    hasError("message") ? formState.errors.message[0] : null
+                  }
+                  error={hasError("message")}
+                  value={formState.values.message || ""}
+                  onChange={handleChange}
+                />
+              </Grid>
+              {/* Submit button to send the form data */}
+              <Grid item xs={12}>
+                <Button
+                  fullWidth
+                  size="large"
+                  variant="contained"
+                  type="submit"
+                  color="primary"
+                >
+                  {sendingStatus}
+                </Button>
+              </Grid>
             </Grid>
-            {/* Input field for the Email */}
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                placeholder="E-mail"
-                label="E-mail *"
-                variant="outlined"
-                size="medium"
-                name="email"
-                id="email"
-                type="text" // Changed from "email" to "text"
-                helperText={
-                  hasError("email") ? formState.errors.email[0] : null
-                }
-                error={hasError("email")}
-                onChange={handleChange}
-                value={formState.values.email || ""}
-              />
-            </Grid>
-            {/* Input field for the Message */}
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                placeholder="Message"
-                label="Message *"
-                variant="outlined"
-                size="medium"
-                name="message"
-                id="message"
-                multiline
-                rows={4}
-                helperText={
-                  hasError("message") ? formState.errors.message[0] : null
-                }
-                error={hasError("message")}
-                value={formState.values.message || ""}
-                onChange={handleChange}
-              />
-            </Grid>
-            {/* Submit button to send the form data */}
-            <Grid item xs={12}>
-              <Button
-                fullWidth
-                size="large"
-                variant="contained"
-                type="submit"
-                color="primary"
-              >
-                {sendingStatus}
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-      </Container>
-    </Box>
+          </form>
+        </Container>
+      </Box>
+    </>
   );
 };
 

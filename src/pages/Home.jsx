@@ -52,7 +52,7 @@ const Home = () => {
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          minHeight: isMobileLandscape ? "100vh" : "50vh",
+          minHeight: isMobileLandscape ? "100vh" : "40vh",
           px: 3,
           borderBottom: 1,
           borderColor: "primary.main",
