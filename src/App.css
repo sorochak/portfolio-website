@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+@-moz-document url-prefix() {
+  /* Disable scrollbar Firefox */
+  html {
+    scrollbar-width: none;
+  }
+}

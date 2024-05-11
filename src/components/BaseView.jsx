@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Box } from "@mui/material";
+import { Box, GlobalStyles } from "@mui/material";
 import Header from "./Header";
 import Footer from "./Footer";
 import BaseRouter from "./BaseRouter";
@@ -53,7 +53,7 @@ const BaseView = ({ children }) => {
       values: {
         xs: 0, // Extra-small devices
         sm: 600, // Small devices
-        md: 1024, // Medium devices - adjusted to start at a wider screen width
+        md: 1024, // Medium devices
         lg: 1440, // Large devices
         xl: 1920, // Extra-large devices
       },
@@ -64,9 +64,39 @@ const BaseView = ({ children }) => {
     <ColorModeContext.Provider value={{ mode, toggleColorMode }}>
       <ThemeProvider theme={appliedTheme}>
         <CssBaseline />
-        <Box>
+        <GlobalStyles
+          styles={{
+            body: {
+              scrollbarWidth: "none", // Hide scrollbar for Firefox
+              msOverflowStyle: "none", // Hide scrollbar for Internet Explorer and Edge
+            },
+            "body::-webkit-scrollbar": {
+              display: "none", // Hide scrollbar for WebKit browsers (Chrome, Safari)
+            },
+            "::-webkit-scrollbar": {
+              display: "none", // Ensure it's applied to all scrollbars
+            },
+          }}
+        />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "100vh",
+          }}
+        >
           <Header />
-          <BaseRouter />
+          <Box
+            component="main"
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <BaseRouter />
+          </Box>
+
           <Footer />
         </Box>
       </ThemeProvider>
