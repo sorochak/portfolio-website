@@ -14,13 +14,9 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 export const StyleContext = createContext();
 
 const BaseView = ({ children }) => {
-  // Detects the user's color scheme preference
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-
   // State variable to track the current color mode ('light' or 'dark')
-  const [mode, setMode] = useState(prefersDarkMode ? "dark" : "light");
+  const [mode, setMode] = useState("dark"); // Set initial mode to "dark"
 
-  // Function to toggle between light and dark color modes
   const toggleColorMode = () => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
   };
