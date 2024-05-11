@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import backgroundImage from "../static/nayuca.webp";
 import { ColorModeContext } from "../components/BaseView";
 import signature from "../static/sorochakSignature.png";
-import avatarImage from "../static/selfie.jpg";
+import avatarImage from "../static/selfie.webp";
 import Logo from "../components/Logo";
 
 const Home = () => {
