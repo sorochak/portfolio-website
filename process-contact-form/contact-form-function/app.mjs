@@ -1,6 +1,8 @@
 import AWS from "aws-sdk";
 const ses = new AWS.SES({ region: "us-east-1" });
 
+const allowedOrigin = "https://austensorochak.com";
+
 /**
  * Lambda function handler for processing contact form submissions.
  *
@@ -31,22 +33,24 @@ export const lambdaHandler = async (event, context) => {
     ReplyToAddresses: [email], // User's email address for easy reply
   };
 
+  const responseHeaders = {
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Methods": "POST,OPTIONS",
+    "Access-Control-Allow-Origin": allowedOrigin,
+  };
+
   try {
     await ses.sendEmail(params).promise();
     console.log("Lambda function finished");
     return {
       statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "http://localhost:3000",
-      },
+      headers: responseHeaders,
       body: JSON.stringify({ message: "Email sent successfully" }),
     };
   } catch (err) {
     return {
       statusCode: 500,
-      headers: {
-        "Access-Control-Allow-Origin": "http://localhost:3000",
-      },
+      headers: responseHeaders,
       body: JSON.stringify({ message: "Error sending email", err }),
     };
   }
