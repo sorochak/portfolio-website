@@ -57,7 +57,7 @@ const Projects = () => {
               fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
               textShadow: textShadow,
               textAlign: "center",
-              mt: 3,
+              mt: { xs: 7, md: 3 },
             }}
           >
             SELECTED PROJECTS
