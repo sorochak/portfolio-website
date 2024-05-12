@@ -63,7 +63,7 @@ const Home = () => {
           }}
         >
           {/* Container for titles and roles */}
-          <Box sx={{ mt: 5 }}>
+          <Box sx={{ mt: 8 }}>
             <Typography
               component="h1"
               variant="h2"
@@ -74,7 +74,7 @@ const Home = () => {
                 textShadow: textShadow,
                 textAlign: "center",
                 fontSize: {
-                  xs: "2rem",
+                  xs: "1.75rem",
                   sm: "2.25rem",
                 },
               }}
@@ -94,7 +94,11 @@ const Home = () => {
                     fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                     textShadow: textShadow,
                     textAlign: "center",
-                    fontSize: "1.3rem",
+                    fontSize: {
+                      xs: "1.75rem",
+                      sm: "2.25rem",
+                    },
+                    // fontSize: "1.3rem",
                     lineHeight: 1.2,
                   }}
                 >
