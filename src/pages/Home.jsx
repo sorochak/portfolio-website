@@ -73,10 +73,7 @@ const Home = () => {
                 fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                 textShadow: textShadow,
                 textAlign: "center",
-                fontSize: {
-                  xs: "1.75rem",
-                  sm: "2.25rem",
-                },
+                fontSize: { xs: "1.5rem", sm: "2rem" },
               }}
             >
               Austen Sorochak
@@ -94,10 +91,7 @@ const Home = () => {
                     fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
                     textShadow: textShadow,
                     textAlign: "center",
-                    fontSize: {
-                      xs: "1.75rem",
-                      sm: "2.25rem",
-                    },
+                    fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
                     // fontSize: "1.3rem",
                     lineHeight: 1.2,
                   }}
@@ -107,7 +101,6 @@ const Home = () => {
                 <Typography
                   component="h6"
                   variant="h6"
-                  gutterBottom
                   sx={{
                     fontWeight: 700,
                     fontFamily: "Julius Sans One, Helvetica, Arial, sans-serif",
@@ -142,6 +135,7 @@ const Home = () => {
               <Button
                 variant="contained"
                 color="primary"
+                size="small"
                 sx={{ transition: "all 0.5s ease-in-out" }}
               >
                 View my work
