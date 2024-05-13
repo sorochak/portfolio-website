@@ -35,8 +35,8 @@ This is the repository for my personal portfolio website, hosted at [austensoroc
 ### Clone the Repository
 
 ```sh
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/sorochak/portfolio-website.git
+cd portfolio-website
 ```
 
 ### Install Dependencies
@@ -114,6 +114,12 @@ The contact form is implemented using AWS serverless infrastructure. The related
 ```sh
 cd process-contact-form
 npm install
+```
+
+2. Build the serverless function:
+
+```sh
+sam build
 ```
 
 Deploy the serverless function:
