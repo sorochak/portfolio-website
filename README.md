@@ -1,6 +1,6 @@
 # Portfolio Website
 
-This is the repository for my personal portfolio website, hosted at [austensorochak.com](https://austensorochak.com). The website is a React application that showcases my projects, skills, and contact information.
+This is the repository for my personal portfolio website, hosted at [austensorochak.com](https://austensorochak.com). The website is a React application that showcases my professional background, projects, skills, and a contact form.
 
 ## Table of Contents
 
