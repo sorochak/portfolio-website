@@ -1,16 +1,18 @@
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import { Box } from "@mui/material";
 import BaseView from "./components/BaseView";
-import useTracking from "./hooks/useTracking";
 import "./App.css";
-
-const TRACKING_ID = "G-XRX88BJN0C";
+import useGoogleAnalytics from "./hooks/useGoogleAnalytics";
 
 function App() {
-  useTracking(TRACKING_ID);
+  useGoogleAnalytics();
   return (
-    <Box>
-      <BaseView />
-    </Box>
+    <BrowserRouter basename="/">
+      <Box>
+        <BaseView />
+      </Box>
+    </BrowserRouter>
   );
 }
 
