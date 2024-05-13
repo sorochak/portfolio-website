@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-import analytics from "..util/analytics";
+import analytics from "../util/analytics";
 
 export default function useGoogleAnalytics() {
   const location = useLocation();
