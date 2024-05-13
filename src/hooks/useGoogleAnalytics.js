@@ -8,10 +8,12 @@ export default function useGoogleAnalytics() {
 
   React.useEffect(() => {
     analytics.init();
+    console.log("useGoogleAnalytics: Analytics initialized");
   }, []);
 
   React.useEffect(() => {
     const currentPath = location.pathname + location.search;
     analytics.sendPageview(currentPath);
+    console.log("useGoogleAnalytics: Pageview sent", currentPath);
   }, [location]);
 }
