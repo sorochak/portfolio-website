@@ -3,15 +3,16 @@ import { BrowserRouter } from "react-router-dom";
 import { Box } from "@mui/material";
 import BaseView from "./components/BaseView";
 import "./App.css";
-import useGoogleAnalytics from "./hooks/useGoogleAnalytics";
+import GoogleAnalyticsWrapper from "./components/GoogleAnalyticsWrapper";
 
 function App() {
-  useGoogleAnalytics();
   return (
     <BrowserRouter basename="/">
-      <Box>
-        <BaseView />
-      </Box>
+      <GoogleAnalyticsWrapper>
+        <Box>
+          <BaseView />
+        </Box>
+      </GoogleAnalyticsWrapper>
     </BrowserRouter>
   );
 }
