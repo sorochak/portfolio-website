@@ -1,9 +1,16 @@
 import { Box, Typography, Container, Grid } from "@mui/material";
+import { styled } from "@mui/system";
 import backgroundImage from "../static/nayuca.webp";
 import useSharedStyles from "../hooks/useSharedStyles";
 import cioosLogo from "../static/cioos.png";
 import hakaiLogo from "../static/hakai.png";
 import Logo from "../components/Logo";
+
+const StyledLink = styled("a")(({ theme }) => ({
+  color: theme.palette.primary.main,
+  textDecoration: "none",
+  marginLeft: "5px",
+}));
 
 const Projects = () => {
   const { isMobileLandscape, childBoxBackgroundColor, textShadow } =
@@ -96,7 +103,7 @@ const Projects = () => {
                     src={hakaiLogo}
                     alt="Hakai Logo"
                     sx={{
-                      width: { xs: "70%", sm: "60%", md: "40%", lg: "300px" },
+                      width: { xs: "250px" },
                       maxWidth: "100%",
                       height: "auto",
                     }}
@@ -211,7 +218,7 @@ const Projects = () => {
                     src={cioosLogo}
                     alt="CIOOS Logo"
                     sx={{
-                      width: { xs: "70%", sm: "60%", md: "40%", lg: "300px" },
+                      width: { xs: "250px" },
                       maxWidth: "100%",
                       height: "auto",
                     }}
@@ -291,8 +298,8 @@ const Projects = () => {
                     "Crafted UI/UX designs emphasizing usability and aesthetic appeal",
                     "Implemented form controls and validation for user input management, enhancing data integrity and user experience",
                     "Improved security, reliability, and maintainability of the Google Firebase back-end through the adoption of Google’s best practices",
-                    "Refined CI/CD processes and environment config management to ensure reliable operations.",
-                    "Integrated with third-party APIs, expanding the capability of metadata handling.",
+                    "Refined CI/CD processes and environment config management to ensure reliable operations",
+                    "Integrated with third-party APIs, expanding the capability of metadata handling",
                     "Authored updates to documentation and systems diagrams, ensuring maintainability",
                     // ...add all the other points
                   ].map((item) => (
@@ -315,7 +322,7 @@ const Projects = () => {
               >
                 <Box
                   sx={{
-                    width: { xs: "70%", sm: "60%", md: "40%", lg: "80px" },
+                    width: { xs: "80px" },
                     maxWidth: "100%",
                     height: "auto",
                   }}
@@ -379,7 +386,8 @@ const Projects = () => {
                 >
                   A React app portfolio website showcasing my projects, skills,
                   and experience. It uses AWS services for hosting and
-                  serverless backend, and GitHub Actions for CI/CD.
+                  serverless backend, GitHub Actions for CI/CD, and is
+                  configured to run in a Docker container if desired.
                 </Typography>
 
                 {/* List of Work */}
@@ -416,6 +424,20 @@ const Projects = () => {
                     </Box>
                   ))}
                 </Box>
+                {/* GitHub Repository Link */}
+                <Typography
+                  variant="h6"
+                  sx={{ textAlign: "left", marginTop: 2 }}
+                >
+                  You can view the source code on
+                  <StyledLink
+                    href="https://github.com/sorochak/portfolio-website"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </StyledLink>
+                </Typography>
               </Box>
             </Grid>
           </Grid>

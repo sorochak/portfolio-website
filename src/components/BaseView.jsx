@@ -23,7 +23,7 @@ const BaseView = ({ children }) => {
 
   // Detects if the screen is a mobile landscape
   const isMobileLandscape = useMediaQuery(
-    "(max-width: 930px) and (orientation: landscape)"
+    "(max-width: 930px) and (max-height: 500px) and (orientation: landscape)"
   );
 
   // Determines background color for child elements based on the current mode
