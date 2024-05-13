@@ -16,6 +16,7 @@ This is the repository for my personal portfolio website, hosted at [austensoroc
 
 - **React**: JavaScript library for building user interfaces.
 - **React Router**: For routing within the application.
+- **Material-UI**: For responsive and consistent styling.
 - **Docker**: For containerizing the application.
 - **Nginx**: Web server used in the Docker container.
 - **AWS S3**: For hosting the deployed application.
