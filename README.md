@@ -1,151 +1,139 @@
-# My Personal Website Journey
+# Portfolio Website
 
-This project will be my personal website/portfolio page.
+This is the repository for my personal portfolio website, hosted at [austensorochak.com](https://austensorochak.com). The website is a React application that showcases my projects, skills, and contact information.
 
-TO DO:
+## Table of Contents
 
-1. Planning & Design
-- [x] Sketch the Design
-- [x] List Features & Sections (e.g., About, Projects, Contact)
+1. [Description](#description)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Installation](#installation)
+5. [Running the Application](#running-the-application)
+6. [Deployment](#deployment)
+7. [Contact](#contact)
 
-2. Setup Development Environment
-- [x] Create React App: Use the Create React App (CRA) tool to set up a new React project.
+## Description
 
-3. Create Structure
-- [x] Directory Structure: Organize the app's structure to have directories like components, pages, assets, etc.
-- [x] Setup Components: Break down the UI into smaller reusable components (e.g., Navbar, Footer, Button).
-- [x] Setup Pages: Organize the major sections/views as separate pages (e.g., HomePage, ProjectPage).
+This portfolio website is designed to provide an overview of my work and skills as a software developer. It includes sections for projects, a contact form, and some professional details.
 
-4. Implement Core Features
-- [ ] Header: Build the header (usually navigation)
-- [x] Footer: Build the footer component
-- [ ] Content: Populate the pages with actual content - personal info, projects, resume, etc.
+## Features
 
-5. Integrate Material-UI for Responsiveness
-- [x] Install Material-UI: Integrate Material-UI for responsive components and styling.
-- [x] Use Material-UI Components: Replace or enhance custom components with MUI components where necessary for better responsiveness and design consistency.
+- **React Application**: Built with React and React Router for navigation.
+- **Dockerized Setup**: Configured to run in a Docker container with an Nginx web server.
+- **Continuous Deployment**: Automated deployment to an AWS S3 bucket on push to the main branch.
+- **Serverless Contact Form**: Uses AWS Lambda and API Gateway for handling contact form submissions.
+- **Google Analytics**: Integrated for tracking and analyzing visitor data.
 
-6. Analytics
-- [ ] Set Up Google Analytics: Create a Google Analytics account and get a tracking ID.
-- [ ] Integrate Analytics: Use a package like react-ga to integrate Google Analytics with the React app.
+## Technologies Used
 
-7. Testing
-- [ ] Responsive Testing: Ensure the site looks good on various device sizes.
-- [ ] Browser Testing: Check the site's functionality across different browsers.
+- **React**: JavaScript library for building user interfaces.
+- **React Router**: For routing within the application.
+- **Docker**: For containerizing the application.
+- **Nginx**: Web server used in the Docker container.
+- **AWS S3**: For hosting the deployed application.
+- **AWS Lambda & API Gateway**: For serverless backend services.
+- **AWS SAM**: For local testing and deployment of serverless functions.
+- **Google Analytics**: For tracking website analytics.
 
-8. Deployment & CI/CD Pipeline
-- [x] GitHub Pages Setup: Create a GitHub repository for portfolio.
-- [ ] Deployment Setup: Use tools like gh-pages npm package to help automate the deployment to GitHub Pages.
-- [ ] Automate Deployment: Set up GitHub Actions for automatic deployment upon pushing to the main branch.
+## Installation
 
-9. Documentation & Sharing
-- [ ] Document Process: Jot down the entire process, challenges faced, solutions found, and any other learnings.
-- [ ] Share on Dev.to: Write and publish an article on Dev.to sharing the experience and learnings. This not only showcases the project but also writing and reflection skills.
+### Prerequisites
 
-10. Dockerize the React App
-- [ ] Create a Dockerfile in the root of the project with the following content:
-# Use an official Node runtime as the parent image
-FROM node:14
+- Node.js (v14 or higher)
+- Docker (if you want to run the app in a container)
+- AWS CLI (for deployment)
+- SAM CLI (for testing serverless functions locally)
 
-# Set the working directory in the container
-WORKDIR /usr/src/app
+### Clone the Repository
 
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
+```sh
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+```
 
-# Install dependencies in the container
-RUN npm install
+### Install Dependencies
 
-# Copy the current directory contents into the container
-COPY . .
+```sh
+npm install
+```
 
-# Make port 3000 available outside the container
-EXPOSE 3000
+## AWS Credentials
 
-# Run the application when the container launches
-CMD ["npm", "start"]
+To deploy the application to AWS S3 and for the serverless infrastructure, you need to configure your AWS credentials. Make sure you have the AWS CLI installed and configured with your AWS credentials:
 
-- [ ] Create a .dockerignore file in the root of the project to exclude unnecessary files:
-- [ ] Build the Docker Image
-- [ ] Run the React App in a Docker Container
-- [ ] Deploy
-- [ ] Update Documentation
+```sh
+aws configure
+```
 
+You will be prompted to enter your AWS Access Key ID, Secret Access Key, Default Region, and Default Output format. Ensure that you have the necessary permissions to deploy to S3 and manage Lambda functions.
 
-11. Think about SEO - maybe implement React-Helmet
-- [ ] Implement React-Helmet https://www.freecodecamp.org/news/react-helmet-examples/
+## Running the Application
 
-12. Add button to switch between dark and light theme
+### Running Locally
 
-13. Potentially consider implementing dependabot for non-breaking updates?
+To run the application locally:
 
-# Getting Started with Create React App
+```sh
+npm start
+```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This will start the React development server. Open your browser and navigate to http://localhost:3000 to view the website.
 
-## Available Scripts
+### Running in Docker
 
-In the project directory, you can run:
+To run the application in a Docker container:
 
-### `npm start`
+- Build the Docker image
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```sh
+docker build -t portfolio-website .
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Run the Docker container:
 
-### `npm test`
+```sh
+docker run -p 80:80 portfolio-website
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Open your browser and navigate to http://localhost to view the website running in the Docker container.
 
-### `npm run build`
+## Deployment
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The application is configured for continuous deployment using GitHub Actions. On every push to the main branch, the workflow builds and pushes the React app to an AWS S3 bucket.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Manual Deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To manually deploy the application to AWS S3:
 
-### `npm run eject`
+- Build the React app:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```sh
+npm run build
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Sync the build folder with your S3 bucket:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```sh
+aws s3 sync build/ s3://your-bucket-name --delete
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Serverless Contact Form Deployment
 
-## Learn More
+The contact form is implemented using AWS serverless infrastructure. The related files are located in the process-contact-form directory.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Navigate to the process-contact-form/contact-form-function directory and install dependencies:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+cd process-contact-form
+npm install
+```
 
-### Code Splitting
+Deploy the serverless function:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```sh
+sam deploy --guided
+```
 
-### Analyzing the Bundle Size
+Follow the prompts to deploy the function.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for visiting my portfolio website!
