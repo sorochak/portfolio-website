@@ -10,7 +10,6 @@ This is the repository for my personal portfolio website, hosted at [austensoroc
 4. [Installation](#installation)
 5. [Running the Application](#running-the-application)
 6. [Deployment](#deployment)
-7. [Contact](#contact)
 
 ## Description
 
