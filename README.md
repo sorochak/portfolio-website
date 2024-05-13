@@ -5,23 +5,14 @@ This is the repository for my personal portfolio website, hosted at [austensoroc
 ## Table of Contents
 
 1. [Description](#description)
-2. [Features](#features)
-3. [Technologies Used](#technologies-used)
-4. [Installation](#installation)
-5. [Running the Application](#running-the-application)
-6. [Deployment](#deployment)
+2. [Technologies Used](#technologies-used)
+3. [Installation](#installation)
+4. [Running the Application](#running-the-application)
+5. [Deployment](#deployment)
 
 ## Description
 
 This portfolio website is designed to provide an overview of my work and skills as a software developer. It includes sections for projects, a contact form, and some professional details.
-
-## Features
-
-- **React Application**: Built with React and React Router for navigation.
-- **Dockerized Setup**: Configured to run in a Docker container with an Nginx web server.
-- **Continuous Deployment**: Automated deployment to an AWS S3 bucket on push to the main branch.
-- **Serverless Contact Form**: Uses AWS Lambda and API Gateway for handling contact form submissions.
-- **Google Analytics**: Integrated for tracking and analyzing visitor data.
 
 ## Technologies Used
 
