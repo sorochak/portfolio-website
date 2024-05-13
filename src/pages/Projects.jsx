@@ -103,7 +103,7 @@ const Projects = () => {
                     src={hakaiLogo}
                     alt="Hakai Logo"
                     sx={{
-                      width: { xs: "250px" },
+                      width: { xs: "180px" },
                       maxWidth: "100%",
                       height: "auto",
                     }}
