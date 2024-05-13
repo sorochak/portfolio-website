@@ -3,6 +3,7 @@ import backgroundImage from "../static/nayuca.webp";
 import useSharedStyles from "../hooks/useSharedStyles";
 import cioosLogo from "../static/cioos.png";
 import hakaiLogo from "../static/hakai.png";
+import Logo from "../components/Logo";
 
 const Projects = () => {
   const { isMobileLandscape, childBoxBackgroundColor, textShadow } =
@@ -294,6 +295,121 @@ const Projects = () => {
                     "Integrated with third-party APIs, expanding the capability of metadata handling.",
                     "Authored updates to documentation and systems diagrams, ensuring maintainability",
                     // ...add all the other points
+                  ].map((item) => (
+                    <Box component="li" key={item} sx={{ textAlign: "left" }}>
+                      <Typography variant="body1">{item}</Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+              {/* Austensorochak.com */}
+              <Box
+                sx={{
+                  pl: { xs: 2, sm: 4 },
+                  pr: { xs: 2, sm: 4 },
+                  pb: { xs: 2, sm: 4 },
+                  margin: { xs: 1, md: 3 },
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: { xs: "70%", sm: "60%", md: "40%", lg: "80px" },
+                    maxWidth: "100%",
+                    height: "auto",
+                  }}
+                >
+                  <Logo
+                    width="100%"
+                    height="auto"
+                    style={{
+                      filter: "drop-shadow(2px 2px 1.5px rgba(255,255,255,1))",
+                    }}
+                  />
+                </Box>
+                {/* Project Title */}
+                <Typography
+                  color="primary"
+                  gutterBottom
+                  sx={{
+                    textAlign: "left",
+                    fontSize: { xs: "1.4rem", lg: "2.3rem" },
+                    lineHeight: 1.2,
+                  }}
+                >
+                  Austensorochak.com
+                </Typography>
+
+                {/* Tags */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    mb: 2,
+                  }}
+                >
+                  {[
+                    "JavaScript",
+                    "React",
+                    "MaterialUI",
+                    "GitHubActions",
+                    "Docker",
+                    "Nginx",
+                    "AWS",
+                    "S3",
+                    "Lambda",
+                    "APIGateway",
+                  ].map((tag) => (
+                    <Typography
+                      key={tag}
+                      variant="body2"
+                      color="textSecondary"
+                      sx={{ marginRight: 1, marginBottom: 1, lineHeight: 1 }}
+                    >
+                      #{tag}
+                    </Typography>
+                  ))}
+                </Box>
+
+                {/* Description */}
+                <Typography
+                  variant="body1"
+                  sx={{ textAlign: "left", marginBottom: 2 }}
+                >
+                  A React app portfolio website showcasing my projects, skills,
+                  and experience. It uses AWS services for hosting and
+                  serverless backend, and GitHub Actions for CI/CD.
+                </Typography>
+
+                {/* List of Work */}
+                <Typography variant="h6" sx={{ textAlign: "left" }}>
+                  What I did:
+                </Typography>
+                {/* Data Portal */}
+                <Box
+                  component="ul"
+                  sx={{
+                    listStyle: "none",
+                    padding: 0,
+                    "& li": {
+                      position: "relative",
+                      paddingLeft: "1em",
+                      mb: 1,
+                    },
+                    "& li:before": {
+                      content: '"•"',
+                      position: "absolute",
+                      left: 0,
+                    },
+                  }}
+                >
+                  {[
+                    "Developed a responsive UI with React and Material-UI",
+                    "Implemented a serverless contact form using AWS Lambda and API Gateway",
+                    "Deployed the website to AWS S3 with GitHub Actions for CI/CD",
+                    "Configured Docker for production builds with Nginx to serve the React app",
+                    "Integrated Google Analytics for tracking user interactions",
                   ].map((item) => (
                     <Box component="li" key={item} sx={{ textAlign: "left" }}>
                       <Typography variant="body1">{item}</Typography>
