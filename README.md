@@ -88,7 +88,7 @@ Open your browser and navigate to http://localhost to view the website running i
 
 ## Deployment
 
-The application is configured for continuous deployment using GitHub Actions. On every push to the main branch, the workflow builds and pushes the React app to an AWS S3 bucket.
+The application is configured for continuous deployment using GitHub Actions. On every push to the main branch, the `Build and Deploy to S3` workflow builds and pushes the React app to an AWS S3 bucket.
 
 ### Manual Deployment
 
