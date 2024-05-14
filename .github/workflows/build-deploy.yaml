@@ -24,6 +24,8 @@ jobs:
         run: |
           npm ci
           npm run build:ci
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
       - name: Deploy to S3 🚀
         uses: jakejarvis/s3-sync-action@master
