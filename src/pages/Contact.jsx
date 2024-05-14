@@ -10,6 +10,7 @@ import {
 import validate from "validate.js";
 import backgroundImage from "../static/nayuca.webp";
 import useSharedStyles from "../hooks/useSharedStyles";
+import * as Sentry from "@sentry/react"; // Import Sentry
 
 const Contact = () => {
   const { isMobileLandscape, childBoxBackgroundColor, textShadow } =
@@ -113,11 +114,17 @@ const Contact = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formState.values),
         });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json(); // Parse the JSON response
         setSendingStatus(data.message); // Display the server response message
         resetFormState(); // Reset the form after a successful submission
       } catch (error) {
         console.error("Error sending contact form:", error);
+        Sentry.captureException(error);
         setSendingStatus("Failed to send message");
       }
     }
