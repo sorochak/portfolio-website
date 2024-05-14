@@ -417,7 +417,7 @@ const Projects = () => {
                     "Implemented a serverless contact form using AWS Lambda and API Gateway",
                     "Deployed the website to AWS S3 with GitHub Actions for CI/CD",
                     "Configured Docker for production builds with Nginx to serve the React app",
-                    "Integrated Google Analytics for tracking user interactions",
+                    "Leveraged Sentry for error tracking and debugging, enhancing the reliability of the website",
                   ].map((item) => (
                     <Box component="li" key={item} sx={{ textAlign: "left" }}>
                       <Typography variant="body1">{item}</Typography>
