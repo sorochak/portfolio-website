@@ -23,16 +23,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm ci
-          npm run build
-
-      - name: Sentry Release
-        run: |
-          sentry-cli sourcemaps inject --org sorochak --project javascript-react build
-          sentry-cli sourcemaps upload --org sorochak --project javascript-react build
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: sorochak
-          SENTRY_PROJECT: javascript-react
+          npm run build:ci
 
       - name: Deploy to S3 🚀
         uses: jakejarvis/s3-sync-action@master
