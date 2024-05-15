@@ -297,6 +297,7 @@ const Projects = () => {
                   {[
                     "Crafted UI/UX designs emphasizing usability and aesthetic appeal",
                     "Implemented form controls and validation for user input management, enhancing data integrity and user experience",
+                    "Implemented a role-based access control system, allowing admin users to manage permissions through a dashboard for secure, tailored data access.",
                     "Improved security, reliability, and maintainability of the Google Firebase back-end through the adoption of Google’s best practices",
                     "Refined CI/CD processes and environment config management to ensure reliable operations",
                     "Integrated with third-party APIs, expanding the capability of metadata handling",
