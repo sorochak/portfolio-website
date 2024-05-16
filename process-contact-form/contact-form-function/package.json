@@ -1,9 +1,9 @@
 {
-  "name": "hello_world",
+  "name": "contact_form_function",
   "version": "1.0.0",
-  "description": "hello world sample for NodeJS",
+  "description": "Contact form function for NodeJS using AWS Lambda",
   "main": "app.js",
-  "repository": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs",
+  "repository": "https://github.com/sorochak/portfolio-website",
   "author": "SAM CLI",
   "license": "MIT",
   "dependencies": {
