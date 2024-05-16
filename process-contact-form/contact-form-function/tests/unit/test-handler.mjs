@@ -15,6 +15,8 @@ describe("Tests index", function () {
       }),
     };
     context = {};
+
+    // TODO: Mock AWS SES here to simulate the email sending without actual API calls
   });
 
   it("verifies successful response", async () => {
