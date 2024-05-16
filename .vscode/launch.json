@@ -3,11 +3,11 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
-      "name": "process-contact-form:HelloWorldFunction (nodejs18.x)",
+      "name": "process-contact-form:ContactFormFunction (nodejs18.x)",
       "invokeTarget": {
         "target": "template",
         "templatePath": "${workspaceFolder}/process-contact-form/template.yaml",
-        "logicalId": "HelloWorldFunction"
+        "logicalId": "ContactFormFunction"
       },
       "lambda": {
         "payload": {},
@@ -18,14 +18,14 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
-      "name": "API process-contact-form:HelloWorldFunction (nodejs18.x)",
+      "name": "API process-contact-form:ContactFormFunction (nodejs18.x)",
       "invokeTarget": {
         "target": "api",
         "templatePath": "${workspaceFolder}/process-contact-form/template.yaml",
-        "logicalId": "HelloWorldFunction"
+        "logicalId": "ContactFormFunction"
       },
       "api": {
-        "path": "/hello",
+        "path": "/contact",
         "httpMethod": "get",
         "payload": {
           "json": {}
@@ -38,11 +38,11 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
-      "name": "processContactForm:HelloWorldFunction (nodejs18.x)",
+      "name": "processContactForm:ContactFormFunction (nodejs18.x)",
       "invokeTarget": {
         "target": "template",
         "templatePath": "${workspaceFolder}/processContactForm/template.yaml",
-        "logicalId": "HelloWorldFunction"
+        "logicalId": "ContactFormFunction"
       },
       "lambda": {
         "payload": {},
@@ -53,14 +53,14 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
-      "name": "API processContactForm:HelloWorldFunction (nodejs18.x)",
+      "name": "API processContactForm:ContactFormFunction (nodejs18.x)",
       "invokeTarget": {
         "target": "api",
         "templatePath": "${workspaceFolder}/processContactForm/template.yaml",
-        "logicalId": "HelloWorldFunction"
+        "logicalId": "ContactFormFunction"
       },
       "api": {
-        "path": "/hello",
+        "path": "/contact",
         "httpMethod": "get",
         "payload": {
           "json": {}
@@ -73,11 +73,11 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
-      "name": "processContactForm:HelloWorldFunction (nodejs18.x)",
+      "name": "processContactForm:ContactFormFunction (nodejs18.x)",
       "invokeTarget": {
         "target": "template",
         "templatePath": "${workspaceFolder}/processContactForm/template.yaml",
-        "logicalId": "HelloWorldFunction"
+        "logicalId": "ContactFormFunction"
       },
       "lambda": {
         "payload": {},
@@ -88,14 +88,14 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
-      "name": "API processContactForm:HelloWorldFunction (nodejs18.x)",
+      "name": "API processContactForm:ContactFormFunction (nodejs18.x)",
       "invokeTarget": {
         "target": "api",
         "templatePath": "${workspaceFolder}/processContactForm/template.yaml",
-        "logicalId": "HelloWorldFunction"
+        "logicalId": "ContactFormFunction"
       },
       "api": {
-        "path": "/hello",
+        "path": "/contact",
         "httpMethod": "get",
         "payload": {
           "json": {}
