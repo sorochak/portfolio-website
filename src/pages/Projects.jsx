@@ -419,6 +419,7 @@ const Projects = () => {
                     "Deployed the website to AWS S3 with GitHub Actions for CI/CD",
                     "Configured Docker for production builds with Nginx to serve the React app",
                     "Leveraged Sentry for error tracking and debugging, enhancing the reliability of the website",
+                    "Utilized AWS SAM (Serverless Application Model) and infrastructure as code for managing AWS resources",
                   ].map((item) => (
                     <Box component="li" key={item} sx={{ textAlign: "left" }}>
                       <Typography variant="body1">{item}</Typography>
