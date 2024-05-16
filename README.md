@@ -21,7 +21,7 @@ This is the repository for my personal portfolio website, hosted at [austensoroc
 - **Nginx**: Web server used in the Docker container.
 - **AWS S3**: For hosting the deployed application.
 - **AWS Lambda & API Gateway**: For serverless backend services.
-- **AWS SAM**: For local testing and deployment of serverless functions.
+- **AWS SAM**: For local testing and deployment of serverless functions, including the creation and configuration of API Gateway endpoints.
 - **Sentry**: For error tracking and debugging.
 
 ## Installation
