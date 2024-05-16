@@ -56,6 +56,28 @@ aws configure
 
 You will be prompted to enter your AWS Access Key ID, Secret Access Key, Default Region, and Default Output format. Ensure that you have the necessary permissions to deploy to S3 and manage Lambda functions.
 
+## Environment Variables
+
+To run the application locally or deploy it, you need to set up the required environment variables. Create a .env file in the root directory of the project and add the following variables:
+
+```sh
+AWS_ACCESS_KEY_ID=your_aws_access_key_id
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
+SENTRY_AUTH_TOKEN=your_sentry_auth_token
+```
+
+Replace your_aws_access_key_id, your_aws_secret_access_key, and your_sentry_auth_token with your actual AWS credentials and Sentry authentication token.
+
+## Creating the .env File
+
+```sh
+cat > .env <<EOL
+AWS_ACCESS_KEY_ID=your_aws_access_key_id
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
+SENTRY_AUTH_TOKEN=your_sentry_auth_token
+EOL
+```
+
 ## Running the Application
 
 ### Running Locally
