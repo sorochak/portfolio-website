@@ -296,6 +296,8 @@ const Projects = () => {
                 >
                   {[
                     "Crafted UI/UX designs emphasizing usability and aesthetic appeal",
+                    "Utilized Google Cloud Functions to implement serverless back-end logic",
+                    "Leveraged Google Firebase's Realtime Database for data storage and retrieval",
                     "Implemented form controls and validation for user input management, enhancing data integrity and user experience",
                     "Implemented a role-based access control system, allowing admin users to manage permissions through a dashboard for secure, tailored data access.",
                     "Improved security, reliability, and maintainability of the Google Firebase back-end through the adoption of Google’s best practices",
