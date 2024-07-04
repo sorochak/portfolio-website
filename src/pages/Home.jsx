@@ -273,10 +273,10 @@ const Home = () => {
                     },
                   }}
                 >
-                  With eight years of experience in environmental management, my
-                  work in ecological monitoring, mining, water treatment, and
-                  contaminated site remediation provides a strong foundation for
-                  my technology-driven projects.
+                  With ten years of experience in the earth sciences, my work in
+                  oceanographic data systems, ecological monitoring, mining,
+                  water treatment, and contaminated site remediation provides a
+                  strong foundation for my technology-driven projects.
                 </Typography>
                 {/* Container for Austen's signature, aligned to the right */}
                 <Box mt={2} pr={2} display="flex" justifyContent="flex-end">
